@@ -1,0 +1,157 @@
+doctype html
+head
+  title Genq Finances
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css' rel='stylesheet')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')
+  script(src='./Public/script.js')
+  link(rel='stylesheet' href='./Public/css/style.css' type='text/css')
+  style.
+    h1{
+    background-color: black;
+    color: white;
+    padding-left: 130px;
+    padding-right: 130px
+    }
+    hr{
+    border: gray;
+    border-top: 9px solid #000;
+    font-weight: bold;
+    border-radius: 0px;
+    }
+    .form {
+    padding-left: 130px;
+    padding-right: 130px;
+
+    padding-bottom: 70px;
+    }
+    /* Center the form and h1 */
+    form, h1 {
+    text-align: center;
+    }
+    h3 {
+    text-align: left;
+    }
+    /* Add some margin between form elements */
+    form input, form select {
+    margin: 10px;
+    }
+    /* Style the input fields */
+    form input[type="text"], form select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    /* Style the submit button */
+    form input[type="submit"] {
+    background-color: rgb(245, 91, 35);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    float: right;
+    }
+    /* Change the background color of the submit button on hover */
+    form input[type="submit"]:hover {
+    background-color: #45a049;
+    }
+center
+  .row
+    .col-sm-1
+    .col-sm-10
+      h1 GENQ KYC FORM
+    .col-sm-1
+
+
+  .form
+    form(name='registration' action='/index' onsubmit='return validateForm()' method='post' class="was-validated")
+      
+      .row
+        h3 Bio Data 
+        hr
+        .col
+          input(type='text' class="form-control" name='fname' placeholder='First Name' required='')
+        .col
+          input(type='text' class="form-control" name='lname' placeholder='Last Name' required='')
+      br
+      .row
+        .col
+          input(type='date' class="form-control" name='dob' placeholder='Date of Birth(DD/MM/YYYY)' required='' style='width: 100%; height: 2.5rem; padding: 0.5rem; box-sizing: border-box;')
+        .col
+          .input-group
+            select#batteryprice.form-select(type='text' class="form-control" name='gender'  required='')
+                option(value='Default' selected='') Gender
+                option(value='male') Male 
+                option(value='female') Female
+      h3 Location             
+      hr
+      br
+      .row
+        .col
+          .input-group
+            select#batteryprice.form-select(type='text' name='country' class="form-control" placeholder='Country' required='')
+                option(value='Default' selected='') Country 
+                option(value='uganda') Uganda
+                option(value='kenya') Kenya
+                option(value='south_sudan') South Sudan
+                option(value='tanzania') Tanzania
+                option(value='rwanda') Rwanda 
+                option(value='burundi') Burundi
+                option(value='drc') Democratic Republic of Congo 
+
+
+        .col
+          input(type='text' class="form-control" name='state' placeholder='State/District' required='')
+      br
+      .row
+        .col
+          input(type='text' class="form-control" name='town' placeholder='Town' required='')
+        .col
+          input(type='number' class="form-control" name='zip' placeholder='Zip Code' required='' style='width: 100%; height: 2.5rem; padding: 0.5rem; box-sizing: border-box;')
+      h3 Contact and Address 
+      hr
+      br
+      .row
+        .col
+          input(type='text' class="form-control" name='phone1' placeholder='Phone Number 1' required='')
+        .col
+          input(type='text' class="form-control" name='phone2' placeholder='Phone Number 2' required='')
+      br
+      .row
+        .col
+          input(type='text' class="form-control" name='email' placeholder='Email' required='')
+        
+      br
+      input(type='submit' value='Submit')
+script.
+  function validateForm() {
+  var fname = document.forms["registration"]["fname"].value;
+  var lname = document.forms["registration"]["lname"].value;
+  var dob = document.forms["registration"]["dob"].value;
+  // Validate First Name
+  if (fname.length < 2 || fname.length > 255 || /\\d/.test(fname)) {
+  alert("Please enter a valid first name.");
+  return false;
+  }
+  // Validate Last Name
+  if (lname.length < 2 || lname.length > 255 || /\\d/.test(lname)) {
+  alert("Please enter a valid last name.");
+  return false;
+  }
+  // Validate Date of Birth
+  var today = new Date();
+  var birthdate = new Date(dob);
+  var diff = today.getTime() - birthdate.getTime();
+  var age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+  if (isNaN(birthdate.getTime())  age < 18) {
+  alert("Please enter a valid date of birth (YY/MM/DD) and ensure that you are at least 18 years old.");
+  return false;
+  }
+  }

@@ -1,0 +1,53 @@
+
+h1{
+    background-color: black;
+    color: white;
+    padding-left: 130px;
+    padding-right: 130px
+}
+.form {
+	background-color: rgb(216, 216, 215);
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+/* Center the form and h1 */
+form, h1 {
+    text-align: center;
+  }
+  
+  /* Add some margin between form elements */
+  form input, form select {
+    margin: 10px;
+  }
+  
+  /* Style the input fields */
+  form input[type="text"], form select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Style the submit button */
+  form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  /* Change the background color of the submit button on hover */
+  form input[type="submit"]:hover {
+    background-color: #45a049;
+
+
+  }
+  
