@@ -6,14 +6,32 @@ const path = require("path");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
+const session = require("express-session")
+const passport = require("passport")
 
-
-// we creat an environment 
-require('dotenv').config();
+//we creat an environment 
+//require('dotenv').config();
 const config = require("./Config/database")
 
+//userModel import
+const user = require("./Models/userModel")
 //import routes
-const indexRoutes = require("./Routes/indexRoutes")
+const generalRoutes = require("./Routes/generalRoutes")
+
+
+//secret is a password for the session, here we dont want the browser to remember our session if broswer is close
+app.use(session({
+  secret: "secret",
+  resave:false,
+  saveUninitialized:false
+}))
+
+// * Passport middleware
+app.use(passport.initialize());//get user
+app.use(passport.session());//start session
+passport.use(user.createStrategy());//local strategy
+passport.serializeUser(user.serializeUser());//we give our user a session id
+passport.deserializeUser(user.deserializeUser());//we destroy the session on logging out
 
 
 
@@ -44,32 +62,22 @@ db.on("error", (err)=>{
 app.set("view engine","pug")
 app.set("views", path.join(__dirname,"views"))
 
-//handling public folder(__dirname resolves to the root folder of the application)
-app.set(express.static(path.join(__dirname, "Public")));
 
 
-// //telling the express module that the public dir has all our site assets
-// app.use(express.static(__dirname + '/Public/html'));
-// app.use(express.static(__dirname + '/Public/html/landing'));
-
-
-
-//handling public folder(__dirname resolves to the root folder of the application)
-app.set(express.static(path.join(__dirname + "/Public")));
+//telling the express module that the public dir has all our site assets
+app.use(express.static(__dirname + '/Public'));
 
 
 
 
+app.use('/', generalRoutes);
 
 
+//404 message
+app.get("*", (req,res)=>{
+  res.status(404).send("Page does not exist")
+})
 
-
-
-
-
-
-//step2;set up a server
-app.use('/', indexRoutes);
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });

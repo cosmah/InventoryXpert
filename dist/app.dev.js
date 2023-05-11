@@ -1,0 +1,82 @@
+"use strict";
+
+var express = require('express');
+
+var _require = require('path'),
+    resolve = _require.resolve;
+
+var port = 3000;
+var app = express();
+
+var path = require("path");
+
+var router = express.Router();
+
+var mongoose = require("mongoose");
+
+var bodyParser = require('body-parser');
+
+var session = require("express-session");
+
+var passport = require("passport"); //we creat an environment 
+//require('dotenv').config();
+
+
+var config = require("./Config/database"); //userModel import
+
+
+var user = require("./Models/userModel"); //import routes
+
+
+var generalRoutes = require("./Routes/generalRoutes"); //secret is a password for the session, here we dont want the browser to remember our session if broswer is close
+
+
+app.use(session({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: false
+})); // * Passport middleware
+
+app.use(passport.initialize()); //get user
+
+app.use(passport.session()); //start session
+
+passport.use(user.createStrategy()); //local strategy
+
+passport.serializeUser(user.serializeUser()); //we give our user a session id
+
+passport.deserializeUser(user.deserializeUser()); //we destroy the session on logging out
+// support parsing of application/json type post data
+
+app.use(bodyParser.json()); //support parsing of application/x-www-form-urlencoded post data
+
+app.use(bodyParser.urlencoded({
+  extended: true
+})); //creating a connection between a controller and the database using mongoose middleware
+
+mongoose.connect(config.database, {
+  //useNewParser collects data then formats it  into what backend understands, 
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+var db = mongoose.connection; //check if db is connected successfully
+
+db.once("open", function () {
+  console.log("Connected to db");
+});
+db.on("error", function (err) {
+  console.error(err);
+}); //TO VIEW PUG(setting templating engine)
+
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views")); //telling the express module that the public dir has all our site assets
+
+app.use(express["static"](__dirname + '/Public'));
+app.use('/', generalRoutes); //404 message
+
+app.get("*", function (req, res) {
+  res.status(404).send("Page does not exist");
+});
+app.listen(port, function () {
+  console.log("Listening at http://localhost:".concat(port));
+});
