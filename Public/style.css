@@ -145,3 +145,80 @@ a {
     background: url('/bg.png') left bottom;
     background-size: cover;
 }
+
+/*register*/
+
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.checkbox-group {
+  margin-top: 5px;
+}
+
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+textarea {
+  height: 100px;
+}
+
+/* Justify alignment for form elements */
+form::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+label, input, select, textarea {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  float: right;
+}
