@@ -3,13 +3,13 @@ extends layout.pug
 block layout-content
 
       
-      form
+      form#contact_form.well.form-horizontal( name="signup" action='/signup' method='post')
         h1 REGISTER BUSINESS 
         label(for='company') Company/Organization:
         input#company(type='text' name='company' required='')
         br
         label(for='email') Email Address:
-        input#email(type='email' name='email' required='')
+        input#email(type='text' name='email' required='')
         br
         label(for='username') Username:
         input#username(type='text' name='username' required='')
@@ -18,9 +18,9 @@ block layout-content
         input#password(type='password' name='password' required='')
         br
         label(for='contact') Contact Number:
-        input#contact(type='tel' name='contact')
+        input#contact(type='text' name='contact')
         br
-        label(for='city') Address:
+        label(for='city') City:
         input#address(type='text' name='city')
         br
         label(for='address') Address:
@@ -40,24 +40,225 @@ block layout-content
         //- input#smsNotifications(type='checkbox' name='notifications' value='sms')
         //- label(for='smsNotifications') SMS
         br
-        label(for='country') Country:
-        select#country(name='country')
-            // Options will be dynamically generated
-        br
-        label(for='payment') Payment/Billing Information:
-        input#payment(type='text' name='payment')
-        br
-        label(for='additional') Additional Information:
-        textarea#additional(name='additional')
+        label(for='country') Country of Residence:
+        select#country(name='country'  type='text')
+        //- br
+        //- label(for='payment') Payment/Billing Information:
+        //- input#payment(type='text' name='payment')
+        //- //- br
+        //- label(for='additional') Additional Information:
+        //- textarea#additional(name='additional')
         br
         input(type='submit' value='Register')
 
         script.
-          const selectElement = document.getElementById('country');
-          const countries = countriesjs.all();
-          countries.forEach((country) => {
-          const option = document.createElement('option');
-          option.value = country.name;
-          option.text = country.name;
-          selectElement.appendChild(option);
-          });
+          function populateCountries() {
+            var countrySelect = document.getElementById("country");
+            var countries = [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Andorra",
+            "Angola",
+            "Antigua and Barbuda",
+            "Argentina",
+            "Armenia",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia and Herzegovina",
+            "Botswana",
+            "Brazil",
+            "Brunei",
+            "Bulgaria",
+            "Burkina Faso",
+            "Burundi",
+            "Cabo Verde",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Central African Republic",
+            "Chad",
+            "Chile",
+            "China",
+            "Colombia",
+            "Comoros",
+            "Congo, Democratic Republic of the",
+            "Congo, Republic of the",
+            "Costa Rica",
+            "Cote d'Ivoire",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "East Timor (Timor-Leste)",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Eswatini",
+            "Ethiopia",
+            "Fiji",
+            "Finland",
+            "France",
+            "Gabon",
+            "Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Greece",
+            "Grenada",
+            "Guatemala",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Jamaica",
+            "Japan",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Korea, North",
+            "Korea, South",
+            "Kosovo",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Mexico",
+            "Micronesia",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Morocco",
+            "Mozambique",
+            "Myanmar (Burma)",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "North Macedonia (formerly Macedonia)",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Poland",
+            "Portugal",
+            "Qatar",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "Saint Kitts and Nevis",
+            "Saint Lucia",
+            "Saint Vincent and the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome and Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Sudan, South",
+            "Suriname",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Togo",
+            "Tonga",
+            "Trinidad and Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City",
+            "Venezuela",
+            "Vietnam",
+            "Yemen",
+            "Zambia",
+            "Zimbabwe"
+            ];
+            for (var i = 0; i < countries.length; i++) {
+            var option = document.createElement("option");
+            option.value = countries[i];
+            option.text = countries[i];
+            countrySelect.appendChild(option);
+            }
+            }
+
+             // Call the populateCountries function when the page loads
+            window.onload = populateCountries;

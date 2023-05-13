@@ -12,19 +12,19 @@ var User = require("../Models/userModel"); //genral call
 
 router.get("/signup", function (req, res) {
   res.render("signup");
-}); //farmerone call
+}); // //farmerone call
+// router.get("/foSignUp",(req,res)=>{
+//     res.render("foSignUp")
+// });
+// //urban farmer call 
+// router.get("/ufSignUp",(req,res)=>{
+//     res.render("ufSignUp")
+// });
+// //agriculture officer
+// router.get("/aoSignUp",(req,res)=>{
+//     res.render("aoSignUp")
+// });
 
-router.get("/foSignUp", function (req, res) {
-  res.render("foSignUp");
-}); //urban farmer call 
-
-router.get("/ufSignUp", function (req, res) {
-  res.render("ufSignUp");
-}); //agriculture officer
-
-router.get("/aoSignUp", function (req, res) {
-  res.render("aoSignUp");
-});
 router.post("/signup", function _callee(req, res) {
   var user, userName;
   return regeneratorRuntime.async(function _callee$(_context) {

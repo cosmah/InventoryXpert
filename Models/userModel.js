@@ -3,15 +3,16 @@ const passportLocalMongoose = require('passport-local-mongoose')
 
 //design schema
 const userSchema = new mongoose.Schema({
-    firstname:{
+   company:{
         type:String,
         trim:true,
         required:true
     },
-    lastname:{
+    email:{
         type:String,
         trim:true,
-        required:true
+        required:true,
+        unique:true
     },
     username:{
         type:String,
@@ -24,51 +25,34 @@ const userSchema = new mongoose.Schema({
     //     trim:true,
     //     required:true 
     // },
-    dob:{
-        type:Date,
-        trim:true,
+
+    //for development purpose uncomment but before releasing please comment the password
+    password:{
+        type:String,
         required:true 
     },
-    gender:{
+
+    contact:{
         type:String,
         trim:true,
-        required:true 
-    },
-    email:{
-        type:String,
-        trim:true,
-        // required:true,
+        required:true,
         unique:true 
     },
-    phonenumber:{
+    city:{
         type:String,
         trim:true,
         required:true 
-    },
-    nin:{
-        type:String,
-        trim:true,
-        required:true 
-    },
-    role:{
-        type:String,
-        trim:true,
     },
     address:{
         type:String,
         trim:true,
         required:true 
     },
-    ward:{
+    country:{
         type:String,
         trim:true,
-   
+        required:true
     },
-    //for development purpose uncomment
-    password:{
-        type:String,
-        required:true 
-    }
 
 })
 

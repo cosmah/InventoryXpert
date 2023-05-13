@@ -8,19 +8,19 @@ const User = require("../Models/userModel")
 router.get("/signup",(req,res)=>{
     res.render("signup")
   });
-//farmerone call
-router.get("/foSignUp",(req,res)=>{
-    res.render("foSignUp")
-});
-//urban farmer call 
-router.get("/ufSignUp",(req,res)=>{
-    res.render("ufSignUp")
-});
+// //farmerone call
+// router.get("/foSignUp",(req,res)=>{
+//     res.render("foSignUp")
+// });
+// //urban farmer call 
+// router.get("/ufSignUp",(req,res)=>{
+//     res.render("ufSignUp")
+// });
 
-//agriculture officer
-router.get("/aoSignUp",(req,res)=>{
-    res.render("aoSignUp")
-});
+// //agriculture officer
+// router.get("/aoSignUp",(req,res)=>{
+//     res.render("aoSignUp")
+// });
 
 
 router.post("/signup" ,async(req,res)=>{
