@@ -51,6 +51,10 @@ block layout-content
         br
         input(type='submit' value='Register')
 
+        p
+        | Already Registered ? 
+        a(href='/login') Login Here
+
         script.
           function populateCountries() {
             var countrySelect = document.getElementById("country");

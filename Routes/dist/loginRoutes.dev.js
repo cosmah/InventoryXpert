@@ -27,7 +27,7 @@ router.post("/login", passport.authenticate("local", {
           req.session.user = req.user;
           _context.next = 3;
           return regeneratorRuntime.awrap(User.findOne({
-            username: req.user.username,
+            email: req.user.email,
             password: req.user.password
           }));
 
@@ -36,18 +36,10 @@ router.post("/login", passport.authenticate("local", {
           console.log("this user exists", userExist);
           console.log("this is the user session:", req.session); // res.redirect("/students")
 
-          if (req.user.role == "ao" && userExist) {
-            res.redirect("/aofficer/aoDash");
-          } else if (req.user.role == "uf" && userExist) {
-            res.redirect("/urbanFarmer/ufDash");
-          } else if (req.user.role == "fo" && userExist) {
-            res.redirect("/farmerOne/foDash");
+          if (req.user.email == userExist) {
+            res.redirect("/employees");
           } else {
-            if (userExist) {
-              res.redirect("/user/productsGrid");
-            } else {
-              res.send("you are not registered");
-            }
+            res.send("you are not registered");
           }
 
         case 7:

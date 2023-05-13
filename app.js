@@ -19,6 +19,7 @@ const user = require("./Models/userModel")
 //import routes
 const generalRoutes = require("./Routes/generalRoutes")
 const signupRoutes = require("./Routes/signupRoutes")
+const loginRoutes = require("./Routes/loginRoutes")
 
 
 //secret is a password for the session, here we dont want the browser to remember our session if broswer is close
@@ -74,6 +75,7 @@ app.use(express.static(__dirname + '/Public'));
 
 app.use('/', generalRoutes);
 app.use('/', signupRoutes);
+app.use('/', loginRoutes);
 
 
 //404 message
