@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<head>
+  <title>Add Product</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    }
+    h1 {
+    text-align: center;
+    }
+    form {
+    max-width: 500px;
+    margin: 0 auto;
+    }
+    label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    }
+    select,
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    }
+    textarea {
+    height: 100px;
+    }
+    .row {
+    display: flex;
+    justify-content: space-between;
+    }
+    .row label {
+    width: 45%;
+    }
+    .row input[type="number"],
+    .row input[type="date"] {
+    width: 50%;
+    }
+    .submit-btns {
+    text-align: center;
+    margin-top: 20px;
+    }
+    .submit-btns input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    }
+    .submit-btns input[type="submit"]:hover {
+    background-color: #45a049;
+    }
+  </style>
+</head>
+<form name="registration" action="/inventory/addproduct" onsubmit="return validateForm()" method="post">
+  <h1>Product / Service Information</h1>
+  <div>
+    <label for="productType">Product Type:</label>
+    <select id="productType" name="productType">
+      <option value="inventory">Inventory</option>
+      <option value="non-inventory">Non-Inventory</option>
+      <option value="service">Service</option>
+      <option value="bundle">Bundle</option>
+    </select>
+  </div>
+  <div>
+    <label for="productName">Name:</label>
+    <input id="productName" type="text" name="productName">
+  </div>
+  <div>
+    <label for="category">Category:</label>
+    <select id="category" name="category" onchange="handleCategorySelection()">
+      <!-- Categories loaded from database-->
+      <option value="category1">Category 1</option>
+      <option value="category2">Category 2</option>
+      <option value="category3">Category 3</option>
+      <!-- Add new category option-->
+      <option value="newCategory">Add New Category</option>
+    </select>
+  </div>
+  <input id="newCategory" type="text" name="newCategory" style="display: none;">
+  <script>
+    function handleCategorySelection() {
+    var categorySelect = document.getElementById("category");
+    var selectedCategory = categorySelect.value;
+    if (selectedCategory === "newCategory") {
+    window.location.href = "/inventory/category";
+    }
+    }
+    
+  </script>
+  <div class="row">
+    <label for="quantity">Quantity at Hand:</label>
+    <input id="quantity" type="number" name="quantity">
+  </div>
+  <div class="row">
+    <label for="beginDate">Beginning Date:</label>
+    <input id="beginDate" type="date" name="beginDate">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea>
+  </div>
+  <div class="row">
+    <label for="costPrice">Cost Price:</label>
+    <input id="costPrice" type="number" name="costPrice">
+    <label for="sellingPrice">Selling Price:</label>
+    <input id="sellingPrice" type="number" name="sellingPrice">
+  </div>
+  <div>
+    <label for="memo">Memo:</label>
+    <textarea id="memo" name="memo"></textarea>
+  </div>
+  <div></div>
+  <label for="supplier">Supplier:</label>
+  <select id="supplier" name="supplier" onchange="handleSupplierSelection()">
+    <!-- Suppliers loaded from database-->
+    <option value="supplier1">Supplier 1</option>
+    <option value="supplier2">Supplier 2</option>
+    <option value="supplier3">Supplier 3</option>
+    <!-- Add new supplier option-->
+    <option value="newSupplier">Add New Supplier</option>
+  </select>
+  <input id="newSupplier" type="text" name="newSupplier" style="display: none;">
+  <script>
+    function handleSupplierSelection() {
+    var supplierSelect = document.getElementById("supplier");
+    var selectedSupplier = supplierSelect.value;
+    if (selectedSupplier === "newSupplier") {
+    window.location.href = "/people/supplier";
+    }
+    }
+    
+  </script>
+  <div class="submit-btns">
+    <input type="submit" value="Submit">
+  </div>
+</form>

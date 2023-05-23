@@ -34,7 +34,9 @@ var signupRoutes = require("./Routes/signupRoutes");
 
 var loginRoutes = require("./Routes/loginRoutes");
 
-var peopleRoute = require("./Routes/peopleRoutes"); //secret is a password for the session, here we dont want the browser to remember our session if broswer is close
+var peopleRoute = require("./Routes/peopleRoutes");
+
+var productRoute = require("./Routes/ProductRoutes"); //secret is a password for the session, here we dont want the browser to remember our session if broswer is close
 
 
 app.use(session({
@@ -81,7 +83,8 @@ app.use(express["static"](__dirname + '/Public'));
 app.use('/', generalRoutes);
 app.use('/', signupRoutes);
 app.use('/', loginRoutes);
-app.use('/', peopleRoute); //404 message
+app.use('/', peopleRoute);
+app.use('/', productRoute); //404 message
 
 app.get("*", function (req, res) {
   res.status(404).send("Page does not exist");

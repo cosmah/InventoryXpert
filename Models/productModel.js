@@ -4,51 +4,49 @@ const mongoose = require("mongoose");
 //give our schema a name
 const productSchema = new mongoose.Schema({
     //tell schema what kind of data to expect
-    products: {
-        type: [String], // use an array of strings instead of just a single string
-        trim: true
+    productType: {
+        type: String,
+        trim: true,
+        requred: true
       },      
-    username:{
+    productName:{
         type:String,
         trim:true,
+        requred: true
     },
-    pname:{
+    category:{
         type:String,
-        trim:true
-    },
-    ward:{
-        type:String,
-        trim:true
-    },
-    date:{
-        type:Date,
-        trim:true
-    },
-    expiry:{
-        type:Date,
-        trim:true
-    },
-    price:{
-        type:Number,
-        trim:true
+        trim:true,
+        requred: true
     },
     quantity:{
         type:Number,
+        trim:true,
+        requred: true
+    },
+    beginDate:{
+        type:Date,
+        trim:true,
+        requred: true
+    },
+    description:{
+        type:String,
+        trim:true,
+        requred: true
+    },
+    costPrice:{
+        type:Number,
         trim:true
     },
-    payment:{
+    sellingPrice:{
+        type:Number,
+        trim:true
+    },
+    memo:{
         type:String,
         trim:true
     },
-    directions:{
-        type:String,
-        trim:true
-    },
-    delivery:{
-        type:String,
-        trim:true
-    },
-    type:{
+    supplier:{
         type:String,
         trim:true
     }

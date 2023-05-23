@@ -67,6 +67,25 @@ head
     font-family: Arial, sans-serif;
     background-color: #fff;
     }
+        .abort-button {
+      float: right ;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+
+    .abort-button:hover {
+      background-color: #0056b3;
+    }
+
+  button.abort-button(onclick="window.location.href = '/inventory/addproduct';") Back 
 form(name='registration' action='/people/customers' onsubmit='return validateForm()' method='post')
   h1 Add New Customer
   label(for='fname') First Name:

@@ -9,7 +9,9 @@ var router = express.Router(); //imported model
 
 var Customer = require("../Models/customerModel");
 
-var SR = require("../Models/salesmanModel"); //add customer
+var SR = require("../Models/salesmanModel");
+
+var Supplier = require("../Models/supplierModel"); //add customer
 
 
 router.get("/people/customers", function (req, res) {
@@ -18,6 +20,10 @@ router.get("/people/customers", function (req, res) {
 
 router.get("/people/salesman", function (req, res) {
   res.render("people/salesman");
+}); //add supplier
+
+router.get("/people/supplier", function (req, res) {
+  res.render("people/supplier");
 }); //CUSTOMER
 
 router.post("/people/customers", function _callee(req, res) {
@@ -79,6 +85,38 @@ router.post("/people/salesman", function _callee2(req, res) {
         case 12:
         case "end":
           return _context2.stop();
+      }
+    }
+  }, null, null, [[0, 8]]);
+}); //SR
+
+router.post("/people/supplier", function _callee3(req, res) {
+  var supplier;
+  return regeneratorRuntime.async(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          supplier = new Supplier(req.body);
+          _context3.next = 4;
+          return regeneratorRuntime.awrap(supplier.save());
+
+        case 4:
+          res.redirect('/people/supplier'); //redirect to a path, render a file
+
+          console.log(req.body);
+          _context3.next = 12;
+          break;
+
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
+          res.status(400).send("Failed to add supplier. Please try again.");
+          console.log(_context3.t0);
+
+        case 12:
+        case "end":
+          return _context3.stop();
       }
     }
   }, null, null, [[0, 8]]);

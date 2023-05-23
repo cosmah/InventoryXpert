@@ -1,0 +1,151 @@
+doctype html
+head
+  title Add Product
+  style.
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    }
+    h1 {
+    text-align: center;
+    }
+    form {
+    max-width: 500px;
+    margin: 0 auto;
+    }
+    label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    }
+    select,
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    }
+    textarea {
+    height: 100px;
+    }
+    .row {
+    display: flex;
+    justify-content: space-between;
+    }
+    .row label {
+    width: 45%;
+    }
+    .row input[type="number"],
+    .row input[type="date"] {
+    width: 50%;
+    }
+    .submit-btns {
+    text-align: center;
+    margin-top: 20px;
+    }
+    .submit-btns input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    }
+    .submit-btns input[type="submit"]:hover {
+    background-color: #45a049;
+    }
+        .abort-button {
+      float: right ;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+
+    .abort-button:hover {
+      background-color: #0056b3;
+    }
+
+
+  button.abort-button(onclick="window.location.href = '/inventory/addproduct';") Back Home
+form(name='registration' action='/inventory/addproduct' onsubmit='return validateForm()' method='post')
+  h1 Product / Service Information
+  div
+    label(for='productType') Product Type:
+    select#productType(name='productType')
+      option(value='inventory') Inventory
+      option(value='non-inventory') Non-Inventory
+      option(value='service') Service
+      option(value='bundle') Bundle
+  div
+    label(for='productName') Name:
+    input#productName(type='text' name='productName')
+  div
+    label(for='category') Category:
+    select#category(name='category' onchange='handleCategorySelection()')
+        each category in categories
+            option(value=category._id)= category.categoryName
+        // Add new category option
+        option(value='newCategory') Add New Category
+  input#newCategory(type='text' name='newCategory' style='display: none;')
+  script.
+    function handleCategorySelection() {
+    var categorySelect = document.getElementById("category");
+    var selectedCategory = categorySelect.value;
+    if (selectedCategory === "newCategory") {
+    window.location.href = "/inventory/category";
+    }
+    }
+
+  .row
+    label(for='quantity') Quantity at Hand:
+    input#quantity(type='number' name='quantity')
+  .row
+    label(for='beginDate') Beginning Date:
+    input#beginDate(type='date' name='beginDate')
+  div
+    label(for='description') Description:
+    textarea#description(name='description')
+  .row
+    label(for='costPrice') Cost Price:
+    input#costPrice(type='number' name='costPrice')
+    label(for='sellingPrice') Selling Price:
+    input#sellingPrice(type='number' name='sellingPrice')
+  div
+    label(for='memo') Memo:
+    textarea#memo(name='memo')
+  div
+  label(for='supplier') Supplier:
+  select#supplier(name='supplier' onchange='handleSupplierSelection()')
+    // Suppliers loaded from database
+    each supplier in suppliers
+        option(value=supplier._id)= supplier.supplierName
+    // Add new supplier option  
+    option(value='newSupplier') Add New Supplier
+  input#newSupplier(type='text' name='newSupplier' style='display: none;')
+  script.
+    function handleSupplierSelection() {
+    var supplierSelect = document.getElementById("supplier");
+    var selectedSupplier = supplierSelect.value;
+    if (selectedSupplier === "newSupplier") {
+    window.location.href = "/people/supplier";
+    }
+    }
+
+  .submit-btns
+    input(type='submit' value='Submit')

@@ -4,6 +4,7 @@ const router = express.Router();
 //imported model
 const Customer = require("../Models/customerModel")
 const SR = require("../Models/salesmanModel")
+const Supplier = require("../Models/supplierModel")
 
 //add customer
 router.get("/people/customers",(req,res)=>{
@@ -13,6 +14,11 @@ router.get("/people/customers",(req,res)=>{
 //add salesman
 router.get("/people/salesman",(req,res)=>{
     res.render("people/salesman")
+  });
+
+//add supplier
+router.get("/people/supplier",(req,res)=>{
+    res.render("people/supplier")
   });
 
 
@@ -40,6 +46,20 @@ router.post("/people/salesman" ,async(req,res)=>{
     }
     catch(error){
     res.status(400).send("Failed to add salesman. Please try again.")
+    console.log(error)
+    }
+})
+
+//SR
+router.post("/people/supplier" ,async(req,res)=>{
+    try{
+        const supplier = new Supplier(req.body);
+        await supplier.save()
+        res.redirect('/people/supplier')//redirect to a path, render a file
+        console.log(req.body)
+    }
+    catch(error){
+    res.status(400).send("Failed to add supplier. Please try again.")
     console.log(error)
     }
 })

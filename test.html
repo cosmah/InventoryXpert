@@ -1,103 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Customers</title>
-    <style>
-        /* Form Styles */
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border: 2px solid #ddd; /* Increased border width */
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  <title>Add Supplier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
 
-h1 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
-  font-family: Arial, sans-serif;
-}
+    h1 {
+      text-align: center;
+    }
 
-label {
-  display: block;
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 10px;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  color: #333;
-  box-sizing: border-box;
-}
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
 
-input[type="submit"] {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  font-family: Arial, sans-serif;
-}
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
 
-input[type="submit"]:hover {
-  background-color: #555;
-}
+    .submit-btn {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-input::placeholder {
-  color: #999;
-  font-family: Arial, sans-serif;
-}
+    .submit-btn input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-body {
-  color: #333;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-}
-
-    </style>
-          
+    .submit-btn input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <form name="registration" action="index" onsubmit="return validateForm()" method="post">
-        <h1>Add New Customer</h1>
-        <label for="fname">First Name:</label><br>
-        <input type="text" id="fname" name="fname" placeholder="Client'sFirst Name" required><br>
-        <label for="lname">Last Name:</label><br>
-        <input type="text" id="lname" name="lname" placeholder="Client'sLast Name" required><br>
-        <label for="shop">Company / Shop Name:</label><br>
-        <input type="text" id="shop" name="shop" placeholder="Client's shop name" required><br>
-        <label for="phone">Phone:</label><br>
-        <input type="text" id="phone" name="phone" placeholder="Client's Phone Number" required><br>
-        <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" placeholder="Client's Address" required><br>
-        <label for="tin">TIN:</label><br>
-        <input type="number" id="tin" name="tin" placeholder="Client's tin" required><br>
-        <label for="sr">Sales Representative:</label><br>
-        <input type="text" id="sr" name="sr" placeholder="Client's Sales Rep" required><br>
-        <input type="submit" value="Submit">
-
-    </form>
+  <h1>Add Supplier</h1>
+  <form>
+    <div>
+      <div>
+        <label for="category">Category:</label>
+        <select id="category" name="category" onchange="handleCategorySelection()">
+          <!-- Categories loaded from database -->
+          <option value="category1">Category 1</option>
+          <option value="category2">Category 2</option>
+          <option value="category3">Category 3</option>
+          <!-- Add new category option -->
+          <option value="newCategory">Add New Category</option>
+        </select>
+      </div>
+      <input id="newCategory" type="text" name="newCategory" style="display: none;">
+      
+      <script>
+        function handleCategorySelection() {
+          var categorySelect = document.getElementById("category");
+          var selectedCategory = categorySelect.value;
+          
+          if (selectedCategory === "newCategory") {
+            window.location.href = "/inventory/addcategory";
+          }
+        }
+      </script>
+      
+      <input id="newCategory" type="text" name="newCategory" style="display: none;">
+      
+    <div class="submit-btn">
+      <input type="submit" value="Add Supplier">
+    </div>
+  </form>
 </body>
 </html>
