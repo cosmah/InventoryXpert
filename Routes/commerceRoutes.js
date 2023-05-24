@@ -1,0 +1,30 @@
+const express = require('express');
+const router = express.Router();
+const Reciept = require("../Models/recieptModel");
+const SR = require("../Models/salesmanModel");
+const Customer = require("../Models/customerModel");
+
+// add receipt page
+router.get('/commerce/addreciept', async (req, res) => {
+    try {
+      const customers = await Customer.find(); // Retrieve customers from the database
+      res.render('commerce/addreciept', { customers });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Failed to fetch data from the database.');
+    }
+  });
+// Handle add receipt form submission
+router.post("/commerce/addreciept", async (req, res) => {
+  try {
+    const receipt = new Reciept(req.body);
+    await receipt.save();
+    res.redirect('/commerce/addreciept');
+    console.log(req.body);
+  } catch (error) {
+    res.status(400).send("Failed to add receipt. Please try again.");
+    console.log(error);
+  }
+});
+
+module.exports = router;

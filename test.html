@@ -1,90 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Add Supplier</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
+  <title>Add Receipt</title>
 
-    h1 {
-      text-align: center;
-    }
-
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-top: 5px;
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-
-    .submit-btn {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .submit-btn input[type="submit"] {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .submit-btn input[type="submit"]:hover {
-      background-color: #45a049;
-    }
-  </style>
 </head>
 <body>
-  <h1>Add Supplier</h1>
-  <form>
-    <div>
-      <div>
-        <label for="category">Category:</label>
-        <select id="category" name="category" onchange="handleCategorySelection()">
-          <!-- Categories loaded from database -->
-          <option value="category1">Category 1</option>
-          <option value="category2">Category 2</option>
-          <option value="category3">Category 3</option>
-          <!-- Add new category option -->
-          <option value="newCategory">Add New Category</option>
+  <form name="registration" action="/commerce/addreciept" onsubmit="return validateForm()" method="post">
+    <div class="row custom-form">
+      <div class="column" style="margin: 0 10px;">
+        <label for="customer">Add Customer:</label>
+        <input id="newCustomer" type="text" name="newCustomer" style="display: none;">
+        <select id="customer" name="customer" onchange="handleCustomerSelection()">
+          <option value="">-- Select Customer --</option>
+          <% customers.forEach(function(customer) { %>
+            <option value="<%= customer._id %>"><%= customer.name %></option>
+          <% }) %>
+          <option value="newCustomer">Add New Customer</option>
         </select>
+        <br>
+        <label for="address">Address:</label>
+        <input id="address" type="text" name="address" style="height: 100px;">
       </div>
-      <input id="newCategory" type="text" name="newCategory" style="display: none;">
-      
-      <script>
-        function handleCategorySelection() {
-          var categorySelect = document.getElementById("category");
-          var selectedCategory = categorySelect.value;
-          
-          if (selectedCategory === "newCategory") {
-            window.location.href = "/inventory/addcategory";
-          }
-        }
-      </script>
-      
-      <input id="newCategory" type="text" name="newCategory" style="display: none;">
-      
-    <div class="submit-btn">
-      <input type="submit" value="Add Supplier">
+      <div class="column" style="margin: 0 10px;">
+        <label for="date">Receipt Date:</label>
+        <input id="date" type="date" name="date">
+        <br>
+        <label for="due">Due Date:</label>
+        <input id="due" type="date" name="due">
+        <br>
+        <label for="terms">Terms:</label>
+        <input id="terms" type="text" name="terms">
+      </div>
+      <div class="column" style="margin: 0 10px;">
+        <label for="receipt-number">Receipt Number:</label>
+        <input id="receipt-number" type="text" name="receipt">
+        <br>
+        <label for="sr">S.R:</label>
+        <input id="sr" type="text" name="sr">
+      </div>
+    </div>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>Product/Service</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" name="product"></td>
+            <td><input type="text" name="description"></td>
+            <td><input type="number" name="quantity"></td>
+            <td><input type="number" name="rate"></td>
+            <td><input type="number" name="amount"></td>
+            <td><i class="fa fa-plus"></i></td>
+            <td><i class="fa fa-trash"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="column"></div>
+      <div class="column"></div>
+      <div class="column">
+        <label for="total">Total Cost of Goods on Receipt:</label>
+        <input id="total" type="number" name="total">
+        <br>
+        <br>
+        <button type="submit">Save</button>
+        <button class="cancel-button" type="button">Cancel</button>
+      </div>
     </div>
   </form>
 </body>
