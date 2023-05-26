@@ -125,65 +125,82 @@ head
     }
     /*  */
 
-form(name='registration' action='/commerce/addreciept' onsubmit='return validateForm()' method='post')
-  .row.custom-form
-    .column(style='margin: 0 10px;')
-      label(for='customer') Add Customer:
-      input#newCustomer(type='text' name='newCustomer' style='display: none;')
-      select#customer(name='customer' onchange='handleCustomerSelection()')
-        option(value='') -- Select Customer --
-      br
-      label(for='address') Address:
-      input#address(type='text' name='address' style='height: 100px;')
-    .column(style='margin: 0 10px;')
-      label(for='date') Receipt Date:
-      input#date(type='date' name='date')
-      br
-      label(for='due') Due Date:
-      input#due(type='date' name='due')
-      br
-      label(for='terms') Terms:
-      input#terms(type='text' name='terms')
-    .column(style='margin: 0 10px;')
-      label(for='receipt-number') Receipt Number:
-      input#receipt-number(type='text' name='receipt')
-      br
-      label(for='sr') S.R:
-      input#sr(type='text' name='sr')
-  .row
-    table
-      thead
-        tr
-          th Product/Service
-          th Description
-          th Quantity
-          th Rate
-          th Amount
-          th
-          th
-      tbody
-        tr
-          td
-            input(type='text' name='product')
-          td
-            input(type='text' name='description')
-          td
-            input(type='number' name='quantity')
-          td
-            input(type='number' name='rate')
-          td
-            input(type='number' name='amount')
-          td
-            i.fa.fa-plus
-          td
-            i.fa.fa-trash
-  .row
-    .column
-    .column
-    .column
-      label(for='total') Total Cost of Goods on Receipt:
-      input#total(type='number' name='total')
-      br
-      br
-      button(type='submit') Save
-      button.cancel-button(type='button') Cancel
+
+form(action='/commerce/addreciept' method='post')
+  label(for='fname') First Name:
+  input#fname(type='text' name='fname' oninput='handleCustomerNameInput()')
+  datalist#customerNameSuggestions
+  select#customerNameList(name='customerNameList' onchange='handleCustomerSelection()')
+    option(value='addnewcustomer') Add New Customer
+  br
+  label(for='lname') Last Name:
+  input#lname(type='text' name='lname')
+  br
+  label(for='shop') Shop:
+  input#shop(type='text' name='shop')
+  br
+  label(for='phone') Phone:
+  input#phone(type='text' name='phone')
+  br
+  label(for='tin') TIN:
+  input#tin(type='text' name='tin')
+  br
+  label(for='sr') SR:
+  input#sr(type='text' name='sr')
+  br
+  input(type='submit' value='Submit')
+
+script.
+  let customers = [];
+
+  async function handleCustomerNameInput() {
+    const customerNameInput = document.querySelector('#fname');
+    const suggestionsList = document.querySelector('#customerNameSuggestions');
+    const customerNameList = document.querySelector('#customerNameList');
+
+    // Fetch suggestions from the server
+    const response = await fetch(`/customers/search?q=${customerNameInput.value}`);
+    customers = await response.json();
+
+    // Clear the suggestions list and datalist
+    suggestionsList.innerHTML = '';
+    customerNameList.innerHTML = '';
+
+    // Add the "Add New Customer" option to the select element
+    const addNewCustomerOption = document.createElement('option');
+    addNewCustomerOption.value = 'addnewcustomer';
+    addNewCustomerOption.textContent = 'Add New Customer';
+    customerNameList.appendChild(addNewCustomerOption);
+
+    // Add the new suggestions to the datalist and select element
+    for (const customer of customers) {
+      const option = document.createElement('option');
+      option.value = customer.fname;
+      suggestionsList.appendChild(option);
+
+      const selectOption = document.createElement('option');
+      selectOption.value = customer.fname;
+      selectOption.textContent = customer.fname;
+      customerNameList.appendChild(selectOption);
+    }
+  }
+
+  function handleCustomerSelection() {
+    console.log('handleCustomerSelection called'); // Add this line
+    const customerNameList = document.querySelector('#customerNameList');
+
+    if (customerNameList.value === 'addnewcustomer') {
+      window.location.href = '/addnewcustomer';
+      return;
+    }
+
+    const selectedCustomer = customers.find(customer => customer.fname === customerNameList.value);
+
+    if (selectedCustomer) {
+      const lnameInput = document.querySelector('#lname');
+      lnameInput.value = selectedCustomer.lname;
+
+      const shopInput = document.querySelector('#shop');
+      shopInput.value = selectedCustomer.shop;
+    }
+  }

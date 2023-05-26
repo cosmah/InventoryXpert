@@ -1,0 +1,189 @@
+doctype html
+head
+  title Add Receipt
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
+  script.
+    function handleCustomerSelection() {
+    var customerSelect = document.getElementById("customer");
+    var selectedCustomer = customerSelect.value;
+    if (selectedCustomer === "newCustomer") {
+    window.location.href = "/people/addcustomer";
+    }
+    }
+  style.
+    .column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    }
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    }
+    .row {
+    margin-bottom: 20px;
+    }
+    .column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    box-sizing: border-box;
+    }
+    /* row1 */
+    .row.custom-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    }
+    .row.custom-form .column {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    }
+    .row.custom-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    }
+    .row.custom-form input[type="text"],
+    .row.custom-form input[type="number"],
+    .row.custom-form input[type="date"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    .row.custom-form .column.middle {
+    margin: 0 10px;
+    }
+    .row.custom-form .column.address {
+    margin-top: 20px;
+    }
+    .row.custom-form .column.address input[type="text"] {
+    height: 60px;
+    }
+    /*  */
+    label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    th,
+    td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+    th {
+    background-color: #f2f2f2;
+    }
+    button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    .fa {
+    cursor: pointer;
+    margin-right: 5px;
+    }
+    .fa-trash {
+    color: red;
+    }
+    /* cancel button */
+    .cancel-button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    .cancel-button:hover {
+    background-color: #999;
+    }
+    /*  */
+
+form(name='registration' action='/commerce/addreciept' onsubmit='return validateForm()' method='post')
+  .row.custom-form
+    .column(style='margin: 0 10px;')
+      label(for='customer') Add Customer:
+      input#newCustomer(type='text' name='newCustomer' style='display: none;')
+      select#customer(name='customer' onchange='handleCustomerSelection()')
+        option(value='') -- Select Customer --
+      br
+      label(for='address') Address:
+      input#address(type='text' name='address' style='height: 100px;')
+    .column(style='margin: 0 10px;')
+      label(for='date') Receipt Date:
+      input#date(type='date' name='date')
+      br
+      label(for='due') Due Date:
+      input#due(type='date' name='due')
+      br
+      label(for='terms') Terms:
+      input#terms(type='text' name='terms')
+    .column(style='margin: 0 10px;')
+      label(for='receipt-number') Receipt Number:
+      input#receipt-number(type='text' name='receipt')
+      br
+      label(for='sr') S.R:
+      input#sr(type='text' name='sr')
+  .row
+    table
+      thead
+        tr
+          th Product/Service
+          th Description
+          th Quantity
+          th Rate
+          th Amount
+          th
+          th
+      tbody
+        tr
+          td
+            input(type='text' name='product')
+          td
+            input(type='text' name='description')
+          td
+            input(type='number' name='quantity')
+          td
+            input(type='number' name='rate')
+          td
+            input(type='number' name='amount')
+          td
+            i.fa.fa-plus
+          td
+            i.fa.fa-trash
+  .row
+    .column
+    .column
+    .column
+      label(for='total') Total Cost of Goods on Receipt:
+      input#total(type='number' name='total')
+      br
+      br
+      button(type='submit') Save
+      button.cancel-button(type='button') Cancel

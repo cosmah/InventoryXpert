@@ -1,0 +1,60 @@
+<!DOCTYPE html><head><title>Add Category</title><style>body {
+font-family: Arial, sans-serif;
+margin: 20px;
+}
+h1 {
+text-align: center;
+}
+form {
+max-width: 500px;
+margin: 0 auto;
+}
+label {
+display: block;
+margin-top: 10px;
+font-weight: bold;
+}
+input[type="text"] {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+margin-top: 5px;
+margin-bottom: 10px;
+font-size: 16px;
+}
+.submit-btn {
+text-align: center;
+margin-top: 20px;
+}
+.submit-btn input[type="submit"] {
+padding: 10px 20px;
+font-size: 16px;
+background-color: #4CAF50;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+.submit-btn input[type="submit"]:hover {
+background-color: #45a049;
+}
+    .abort-button {
+  float: right ;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.abort-button:hover {
+  background-color: #0056b3;
+}
+
+</style><button class="abort-button" onclick="window.location.href = '/inventory/addproduct';">Back </button></head><h1>Add Category</h1><form name="registration" action="/inventory/category" onsubmit="return validateForm()" method="post"><div><label for="categoryName">Category Name:</label><input id="categoryName" type="text" name="categoryName"></div><div class="submit-btn"><input type="submit" value="Add Category"></div></form>
