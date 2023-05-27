@@ -1,206 +1,80 @@
 doctype html
-head
-  title Add Receipt
-  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
-  script.
-    function handleCustomerSelection() {
-    var customerSelect = document.getElementById("customer");
-    var selectedCustomer = customerSelect.value;
-    if (selectedCustomer === "newCustomer") {
-    window.location.href = "/people/addcustomer";
-    }
-    }
-  style.
-    .column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    }
-    .row:after {
-    content: "";
-    display: table;
-    clear: both;
-    }
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    }
-    .row {
-    margin-bottom: 20px;
-    }
-    .column {
-    float: left;
-    width: 33.33%;
-    padding: 10px;
-    box-sizing: border-box;
-    }
-    /* row1 */
-    .row.custom-form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    }
-    .row.custom-form .column {
-    flex: 1;
-    padding: 10px;
-    box-sizing: border-box;
-    }
-    .row.custom-form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    }
-    .row.custom-form input[type="text"],
-    .row.custom-form input[type="number"],
-    .row.custom-form input[type="date"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    }
-    .row.custom-form .column.middle {
-    margin: 0 10px;
-    }
-    .row.custom-form .column.address {
-    margin-top: 20px;
-    }
-    .row.custom-form .column.address input[type="text"] {
-    height: 60px;
-    }
-    /*  */
-    label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    }
-    input[type="text"],
-    input[type="number"],
-    input[type="date"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    }
-    table {
-    width: 100%;
-    border-collapse: collapse;
-    }
-    th,
-    td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    }
-    th {
-    background-color: #f2f2f2;
-    }
-    button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    }
-    .fa {
-    cursor: pointer;
-    margin-right: 5px;
-    }
-    .fa-trash {
-    color: red;
-    }
-    /* cancel button */
-    .cancel-button {
-    padding: 10px 20px;
-    background-color: #ccc;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    }
-    .cancel-button:hover {
-    background-color: #999;
-    }
-    /*  */
+html
+  head
+    title Add Receipt
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      label {
+        font-weight: bold;
+        margin-top: 1em;
+      }
+      input, select {
+        padding: 0.5em;
+        font-size: 1em;
+      }
+      button {
+        margin-top: 1em;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        cursor: pointer;
+      }
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js")
+  body
+    h1 Add Receipt
+    form(action="/commerce/addreciept" method="POST")
+      label(for="customer") Customer Name
+      select#customer(name="customer" class="select2")
+      label(for="address") Address
+      input#address(type="text" name="address" readonly)
+      label(for="receiptDate") Receipt Date
+      input#receiptDate(type="date" name="receiptDate")
+      label(for="dueDate") Due Date
+      input#dueDate(type="date" name="dueDate")
+      label(for="salesman") Salesman
+      input#salesman(type="text" name="salesman" readonly)
+      button(type="submit") Submit
 
-
-form(action='/commerce/addreciept' method='post')
-  label(for='fname') First Name:
-  input#fname(type='text' name='fname' oninput='handleCustomerNameInput()')
-  datalist#customerNameSuggestions
-  select#customerNameList(name='customerNameList' onchange='handleCustomerSelection()')
-    option(value='addnewcustomer') Add New Customer
-  br
-  label(for='lname') Last Name:
-  input#lname(type='text' name='lname')
-  br
-  label(for='shop') Shop:
-  input#shop(type='text' name='shop')
-  br
-  label(for='phone') Phone:
-  input#phone(type='text' name='phone')
-  br
-  label(for='tin') TIN:
-  input#tin(type='text' name='tin')
-  br
-  label(for='sr') SR:
-  input#sr(type='text' name='sr')
-  br
-  input(type='submit' value='Submit')
-
-script.
-  let customers = [];
-
-  async function handleCustomerNameInput() {
-    const customerNameInput = document.querySelector('#fname');
-    const suggestionsList = document.querySelector('#customerNameSuggestions');
-    const customerNameList = document.querySelector('#customerNameList');
-
-    // Fetch suggestions from the server
-    const response = await fetch(`/customers/search?q=${customerNameInput.value}`);
-    customers = await response.json();
-
-    // Clear the suggestions list and datalist
-    suggestionsList.innerHTML = '';
-    customerNameList.innerHTML = '';
-
-    // Add the "Add New Customer" option to the select element
-    const addNewCustomerOption = document.createElement('option');
-    addNewCustomerOption.value = 'addnewcustomer';
-    addNewCustomerOption.textContent = 'Add New Customer';
-    customerNameList.appendChild(addNewCustomerOption);
-
-    // Add the new suggestions to the datalist and select element
-    for (const customer of customers) {
-      const option = document.createElement('option');
-      option.value = customer.fname;
-      suggestionsList.appendChild(option);
-
-      const selectOption = document.createElement('option');
-      selectOption.value = customer.fname;
-      selectOption.textContent = customer.fname;
-      customerNameList.appendChild(selectOption);
-    }
-  }
-
-  function handleCustomerSelection() {
-    console.log('handleCustomerSelection called'); // Add this line
-    const customerNameList = document.querySelector('#customerNameList');
-
-    if (customerNameList.value === 'addnewcustomer') {
-      window.location.href = '/addnewcustomer';
-      return;
-    }
-
-    const selectedCustomer = customers.find(customer => customer.fname === customerNameList.value);
-
-    if (selectedCustomer) {
-      const lnameInput = document.querySelector('#lname');
-      lnameInput.value = selectedCustomer.lname;
-
-      const shopInput = document.querySelector('#shop');
-      shopInput.value = selectedCustomer.shop;
-    }
-  }
+    script.
+      const customerSelect = document.querySelector('#customer');
+      const addressInput = document.querySelector('#address');
+      const salesmanInput = document.querySelector('#salesman');
+      
+      // Initialize Select2 input field
+      $(customerSelect).select2({
+        placeholder: 'Select a customer...',
+        ajax: {
+          url: '/customers/search',
+          dataType: 'json',
+          delay: 250,
+          data: params => ({ q: params.term }),
+          processResults: data => ({
+            results: data.map(customer => ({
+              id: customer._id,
+              text: `${customer.fname} ${customer.lname}`,
+              shop: customer.shop,
+              sr: customer.sr
+            }))
+          }),
+          cache: true
+        }
+      });
+      
+      // Handle changes to Select2 input field value
+      $(customerSelect).on('change', () => {
+        const selectedOption = $(customerSelect).select2('data')[0];
+        
+        if (selectedOption) {
+          addressInput.value = selectedOption.shop;
+          salesmanInput.value = selectedOption.sr;
+        }
+      });
