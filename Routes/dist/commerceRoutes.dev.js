@@ -8,7 +8,9 @@ var Reciept = require("../Models/recieptModel");
 
 var SR = require("../Models/salesmanModel");
 
-var Customer = require("../Models/customerModel"); // add receipt page
+var Customer = require("../Models/customerModel");
+
+var Product = require("../Models/productModel"); // add receipt page
 
 
 router.get('/commerce/addreciept', function _callee(req, res) {
@@ -70,6 +72,39 @@ router.post("/commerce/addreciept", function _callee2(req, res) {
         case 12:
         case "end":
           return _context2.stop();
+      }
+    }
+  }, null, null, [[0, 8]]);
+}); // NEW: Endpoint for fetching customer name suggestions
+
+router.get('/customers/search', function _callee3(req, res) {
+  var searchQuery, customers;
+  return regeneratorRuntime.async(function _callee3$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          searchQuery = req.query.q;
+          _context3.next = 4;
+          return regeneratorRuntime.awrap(Customer.find({
+            fname: new RegExp(searchQuery, 'i')
+          }));
+
+        case 4:
+          customers = _context3.sent;
+          res.json(customers);
+          _context3.next = 12;
+          break;
+
+        case 8:
+          _context3.prev = 8;
+          _context3.t0 = _context3["catch"](0);
+          console.log(_context3.t0);
+          res.status(500).send('Failed to fetch data from the database.');
+
+        case 12:
+        case "end":
+          return _context3.stop();
       }
     }
   }, null, null, [[0, 8]]);

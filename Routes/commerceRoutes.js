@@ -3,6 +3,7 @@ const router = express.Router();
 const Reciept = require("../Models/recieptModel");
 const SR = require("../Models/salesmanModel");
 const Customer = require("../Models/customerModel");
+const Product = require("../Models/productModel");
 
 // add receipt page
 router.get('/commerce/addreciept', async (req, res) => {
