@@ -41,4 +41,19 @@ router.get('/customers/search', async (req, res) => {
   }
 });
 
+//PRODUCT
+router.get('/products/all', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products.map(product => ({ name: product.productName })));
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Failed to fetch data from the database.');
+  }
+});
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 module.exports = router;

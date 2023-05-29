@@ -45,7 +45,8 @@ block layout-content
           tbody
             tr
               td
-                input(type='text' name='product')
+                input(type="text" name="product" list="suggestions")
+                datalist#suggestions
               td
                 input(type='text' name='description')
               td
@@ -64,7 +65,7 @@ block layout-content
       const customerSelect = document.querySelector('#customer');
       const addressInput = document.querySelector('#address');
       const salesmanInput = document.querySelector('#salesman');
-      
+
       // Initialize Select2 input field
       $(customerSelect).select2({
         placeholder: 'Select a customer...',
@@ -84,13 +85,27 @@ block layout-content
           cache: true
         }
       });
-      
+
       // Handle changes to Select2 input field value
       $(customerSelect).on('change', () => {
         const selectedOption = $(customerSelect).select2('data')[0];
-        
+
         if (selectedOption) {
           addressInput.value = selectedOption.shop;
           salesmanInput.value = selectedOption.sr;
         }
       });
+
+     const productInput = document.querySelector('input[name="product"]');
+     const suggestionsList = document.querySelector('#suggestions');
+     productInput.addEventListener('focus', async () => {
+      const response = await fetch('/products/all');
+      const suggestions = await response.json();
+      suggestionsList.innerHTML = '';
+      for (const suggestion of suggestions) {
+        const option = document.createElement('option');
+        option.value = suggestion.name;
+        suggestionsList.appendChild(option);
+      }
+     });
+     
