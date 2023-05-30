@@ -13,7 +13,7 @@ block layout-content
           input#receiptDate(type='date' name='receiptDate')
         .column
           label(for='invoiceNumber') Invoice Number
-          input#invoiceNumber(type='text' name='invoiceNumber')
+          input#invoiceNumber(type='text' name='invoiceNumber' style='display: inline-block; font-size: 1.5em;')
 
       .row
         .column
@@ -28,9 +28,10 @@ block layout-content
       .row
         .column
           label(for='terms') Terms
-          input#terms(type='text' name='terms')
-
-
+          select#terms(name='terms' style='width: 450px; height: 40px')
+            option(value='term1') Term 1
+            option(value='term2') Term 2
+            option(value='term3') Term 3
       .row
         table
           thead
@@ -109,3 +110,22 @@ block layout-content
       }
      });
      
+     //RECIEPT NUMBER
+      let currentMonth = null;
+      let sequenceNumber = 1;
+      function generateReceiptNumber() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        if (month !== currentMonth) {
+          currentMonth = month;
+          sequenceNumber = 1;
+        }
+        const receiptNumber = `${year}${month.toString().padStart(2, '0')}${sequenceNumber.toString().padStart(4, '0')}`;
+        sequenceNumber += 1;
+        return receiptNumber;
+      }
+      window.addEventListener('load', () => {
+        const invoiceNumberInput = document.querySelector('#invoiceNumber');
+        invoiceNumberInput.value = generateReceiptNumber();
+      });
