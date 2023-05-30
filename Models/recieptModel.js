@@ -1,64 +1,66 @@
-//to be used to modal our data
+// To be used to model our data
 const mongoose = require("mongoose");
 
-//give our schema a name
-const recieptSchema = new mongoose.Schema({
-    //tell schema what kind of data to expect
-    customer: {
-        type: String,
-        trim: true,
-        requred: true
-      },      
-    address:{
-        type:String,
-        trim:true,
-    },
-    date:{
-        type:Date,
-        trim:true,
-        requred: true
-    },
-    due:{
-        type:Date,
-        trim:true,
-        requred: true
-    },
-    terms:{
-        type:String,
-        trim:true,
-    },
-    reciept:{
-        type:Number,
-        trim:true,
-    },
-    sr:{
-        type:String,
-        trim:true
-    },
-    product:{
-        type:String,
-        trim:true
-    },
-    description:{
-        type:String,
-        trim:true
-    },
-    quantity:{
-        type:Number,
-        trim:true
-    },
-    rate:{
-        type:Number,
-        trim:true
-    },
-    amount:{
-        type:Number,
-        trim:true
-    },
-    total:{
-        type:Number,
-        trim:true
-    }
-})
+// Give our schema a name
+const receiptSchema = new mongoose.Schema({
+  customer: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  address: {
+    type: String,
+    trim: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  due: {
+    type: Date,
+    required: true
+  },
+  terms: {
+    type: String,
+    trim: true
+  },
+  sr: {
+    type: String,
+    trim: true
+  },
+  product: {
+    type: String,
+    trim: true
+  },
+  description: {
+    type: String,
+    trim: true
+  },
+  quantity: {
+    type: Number,
+    trim: true
+  },
+  rate: {
+    type: Number,
+    trim: true
+  },
+  amount: {
+    type: Number,
+    trim: true
+  },
+  total: {
+    type: Number,
+    trim: true
+  },
+  invoiceNumber: {
+    type: Number,
+    unique: true,
+    required: true
+  }
+});
 
-module.exports = mongoose.model("Reciept", recieptSchema)
+// Create the Receipt model using the receipt schema
+const Receipt = mongoose.model("Receipt", receiptSchema);
+
+// Export the Receipt model
+module.exports = Receipt;

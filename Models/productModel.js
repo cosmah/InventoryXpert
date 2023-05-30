@@ -14,11 +14,6 @@ const productSchema = new mongoose.Schema({
         trim:true,
         requred: true
     },
-    invoiceNumber:{
-        type:Number,
-        trim:true,
-        requred: true
-    },
     category:{
         type:String,
         trim:true,

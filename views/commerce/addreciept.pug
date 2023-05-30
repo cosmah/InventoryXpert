@@ -10,10 +10,11 @@ block layout-content
 
         .column
           label(for='receiptDate') Receipt Date
-          input#receiptDate(type='date' name='receiptDate')
+          input#receiptDate(type='date' name='date')
         .column
           label(for='invoiceNumber') Invoice Number
-          input#invoiceNumber(type='text' name='invoiceNumber' style='display: inline-block; font-size: 1.5em;')
+          // Add this to your HTML
+          input#invoiceNumber(type='text' name='invoiceNumber' style='display: inline-block; font-size: 1.5em;' readonly='')
 
       .row
         .column
@@ -21,7 +22,7 @@ block layout-content
           input#address(type='text' name='address' readonly='')
         .column
           label(for='dueDate') Due Date
-          input#dueDate(type='date' name='dueDate')
+          input#dueDate(type='date' name='due')
         .column
           label(for='salesman') Salesman
           input#salesman(type='text' name='salesman' readonly='')
@@ -113,6 +114,7 @@ block layout-content
      //RECIEPT NUMBER
       let currentMonth = null;
       let sequenceNumber = 1;
+
       function generateReceiptNumber() {
         const date = new Date();
         const year = date.getFullYear();
@@ -121,10 +123,22 @@ block layout-content
           currentMonth = month;
           sequenceNumber = 1;
         }
-        const receiptNumber = `${year}${month.toString().padStart(2, '0')}${sequenceNumber.toString().padStart(4, '0')}`;
-        sequenceNumber += 1;
+        let receiptNumber;
+        do {
+          receiptNumber = `${year}${month.toString().padStart(2, '0')}${sequenceNumber.toString().padStart(4, '0')}`;
+          sequenceNumber += 1;
+        } while (receiptExists(receiptNumber)); // Check if receiptNumber exists in the database
         return receiptNumber;
       }
+
+      // Simulating receiptExists function to check if receiptNumber exists in the database
+      function receiptExists(receiptNumber) {
+        // Simulated logic: Check if receiptNumber exists in the database (e.g., by making an AJAX request to the server)
+        // Replace this with your actual logic to check the database
+        const database = ["2023010001", "2023010002"]; // Simulated database
+        return database.includes(receiptNumber);
+      }
+
       window.addEventListener('load', () => {
         const invoiceNumberInput = document.querySelector('#invoiceNumber');
         invoiceNumberInput.value = generateReceiptNumber();
