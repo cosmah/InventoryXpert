@@ -56,4 +56,16 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Check if a receipt number already exists in the database
+router.post('/receipts/check-number', async (req, res) => {
+  try {
+    const receiptNumber = req.body.receiptNumber;
+    const receipt = await Receipt.findOne({ invoiceNumber: receiptNumber });
+    res.json({ exists: !!receipt });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Failed to fetch data from the database.');
+  }
+});
+
 module.exports = router;

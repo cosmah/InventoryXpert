@@ -37,15 +37,17 @@ block layout-content
         table
           thead
             tr
+              th
               th Product/Service
               th Description
               th Quantity
               th Rate
               th Amount
               th
-              th
           tbody
             tr
+              td
+                i.fa.fa-plus
               td
                 input(type="text" name="product" list="suggestions")
                 datalist#suggestions
@@ -57,8 +59,6 @@ block layout-content
                 input(type='number' name='rate')
               td
                 input(type='number' name='amount')
-              td
-                i.fa.fa-plus
               td
                 i.fa.fa-trash
       button(type="submit") Submit
