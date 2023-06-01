@@ -16,6 +16,14 @@ router.get('/commerce/addreciept', async (req, res) => {
   }
 });
 
+
+// payback page
+router.get('/commerce/payback', async (req, res) => {
+
+    res.render('commerce/payback');
+
+});
+
 // Handle add receipt form submission
 router.post("/commerce/addreciept", async (req, res) => {
   try {
