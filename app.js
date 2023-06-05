@@ -23,6 +23,8 @@ const loginRoutes = require("./Routes/loginRoutes")
 const peopleRoute = require("./Routes/peopleRoutes")
 const productRoute = require("./Routes/ProductRoutes")
 const commerceRoute = require("./Routes/commerceRoutes")
+const reportRoute = require("./Routes/reportRoutes")
+
 
 
 //secret is a password for the session, here we dont want the browser to remember our session if broswer is close
@@ -82,6 +84,7 @@ app.use('/', loginRoutes);
 app.use('/', peopleRoute);
 app.use('/', productRoute);
 app.use('/', commerceRoute);
+app.use('/', reportRoute);
 
 
 //404 message

@@ -29,6 +29,7 @@ block layout-content
       .row
         .column
           label(for='terms') Terms
+          br
           select#terms(name='terms' style='width: 450px; height: 40px')
             option(value='term1') Term 1
             option(value='term2') Term 2
@@ -141,5 +142,5 @@ block layout-content
 
       window.addEventListener('load', () => {
         const invoiceNumberInput = document.querySelector('#invoiceNumber');
-        invoiceNumberInput.value = generateReceiptNumber();
+        invoiceNumberInput.value = generateReceiptNumber(new Date().getMonth() + 1);
       });

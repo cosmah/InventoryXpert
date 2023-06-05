@@ -1,82 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Add Receipt</title>
+  <title>Inventory Reports</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f1f1f1;
+      display: flex;
+      flex-wrap: wrap;
+    }
 
+    h1 {
+      color: #333;
+      text-align: center;
+      padding: 20px 0;
+      width: 100%;
+    }
+
+    .report-groups {
+      flex: 4;
+      max-width: 25%;
+      background-color: #c7e0c3;
+      padding: 20px;
+      border-radius: 5px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+
+    .report-links {
+      flex: 8;
+      max-width: 75%;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .report-link {
+      display: block;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #c7e0c3;
+      border-radius: 5px;
+    }
+
+    .report-link a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .report-link:hover {
+      background-color: #a6d29e;
+    }
+
+    .active-report-group {
+      background-color: #a6d29e;
+    }
+
+    .active-report-group h2 {
+      color: white;
+    }
+
+    .report-content {
+      flex: 8;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+    const reportGroups = document.querySelectorAll('.report-group');
+    const reportContent = document.querySelector('.report-content');
+
+    // Function to load default content
+    const loadDefaultContent = () => {
+      const defaultContent = `<h3>Welcome to Inventory Reports!</h3>
+                              <p>Select a report group on the left to view the corresponding reports.</p>`;
+      reportContent.innerHTML = defaultContent;
+    };
+
+    // Load default content when the page loads
+    loadDefaultContent();
+
+    reportGroups.forEach((group) => {
+      group.addEventListener('click', () => {
+        // Remove active class from all report groups
+        reportGroups.forEach((group) => {
+          group.classList.remove('active-report-group');
+        });
+
+        // Add active class to clicked report group
+        group.classList.add('active-report-group');
+
+        // Load content from the corresponding page
+        const pageURL = group.dataset.page;
+        fetch(pageURL)
+          .then(response => response.text())
+          .then(content => {
+            reportContent.innerHTML = content;
+          });
+      });
+    });
+  });
+
+  </script>
 </head>
 <body>
-  <form name="registration" action="/commerce/addreciept" onsubmit="return validateForm()" method="post">
-    <div class="row custom-form">
-      <div class="column" style="margin: 0 10px;">
-        <label for="customer">Add Customer:</label>
-        <input id="newCustomer" type="text" name="newCustomer" style="display: none;">
-        <select id="customer" name="customer" onchange="handleCustomerSelection()">
-          <option value="">-- Select Customer --</option>
-          <% customers.forEach(function(customer) { %>
-            <option value="<%= customer._id %>"><%= customer.name %></option>
-          <% }) %>
-          <option value="newCustomer">Add New Customer</option>
-        </select>
-        <br>
-        <label for="address">Address:</label>
-        <input id="address" type="text" name="address" style="height: 100px;">
-      </div>
-      <div class="column" style="margin: 0 10px;">
-        <label for="date">Receipt Date:</label>
-        <input id="date" type="date" name="date">
-        <br>
-        <label for="due">Due Date:</label>
-        <input id="due" type="date" name="due">
-        <br>
-        <label for="terms">Terms:</label>
-        <input id="terms" type="text" name="terms">
-      </div>
-      <div class="column" style="margin: 0 10px;">
-        <label for="receipt-number">Receipt Number:</label>
-        <input id="receipt-number" type="text" name="receipt">
-        <br>
-        <label for="sr">S.R:</label>
-        <input id="sr" type="text" name="sr">
-      </div>
+  <h1>Inventory Reports</h1>
+  
+  <div class="report-groups">
+    <div class="report-group" data-page="test2.html">
+      <h2>Report Group 1</h2>
     </div>
-    <div class="row">
-      <table>
-        <thead>
-          <tr>
-            <th>Product/Service</th>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Rate</th>
-            <th>Amount</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="text" name="product"></td>
-            <td><input type="text" name="description"></td>
-            <td><input type="number" name="quantity"></td>
-            <td><input type="number" name="rate"></td>
-            <td><input type="number" name="amount"></td>
-            <td><i class="fa fa-plus"></i></td>
-            <td><i class="fa fa-trash"></i></td>
-          </tr>
-        </tbody>
-      </table>
+    
+    <div class="report-group" data-page="test3.html">
+      <h2>Report Group 2</h2>
     </div>
-    <div class="row">
-      <div class="column"></div>
-      <div class="column"></div>
-      <div class="column">
-        <label for="total">Total Cost of Goods on Receipt:</label>
-        <input id="total" type="number" name="total">
-        <br>
-        <br>
-        <button type="submit">Save</button>
-        <button class="cancel-button" type="button">Cancel</button>
-      </div>
+    
+    <!-- Add more report groups as needed -->
+  </div>
+  
+  <div class="report-links">
+    <div class="report-content">
+      <!-- Initially, this section will be empty -->
     </div>
-  </form>
+  </div>
+  
 </body>
 </html>

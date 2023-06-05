@@ -1,0 +1,103 @@
+//- extends layout.pug
+
+//- block layout-content
+
+doctype html
+head
+  title Inventory Reports
+  style.
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f1f1f1;
+    display: flex;
+    flex-wrap: wrap;
+    }
+    h1 {
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    }
+    .report-groups {
+    flex: 4;
+    max-width: 25%;
+    background-color: #c7e0c3;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    }
+    .report-links {
+    flex: 8;
+    max-width: 75%;
+    padding: 20px;
+    margin-bottom: 20px;
+    }
+    .report-link {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #c7e0c3;
+    border-radius: 5px;
+    }
+    .report-link a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    }
+    .report-link:hover {
+    background-color: #a6d29e;
+    }
+    .active-report-group {
+    background-color: #a6d29e;
+    }
+    .active-report-group h2 {
+    color: white;
+    }
+    .report-content {
+    flex: 8;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    }
+  script.
+    window.addEventListener('DOMContentLoaded', (event) => {
+    const reportGroups = document.querySelectorAll('.report-group');
+    const reportContent = document.querySelector('.report-content');
+    // Function to load default content
+    const loadDefaultContent = () => {
+    const defaultContent = `<h3>Welcome to Inventory Reports!</h3>
+    <p>Select a report group on the left to view the corresponding reports.</p>`;
+    reportContent.innerHTML = defaultContent;
+    };
+    // Load default content when the page loads
+    loadDefaultContent();
+    reportGroups.forEach((group) => {
+    group.addEventListener('click', () => {
+    // Remove active class from all report groups
+    reportGroups.forEach((group) => {
+    group.classList.remove('active-report-group');
+    });
+    // Add active class to clicked report group
+    group.classList.add('active-report-group');
+    // Load content from the corresponding page
+    const pageURL = group.dataset.page;
+    fetch(pageURL)
+    .then(response => response.text())
+    .then(content => {
+    reportContent.innerHTML = content;
+    });
+    });
+    });
+    });
+h1 Inventory Reports
+.report-groups
+  .report-group(data-page="/reports/balance_details")
+    h2 Customer Sales Summary 
+  .report-group(data-page="/reports/customers_sales")
+    h2 Balance Details 
+  // Add more report groups as needed
+.report-links
+  .report-content
+    // Initially, this section will be empty
