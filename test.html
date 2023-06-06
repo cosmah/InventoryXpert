@@ -1,132 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Inventory Reports</title>
+  <title>Sales Reports</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f1f1f1;
-      display: flex;
-      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
     }
-
+    
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
     h1 {
-      color: #333;
       text-align: center;
-      padding: 20px 0;
-      width: 100%;
-    }
-
-    .report-groups {
-      flex: 4;
-      max-width: 25%;
-      background-color: #c7e0c3;
-      padding: 20px;
-      border-radius: 5px;
-      margin-right: 20px;
+      color: #006400;
       margin-bottom: 20px;
     }
-
-    .report-links {
-      flex: 8;
-      max-width: 75%;
-      padding: 20px;
-      margin-bottom: 20px;
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
-
-    .report-link {
-      display: block;
+    
+    li {
       margin-bottom: 10px;
-      padding: 10px;
-      background-color: #c7e0c3;
-      border-radius: 5px;
     }
-
-    .report-link a {
-      color: #333;
+    
+    a {
+      display: block;
+      color: #006400;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .report-link:hover {
-      background-color: #a6d29e;
-    }
-
-    .active-report-group {
-      background-color: #a6d29e;
-    }
-
-    .active-report-group h2 {
-      color: white;
-    }
-
-    .report-content {
-      flex: 8;
-      padding: 20px;
-      background-color: #fff;
+      padding: 10px 15px;
+      border: 1px solid #006400;
       border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
-
+    
+    a:hover {
+      background-color: #006400;
+      color: #fff;
+    }
   </style>
-  <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-    const reportGroups = document.querySelectorAll('.report-group');
-    const reportContent = document.querySelector('.report-content');
-
-    // Function to load default content
-    const loadDefaultContent = () => {
-      const defaultContent = `<h3>Welcome to Inventory Reports!</h3>
-                              <p>Select a report group on the left to view the corresponding reports.</p>`;
-      reportContent.innerHTML = defaultContent;
-    };
-
-    // Load default content when the page loads
-    loadDefaultContent();
-
-    reportGroups.forEach((group) => {
-      group.addEventListener('click', () => {
-        // Remove active class from all report groups
-        reportGroups.forEach((group) => {
-          group.classList.remove('active-report-group');
-        });
-
-        // Add active class to clicked report group
-        group.classList.add('active-report-group');
-
-        // Load content from the corresponding page
-        const pageURL = group.dataset.page;
-        fetch(pageURL)
-          .then(response => response.text())
-          .then(content => {
-            reportContent.innerHTML = content;
-          });
-      });
-    });
-  });
-
-  </script>
 </head>
 <body>
-  <h1>Inventory Reports</h1>
+  <div class="container">
+    <h1>Sales Reports</h1>
   
-  <div class="report-groups">
-    <div class="report-group" data-page="test2.html">
-      <h2>Report Group 1</h2>
-    </div>
-    
-    <div class="report-group" data-page="test3.html">
-      <h2>Report Group 2</h2>
-    </div>
-    
-    <!-- Add more report groups as needed -->
+    <ul>
+      <li><a href="sales_by_customer_summary.html">Sales by Customer Summary</a></li>
+      <li><a href="sales_by_customer_details.html">Sales by Customer Details</a></li>
+      <li><a href="sales_by_sales_representative.html">Sales by Sales Representative</a></li>
+      <li><a href="sales_by_product_service.html">Sales by Product/Service</a></li>
+      <li><a href="sales_by_region.html">Sales by Region</a></li>
+      <li><a href="sales_by_month.html">Sales by Month</a></li>
+      <li><a href="sales_trends.html">Sales Trends</a></li>
+    </ul>
   </div>
-  
-  <div class="report-links">
-    <div class="report-content">
-      <!-- Initially, this section will be empty -->
-    </div>
-  </div>
-  
 </body>
 </html>

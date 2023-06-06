@@ -2,10 +2,18 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
-//   router.get("/", (req,res)=>{
-//     const title = 'Home';
-//     res.render("index", {title});
-//   })
+
+// sales reports
+  router.get("/reports/sales", (req,res)=>{
+    const title = 'Sales Reports';
+    res.render("reports/sales", {title});
+  })
+
+// balances reports
+  router.get("/reports/balances", (req,res)=>{
+    const title = 'Sales Reports';
+    res.render("reports/balances", {title});
+  })
 
 
 //reports

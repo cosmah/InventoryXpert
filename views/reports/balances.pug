@@ -1,34 +1,33 @@
-body {
+doctype html
+head
+  title Balances Report | InventoryXpert
+  style.
+    body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  .container {
+    }
+    .container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
-  }
-  
-  h1 {
+    }
+    h1 {
     text-align: center;
     color: #006400;
     margin-bottom: 20px;
-  }
-  
-  ul {
+    }
+    ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: center;
-  }
-  
-  li {
+    }
+    li {
     margin-bottom: 10px;
-  }
-  
-  a {
+    }
+    a {
     display: block;
     color: #006400;
     text-decoration: none;
@@ -36,9 +35,17 @@ body {
     border: 1px solid #006400;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-  }
-  
-  a:hover {
+    }
+    a:hover {
     background-color: #006400;
     color: #fff;
-  }
+    }
+.container
+  h1 Balances Report
+  ul
+    li
+      a(href='balances_by_customer.html') Balances Details 
+    li
+      a(href='balances_by_sales_representative.html') Balances Summary 
+    li
+      a(href='balances_by_region.html') Balances sheet
