@@ -8,6 +8,16 @@ const router = express.Router();
     const title = 'Sales Reports';
     res.render("reports/sales", {title});
   })
+// inventory reports
+  router.get("/reports/inventory", (req,res)=>{
+    const title = 'Sales Reports';
+    res.render("reports/inventory", {title});
+  })
+// purchases reports
+  router.get("/reports/purchases", (req,res)=>{
+    const title = 'purchases Reports';
+    res.render("reports/purchases", {title});
+  })
 
 // balances reports
   router.get("/reports/balances", (req,res)=>{
@@ -20,10 +30,23 @@ const router = express.Router();
   router.get("/reports/reports", (req,res)=>{
       res.render('reports/reports');
   })
+//return and refund reports
+  router.get("/reports/refund", (req,res)=>{
+      res.render('reports/refund');
+  })
+//stock reports
+  router.get("/reports/stocks", (req,res)=>{
+      res.render('reports/stocks');
+  })
 
 //balance details
   router.get("/reports/balance_details", (req,res)=>{
       res.render('reports/balance_details');
+  })
+
+//people details
+  router.get("/reports/people", (req,res)=>{
+      res.render('reports/people');
   })
 
 //customer sales saummary
@@ -36,7 +59,7 @@ const router = express.Router();
       res.render('reports/customers');
   })
 
-  //payments recieved
+  //payments reports
   router.get("/reports/payments", (req,res)=>{
       res.render('reports/payments');
   })
