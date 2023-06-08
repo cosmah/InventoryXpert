@@ -74,10 +74,98 @@ const router = express.Router();
       res.render('reports/profit_and_loss');
   })
 
-  //sales details
-  router.get("/reports/salesDetails", (req,res)=>{
-      res.render('reports/salesDetails');
+  //---SALES REPORTS----//
+
+  //sales summary
+  router.get("/reports/sales/sales_by_customer_summary", (req,res)=>{
+      res.render('reports/sales/sales_by_customer_summary');
   })
 
+  //sales details
+  router.get("/reports/sales/sales_by_customer_details", (req,res)=>{
+      res.render('reports/sales/sales_by_customer_details');
+  })
+
+  //sales product
+  router.get("/reports/sales/sales_by_product", (req,res)=>{
+      res.render('reports/sales/sales_by_product');
+  })
+
+  //sales product
+  router.get("/reports/sales/sales_by_sales_rep", (req,res)=>{
+      res.render('reports/sales/sales_by_sales_rep');
+  })
+//-----END-----//
+
+  //---BALANCE REPORTS----//
+
+  //balance details
+  router.get("/reports/balances/balance_details", (req,res)=>{
+      res.render('reports/balances/balance_details');
+  })
+
+  //balance sheet
+  router.get("/reports/balances/balance_sheet", (req,res)=>{
+      res.render('reports/balances/balance_sheet');
+  })
+
+  //balance summary
+  router.get("/reports/balances/balance_summary", (req,res)=>{
+      res.render('reports/balances/balance_summary');
+  })
+
+  // //sales product
+  // router.get("/reports/sales/sales_by_sales_rep", (req,res)=>{
+  //     res.render('reports/sales/sales_by_sales_rep');
+  // })
+//-----END-----//
+
+  //---PAYMENTS REPORTS----//
+
+  //inventory summary
+  router.get("/reports/inventory/inventory_summary", (req,res)=>{
+      res.render('reports/inventory/inventory_summary');
+  })
+ //invemtory valuation
+  router.get("/reports/inventory/inventory_valuation", (req,res)=>{
+      res.render('reports/inventory/inventory_valuation');
+  })
+
+  //payment by rep
+  router.get("/reports/inventory/out_of_stock", (req,res)=>{
+      res.render('reports/inventory/out_of_stock');
+  })
+
+  //purchase history
+  router.get("/reports/inventory/purchase_history", (req,res)=>{
+      res.render('reports/inventory/purchase_history');
+  })
+
+  //refund analysis
+  router.get("/reports/inventory/return_refund_analysis", (req,res)=>{
+      res.render('reports/inventory/return_refund_analysis');
+  })
+
+  //---PAYMENTS REPORTS----//
+
+  //payment by date
+  router.get("/reports/payments/payment_by_date", (req,res)=>{
+      res.render('reports/payments/payment_by_date');
+  })
+ //payment by customer
+  router.get("/reports/payments/payments_by_customer", (req,res)=>{
+      res.render('reports/payments/payments_by_customer');
+  })
+
+  //payment by rep
+  router.get("/reports/payments/payment_by_rep", (req,res)=>{
+      res.render('reports/payments/payment_by_rep');
+  })
+
+  // //sales product
+  // router.get("/reports/sales/sales_by_sales_rep", (req,res)=>{
+  //     res.render('reports/sales/sales_by_sales_rep');
+  // })
+//-----END-----//
 
   module.exports = router
