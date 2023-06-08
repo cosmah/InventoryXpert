@@ -7,6 +7,10 @@ const router = express.Router();
     res.render("index", {title});
   })
 
+//dashboard
+  router.get("/welcome", (req,res)=>{
+      res.render('welcome');
+  })
 
   router.get("/layout", (req,res)=>{
       res.render('layout');

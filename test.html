@@ -1,67 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sales Reports</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f5f5f5;
-    }
-    
-    h1 {
-      text-align: center;
-      color: #006400;
-      margin-bottom: 20px;
-    }
-    
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    
-    li {
-      margin-bottom: 10px;
-    }
-    
-    a {
-      display: block;
-      color: #006400;
-      text-decoration: none;
-      padding: 10px 15px;
-      border: 1px solid #006400;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-    
-    a:hover {
-      background-color: #006400;
-      color: #fff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Inventory Management System</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: #00a98f;
+            color: white;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .user-profile {
+            float: right;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        
+        .sidebar {
+            background-color: #f0f0f0;
+            float: left;
+            width: 250px;
+            height: 100vh;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li {
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .sidebar li:hover {
+            background-color: #d4d4d4;
+            cursor: pointer;
+        }
+        
+        .sidebar li.active {
+            background-color: #00a98f;
+            color: white;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        
+        /* JS Script */
+        function setActiveMenuItem(element) {
+            const menuItems = document.getElementsByClassName('menu-item');
+            for (let i = 0; i < menuItems.length; i++) {
+                menuItems[i].classList.remove('active');
+            }
+            element.classList.add('active');
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Sales Reports</h1>
-  
-    <ul>
-      <li><a href="sales_by_customer_summary.html">Sales by Customer Summary</a></li>
-      <li><a href="sales_by_customer_details.html">Sales by Customer Details</a></li>
-      <li><a href="sales_by_sales_representative.html">Sales by Sales Representative</a></li>
-      <li><a href="sales_by_product_service.html">Sales by Product/Service</a></li>
-      <li><a href="sales_by_region.html">Sales by Region</a></li>
-      <li><a href="sales_by_month.html">Sales by Month</a></li>
-      <li><a href="sales_trends.html">Sales Trends</a></li>
-    </ul>
-  </div>
+    <header class="header">
+        <span class="logo">Inventory Management System</span>
+        <span class="user-profile">John Doe</span>
+    </header>
+    
+    <div class="sidebar">
+        <ul>
+            <li class="menu-item active" onclick="setActiveMenuItem(this)">Dashboard</li>
+            <li class="menu-item" onclick="setActiveMenuItem(this)">Products</li>
+            <li class="menu-item" onclick="setActiveMenuItem(this)">Orders</li>
+            <li class="menu-item" onclick="setActiveMenuItem(this)">Reports</li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h1>Welcome to the Inventory Management System Dashboard</h1>
+        <!-- Dashboard content goes here -->
+    </div>
+    
+    <script>
+        // JavaScript code goes here
+    </script>
 </body>
 </html>

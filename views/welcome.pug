@@ -1,0 +1,74 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Inventory Xpert
+  style.
+    /* CSS Styles */
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+    .header {
+    background-color: #00a98f;
+    color: white;
+    padding: 20px;
+    }
+    .logo {
+    font-size: 24px;
+    font-weight: bold;
+    }
+    .user-profile {
+    float: right;
+    font-size: 18px;
+    margin-top: 5px;
+    }
+    .sidebar {
+    background-color: #f0f0f0;
+    float: left;
+    width: 250px;
+    height: 100vh;
+    }
+    .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    }
+    .sidebar li {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    }
+    .sidebar li:hover {
+    background-color: #d4d4d4;
+    cursor: pointer;
+    }
+    .sidebar li.active {
+    background-color: #00a98f;
+    color: white;
+    }
+    .content {
+    margin-left: 250px;
+    padding: 20px;
+    }
+    /* JS Script */
+    function setActiveMenuItem(element) {
+    const menuItems = document.getElementsByClassName('menu-item');
+    for (let i = 0; i < menuItems.length; i++) {
+    menuItems[i].classList.remove('active');
+    }
+    element.classList.add('active');
+    }
+header.header
+  span.logo Inventory Management System
+  span.user-profile John Doe
+.sidebar
+  ul
+    li.menu-item.active(onclick='setActiveMenuItem(this)') Dashboard
+    li.menu-item(onclick='setActiveMenuItem(this)') Products
+    li.menu-item(onclick='setActiveMenuItem(this)') Orders
+    li.menu-item(onclick='setActiveMenuItem(this)') Reports
+.content
+  h1 Welcome to the Inventory Management System Dashboard
+  // Dashboard content goes here
+script.
+  // JavaScript code goes here
