@@ -2,6 +2,7 @@ doctype html
 head
   meta(charset='UTF-8')
   title Inventory Xpert
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
   style.
     /* CSS Styles */
     body {
@@ -13,15 +14,21 @@ head
     background-color: #00a98f;
     color: white;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     }
     .logo {
     font-size: 24px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    }
+    .logo i {
+    margin-right: 10px;
     }
     .user-profile {
-    float: right;
     font-size: 18px;
-    margin-top: 5px;
     }
     .sidebar {
     background-color: #f0f0f0;
@@ -37,6 +44,9 @@ head
     .sidebar li {
     padding: 15px;
     border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
     }
     .sidebar li:hover {
     background-color: #d4d4d4;
@@ -45,6 +55,17 @@ head
     .sidebar li.active {
     background-color: #00a98f;
     color: white;
+    }
+    .sidebar li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    }
+    .sidebar li a i {
+    margin-right: 10px;
     }
     .content {
     margin-left: 250px;
@@ -58,17 +79,77 @@ head
     }
     element.classList.add('active');
     }
+    /* Additional Styles */
+    h1 {
+    color: #00a98f;
+    font-size: 28px;
+    margin-bottom: 20px;
+    }
+    .shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    }
+    .shortcut {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    }
+    .shortcut:hover {
+    background-color: #d4d4d4;
+    }
+    .shortcut i {
+    margin-right: 10px;
+    font-size: 24px;
+    }
+    .shortcut span {
+    font-weight: bold;
+    }
 header.header
-  span.logo Inventory Management System
+  .logo
+    i.fas.fa-box
+    span InventoryXpert
   span.user-profile John Doe
 .sidebar
   ul
-    li.menu-item.active(onclick='setActiveMenuItem(this)') Dashboard
-    li.menu-item(onclick='setActiveMenuItem(this)') Products
-    li.menu-item(onclick='setActiveMenuItem(this)') Orders
-    li.menu-item(onclick='setActiveMenuItem(this)') Reports
+    li.menu-item.active(onclick='setActiveMenuItem(this)')
+      a(href='/welcome')
+        i.fas.fa-chart-line
+        span Dashboard
+    li.menu-item(onclick='setActiveMenuItem(this)')
+      a(href='/inventory/products')
+        i.fas.fa-cubes
+        span Products
+    li.menu-item(onclick='setActiveMenuItem(this)')
+      a(href='#')
+        i.fas.fa-clipboard-list
+        span Orders
+    li.menu-item(onclick='setActiveMenuItem(this)')
+      a(href='/reports/reports')
+        i.fas.fa-chart-bar
+        span Reports
 .content
   h1 Welcome to the Inventory Management System Dashboard
+  .shortcuts
+    a.shortcut(href='/commerce/addreciept' onclick='addInvoice()')
+      i.fas.fa-file-invoice(style='font-size: 48px;')
+      span Add Invoice
+    a.shortcut(href='/commerce/payback' onclick='addPayment()')
+      i.fas.fa-money-check(style='font-size: 48px;')
+      span Add Payment
+    a.shortcut(href='/people/customers' onclick='addCustomer()')
+      i.fas.fa-user-plus(style='font-size: 48px;')
+      span Add Customer
+    // Add more relevant shortcuts here
   // Dashboard content goes here
 script.
   // JavaScript code goes here

@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Inventory Management System</title>
+    <title>Inventory Xpert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* CSS Styles */
         body {
@@ -15,17 +16,24 @@
             background-color: #00a98f;
             color: white;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         .logo {
             font-size: 24px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
         }
         
         .user-profile {
-            float: right;
             font-size: 18px;
-            margin-top: 5px;
         }
         
         .sidebar {
@@ -44,6 +52,9 @@
         .sidebar li {
             padding: 15px;
             border-bottom: 1px solid #ccc;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
         }
         
         .sidebar li:hover {
@@ -54,6 +65,19 @@
         .sidebar li.active {
             background-color: #00a98f;
             color: white;
+        }
+        
+        .sidebar li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar li a i {
+            margin-right: 10px;
         }
         
         .content {
@@ -69,25 +93,104 @@
             }
             element.classList.add('active');
         }
+        
+        /* Additional Styles */
+        h1 {
+            color: #00a98f;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .shortcuts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        .shortcut {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .shortcut:hover {
+            background-color: #d4d4d4;
+        }
+        
+        .shortcut i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .shortcut span {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <header class="header">
-        <span class="logo">Inventory Management System</span>
+        <div class="logo">
+            <i class="fas fa-box"></i>
+            <span>InventoryXpert</span>
+        </div>
         <span class="user-profile">John Doe</span>
     </header>
     
     <div class="sidebar">
         <ul>
-            <li class="menu-item active" onclick="setActiveMenuItem(this)">Dashboard</li>
-            <li class="menu-item" onclick="setActiveMenuItem(this)">Products</li>
-            <li class="menu-item" onclick="setActiveMenuItem(this)">Orders</li>
-            <li class="menu-item" onclick="setActiveMenuItem(this)">Reports</li>
+            <li class="menu-item active" onclick="setActiveMenuItem(this)">
+                <a href="/welcome">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item" onclick="setActiveMenuItem(this)">
+                <a href="/inventory/products">
+                    <i class="fas fa-cubes"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <li class="menu-item" onclick="setActiveMenuItem(this)">
+                <a href="#">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+            <li class="menu-item" onclick="setActiveMenuItem(this)">
+                <a href="/reports/reports">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
         </ul>
     </div>
     
     <div class="content">
         <h1>Welcome to the Inventory Management System Dashboard</h1>
+        <div class="shortcuts">
+            <a href="#" class="shortcut" onclick="addInvoice()">
+                <i class="fas fa-file-invoice" style="font-size: 48px;"></i>
+                <span>Add Invoice</span>
+            </a>
+            <a href="#" class="shortcut" onclick="addPayment()">
+                <i class="fas fa-money-check" style="font-size: 48px;"></i>
+                <span>Add Payment</span>
+            </a>
+            <a href="#" class="shortcut" onclick="addCustomer()">
+                <i class="fas fa-user-plus" style="font-size: 48px;"></i>
+                <span>Add Customer</span>
+            </a>
+            <!-- Add more relevant shortcuts here -->
+        </div>
         <!-- Dashboard content goes here -->
     </div>
     
