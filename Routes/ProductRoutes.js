@@ -52,22 +52,6 @@ router.get("/inventory/category",(req,res)=>{
     }
   });
   
-  //...
-  
-// //SR
-// router.post("/people/salesman" ,async(req,res)=>{
-//     try{
-//         const customers = new SR(req.body);
-//         await customers.save()
-//         res.redirect('/people/salesman')//redirect to a path, render a file
-//         console.log(req.body)
-//     }
-//     catch(error){
-//     res.status(400).send("Failed to add salesman. Please try again.")
-//     console.log(error)
-//     }
-// })
-
 
 //products page
 router.get("/inventory/products",async (req,res)=>{
@@ -81,5 +65,22 @@ router.get("/inventory/products",async (req,res)=>{
   
 })
 
+//PRODUCT DELETE 
+router.delete('/products/:productId', async (req, res) => {
+  try {
+    const productId = req.params.productId;
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+    if (!deletedProduct) {
+      console.log(`No product found with id: ${productId}`);
+      res.status(404).send({ error: 'Product not found' });
+    } else {
+      console.log(`Deleted product with id: ${productId}`);
+      res.status(200).send({ message: 'Product deleted successfully' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'Failed to delete product' });
+  }
+});
 
   module.exports=router
