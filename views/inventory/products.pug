@@ -1,0 +1,77 @@
+doctype html
+head
+  title Products
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  style.
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    th,
+    td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+    th {
+    background-color: #4caf50;
+    color: white;
+    }
+    tr:hover {
+    background-color: #f5f5f5;
+    }
+    .actions {
+    text-align: center;
+    }
+    .actions button {
+    border: none;
+    background: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    transition: color 0.3s ease;
+    }
+    .actions button:hover {
+    color: #000;
+    }
+h1 Products
+table
+  thead
+    tr
+      th Update
+      th Product Name
+      th Category
+      th Quantity
+      th Cost Price
+      th Selling Price
+      th Delete
+  tbody
+    if products
+        each product in products
+            tr
+                td.actions
+                    button(onclick='updateProduct()')
+                    i.fas.fa-edit
+                td #{product.productName}
+                td #{product.category}
+                td #{product.quantity}
+                td #{product.costPrice}
+                td #{product.sellingPrice}
+                td.actions
+                    button(onclick='deleteProduct()')
+                    i.fas.fa-trash-alt
+
+    else 
+          p No records
+
+            
+            //- script.
+            //- function updateProduct() {
+            //- // Handle update logic here
+            //- console.log("Update button clicked");
+            //- }
+            //- function deleteProduct() {
+            //- // Handle delete logic here
+            //- console.log("Delete button clicked");
+            //- }

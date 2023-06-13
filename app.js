@@ -86,7 +86,6 @@ app.use('/', productRoute);
 app.use('/', commerceRoute);
 app.use('/', reportRoute);
 
-
 //404 message
 app.get("*", (req,res)=>{
   res.status(404).send("Page does not exist")

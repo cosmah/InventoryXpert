@@ -4,7 +4,8 @@ const router = express.Router();
 //import product model
 const Product = require("../Models/productModel")
 const Category = require("../Models/categoryModel")
-const Supplier = require("../Models/supplierModel")
+const Supplier = require("../Models/supplierModel");
+const async = require('hbs/lib/async');
 
 // Render the add product page with dynamic data
 router.get("/inventory/addproduct", async (req, res) => {
@@ -68,6 +69,17 @@ router.get("/inventory/category",(req,res)=>{
 // })
 
 
+//products page
+router.get("/inventory/products",async (req,res)=>{
+  try {
+    const items = await Product.find();
+    res.render('inventory/products', {products: items });
+  } catch (err) {
+    console.log(err);
+    res.send('Failed');
+  }
+  
+})
 
 
   module.exports=router
