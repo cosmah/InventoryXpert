@@ -1,0 +1,80 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title People Management
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css')
+  style.
+    /* CSS Styles */
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    }
+    .header {
+    background-color: #00a98f;
+    color: white;
+    padding: 20px;
+    }
+    .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    }
+    .logo i {
+    margin-right: 10px;
+    }
+    .user-profile {
+    font-size: 18px;
+    }
+    .content {
+    padding: 20px;
+    }
+    .people-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    }
+    .people-link {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    }
+    .people-link:hover {
+    background-color: #d4d4d4;
+    }
+    .people-link i {
+    margin-right: 10px;
+    font-size: 24px;
+    }
+    .people-link span {
+    font-weight: bold;
+    }
+header.header
+  .logo
+    i.fas.fa-users
+    span People Management
+  span.user-profile John Doe
+.content
+  h1 People
+  .people-links
+    a.people-link(href='/customers')
+      i.fas.fa-user
+      span Customers
+    a.people-link(href='/employees')
+      i.fas.fa-users
+      span Employees
+    a.people-link(href='/suppliers')
+      i.fas.fa-truck
+      span Suppliers
+  // Additional content goes here
+script.
+  // JavaScript code goes here

@@ -1,20 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>People Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: #00a98f;
+      color: white;
+      padding: 20px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    .logo i {
+      margin-right: 10px;
+    }
+    .user-profile {
+      font-size: 18px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .people-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .people-link {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .people-link:hover {
+      background-color: #d4d4d4;
+    }
+    .people-link i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+    .people-link span {
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <h3>Report Group 2 - Report 1</h3>
-    <p>This is the content for Report 1 in Report Group 2.</p>
-
-    <h3>Report Group 2 - Report 2</h3>
-    <p>This is the content for Report 2 in Report Group 2.</p>
-
-    <h3>Report Group 2 - Report 3</h3>
-    <p>This is the content for Report 3 in Report Group 2.</p>
-
+  <header class="header">
+    <div class="logo">
+      <i class="fas fa-users"></i>
+      <span>People Management</span>
+    </div>
+    <span class="user-profile">John Doe</span>
+  </header>
+  <div class="content">
+    <h1>People</h1>
+    <div class="people-links">
+      <a class="people-link" href="/customers">
+        <i class="fas fa-user"></i>
+        <span>Customers</span>
+      </a>
+      <a class="people-link" href="/employees">
+        <i class="fas fa-users"></i>
+        <span>Employees</span>
+      </a>
+      <a class="people-link" href="/suppliers">
+        <i class="fas fa-truck"></i>
+        <span>Suppliers</span>
+      </a>
+    </div>
+    <!-- Additional content goes here -->
+  </div>
+  <script>
+    // JavaScript code goes here
+  </script>
 </body>
 </html>

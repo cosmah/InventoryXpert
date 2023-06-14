@@ -6,6 +6,10 @@ const Customer = require("../Models/customerModel")
 const SR = require("../Models/salesmanModel")
 const Supplier = require("../Models/supplierModel")
 
+//people
+router.get("/people/people",(req,res)=>{
+    res.render("people/people")
+  });
 //add customer
 router.get("/people/customers",(req,res)=>{
     res.render("people/customers")
