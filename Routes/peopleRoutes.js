@@ -68,7 +68,41 @@ router.post("/people/supplier" ,async(req,res)=>{
     }
 })
 
+//saleman_list page
+router.get("/people/salesman_list",async (req,res)=>{
+  try {
+    const items = await SR.find();
+    res.render('people/salesman_list', {srs: items });
+  } catch (err) {
+    console.log(err);
+    res.send('Failed');
+  }
+  
+})
 
+//customers_list page
+router.get("/people/customer_list",async (req,res)=>{
+  try {
+    const items = await Customer.find();
+    res.render('people/customer_list', {customers: items });
+  } catch (err) {
+    console.log(err);
+    res.send('Failed');
+  }
+  
+})
+
+//supplier_list page
+router.get("/people/supplier_list",async (req,res)=>{
+  try {
+    const items = await Supplier.find();
+    res.render('people/supplier_list', {suppliers: items });
+  } catch (err) {
+    console.log(err);
+    res.send('Failed');
+  }
+  
+})
 
 
   module.exports=router

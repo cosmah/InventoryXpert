@@ -1,0 +1,117 @@
+<!DOCTYPE html><head><meta charset="UTF-8"><title>Inventory Xpert</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><style>/* CSS Styles */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+.header {
+background-color: #00a98f;
+color: white;
+padding: 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.logo {
+font-size: 24px;
+font-weight: bold;
+display: flex;
+align-items: center;
+}
+.logo i {
+margin-right: 10px;
+}
+.user-profile {
+font-size: 18px;
+}
+.sidebar {
+background-color: #f0f0f0;
+float: left;
+width: 250px;
+height: 100vh;
+}
+.sidebar ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+.sidebar li {
+padding: 15px;
+border-bottom: 1px solid #ccc;
+transition: background-color 0.3s ease;
+display: flex;
+align-items: center;
+}
+.sidebar li:hover {
+background-color: #d4d4d4;
+cursor: pointer;
+}
+.sidebar li.active {
+background-color: #00a98f;
+color: white;
+}
+.sidebar li a {
+color: #333;
+text-decoration: none;
+font-size: 16px;
+font-weight: bold;
+display: flex;
+align-items: center;
+}
+.sidebar li a i {
+margin-right: 10px;
+}
+.content {
+margin-left: 250px;
+padding: 20px;
+}
+/* JS Script */
+function setActiveMenuItem(element) {
+const menuItems = document.getElementsByClassName('menu-item');
+for (let i = 0; i < menuItems.length; i++) {
+menuItems[i].classList.remove('active');
+}
+element.classList.add('active');
+}
+/* Additional Styles */
+h1 {
+color: #00a98f;
+font-size: 28px;
+margin-bottom: 20px;
+}
+.people-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+align-items: center;
+}
+.people-link {
+background-color: #f0f0f0;
+border: 1px solid #ccc;
+border-radius: 5px;
+color: #333;
+display: flex;
+align-items: center;
+padding: 10px;
+margin-right: 10px;
+margin-bottom: 10px;
+text-decoration: none;
+transition: background-color 0.3s ease;
+}
+.people-link:hover {
+background-color: #d4d4d4;
+}
+.people-link i {
+margin-right: 10px;
+font-size: 24px;
+}
+.people-link span {
+font-weight: bold;
+}</style></head><header class="header"><div class="logo"><i class="fas fa-users"></i><span>People Management</span></div><span class="user-profile">John Doe</span></header><div class="sidebar"><ul><li class="menu-item active" onclick="setActiveMenuItem(this)"><a href="/welcome"><i class="fas fa-chart-line"></i><span>Dashboard</span></a></li><li class="menu-item" onclick="setActiveMenuItem(this)"><a href="/inventory/products"><i class="fas fa-cubes"></i><span>Products</span></a></li><li class="menu-item" onclick="setActiveMenuItem(this)"><a href="/inventory/products"><i class="fas fa-clipboard-list"></i><span>Orders</span></a></li><li class="menu-item" onclick="setActiveMenuItem(this)"><a href="/reports/reports"><i class="fas fa-chart-bar"></i><span>Reports</span></a></li><li class="menu-item" onclick="setActiveMenuItem(this)"><a href="/people/people"><i class="fas fa-users"></i><span>People</span></a></li></ul></div><div class="content"><h1>People</h1><div class="people-links"><a class="people-link" href="/people/customer_list"><i class="fas fa-user"></i><span>Customers</span></a><a class="people-link" href="/people/salesman_list"><i class="fas fa-users"></i><span>Employees</span></a><a class="people-link" href="/people/supplier_list"><i class="fas fa-truck"></i><span>Suppliers</span></a><!-- Additional links can be added here--></div><!-- Additional content goes here--></div><script>// JavaScript code goes here
+function setActiveMenuItem(element) {
+const menuItems = document.getElementsByClassName('menu-item');
+for (let i = 0; i < menuItems.length; i++) {
+menuItems[i].classList.remove('active');
+}
+element.classList.add('active');
+}</script>

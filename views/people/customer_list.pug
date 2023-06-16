@@ -1,6 +1,6 @@
 doctype html
 head
-  title Products
+  title Costomer List
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
   style.
     table {
@@ -48,38 +48,39 @@ head
     .buttons a:hover {
       background-color: #3e8e41;
     }
-h1 Products
+h1 Customers List
 table
   thead
     tr
       th Update
-      th Product Name
-      th Category
-      th Quantity
-      th Cost Price
-      th Selling Price
+      th First Name
+      th Last Name
+      th Shop
+      th Phone
+      th TIN
+      th SR
       th Delete
   tbody
-    if products
-        each product in products
-          tr(data-product-id=product._id)
+    if customers
+        each customer in customers
+          tr(data-customer-id=customer._id)
                 td.actions
-                    button(onclick='updateProduct()')
+                    button(onclick='updatecustomer()')
                       i.fas.fa-edit
-                td #{product.productName}
-                td #{product.category}
-                td #{product.quantity}
-                td #{product.costPrice}
-                td #{product.sellingPrice}
+                td #{customer.fname}
+                td #{customer.lname}
+                td #{customer.shop}
+                td #{customer.phone}
+                td #{customer.tin}
+                td #{customer.sr}
                 td.actions
-                    button(onclick=`deleteProduct(${product._id})`)
+                    button(onclick=`deletecustomer(${customer._id})`)
                       i.fas.fa-trash-alt
 
     else 
           p No records
-
 div.buttons
-  a(href='/inventory/addproduct') Add Product
+  a(href='/people/customers') Add Customer
   a(href='/welcome') Back to Home
 
             

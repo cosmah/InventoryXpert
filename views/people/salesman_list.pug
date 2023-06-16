@@ -1,6 +1,6 @@
 doctype html
 head
-  title Products
+  title Salesman List
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' integrity='sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
   style.
     table {
@@ -48,39 +48,43 @@ head
     .buttons a:hover {
       background-color: #3e8e41;
     }
-h1 Products
+h1 Salesman List
 table
   thead
     tr
       th Update
-      th Product Name
-      th Category
-      th Quantity
-      th Cost Price
-      th Selling Price
+      th First Name
+      th Last Name
+      th Phone
+      th Address 
+      th NIN
+      th Enrolling Date
       th Delete
   tbody
-    if products
-        each product in products
-          tr(data-product-id=product._id)
+    if srs
+        each sr in srs
+          tr(data-sr-id=sr._id)
                 td.actions
-                    button(onclick='updateProduct()')
+                    button(onclick='updatesr()')
                       i.fas.fa-edit
-                td #{product.productName}
-                td #{product.category}
-                td #{product.quantity}
-                td #{product.costPrice}
-                td #{product.sellingPrice}
+                td #{sr.fname}
+                td #{sr.lname}
+                td #{sr.phone}
+                td #{sr.address}
+                td #{sr.nin}
+                td #{sr.enroll}
                 td.actions
-                    button(onclick=`deleteProduct(${product._id})`)
+                    button(onclick=`deletesr(${sr._id})`)
                       i.fas.fa-trash-alt
 
     else 
           p No records
 
 div.buttons
-  a(href='/inventory/addproduct') Add Product
+  a(href='/people/salesman') Add Salesman
   a(href='/welcome') Back to Home
+
+
 
             
   script.
