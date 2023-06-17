@@ -1,20 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Payment Entry System - QuickBooks Style</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            color: #666;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: #666;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 4px;
+            border-color: #ddd;
+            padding: 10px;
+        }
+
+        .btn-primary {
+            background-color: #1e8449;
+            border-color: #1e8449;
+            font-weight: bold;
+            padding: 10px 30px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
 </head>
+
 <body>
-    <h3>Report Group 1 - Report 1</h3>
-    <p>This is the content for Report 1 in Report Group 1.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-container">
+                    <h2>Payment Entry System</h2>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="customerName">Customer Name:</label>
+                                <input type="text" class="form-control" id="customerName"
+                                    placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="invoiceNumber">Invoice Number:</label>
+                                <input type="text" class="form-control" id="invoiceNumber"
+                                    placeholder="Enter invoice number">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="paymentAmount">Payment Amount:</label>
+                                <input type="number" class="form-control" id="paymentAmount"
+                                    placeholder="Enter payment amount">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="invoiceTable">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice Number</th>
+                                        <th>Amount</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Invoices will be dynamically populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button type="button" class="btn btn-primary">Save Payment</button>
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h3>Report Group 1 - Report 2</h3>
-    <p>This is the content for Report 2 in Report Group 1.</p>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <h3>Report Group 1 - Report 3</h3>
-    <p>This is the content for Report 3 in Report Group 1.</p>
+    <script>
+        // Simulated data for table
+        const invoices = [
+            { invoiceNumber: "INV001", amount: 1000, dueDate: "2023-06-30" },
+            { invoiceNumber: "INV002", amount: 1500, dueDate: "2023-07-15" },
+            { invoiceNumber: "INV003", amount: 2000, dueDate: "2023-07-31" }
+        ];
 
+        // Function to populate the table with invoices based on the customer name entered
+        function populateInvoiceTable() {
+            const tableBody = document.querySelector("#invoiceTable tbody");
+            tableBody.innerHTML = "";
+
+            const customerName = document.querySelector("#customerName").value;
+
+            // Simulated API call or database query to fetch invoices based on customer name
+            // Replace this section with your own implementation to fetch data from your database
+
+            // Filtering invoices based on customer name
+            const filteredInvoices = invoices.filter((invoice) =>
+                invoice.customerName.toLowerCase().includes(customerName.toLowerCase())
+            );
+
+            // Populating table rows with fetched invoices
+            filteredInvoices.forEach((invoice) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${invoice.invoiceNumber}</td>
+                    <td>${invoice.amount}</td>
+                    <td>${invoice.dueDate}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Event listener for the customer name input
+        document.querySelector("#customerName").addEventListener("input", populateInvoiceTable);
+    </script>
 </body>
+
 </html>
