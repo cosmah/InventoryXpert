@@ -75,5 +75,19 @@ router.post('/receipts/check-number', async (req, res) => {
     res.status(500).send('Failed to fetch data from the database.');
   }
 });
+//==========================================================================//
+
+
+//payments query
+router.get('/getCustomers', function(req, res) {
+  let input = req.query.input;
+  Customer.find({$or: [{fname: new RegExp(input, 'i')}, {lname: new RegExp(input, 'i')}]}, function(err, customers) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(customers);
+    }
+  });
+});
 
 module.exports = router;

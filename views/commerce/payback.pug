@@ -1,123 +1,100 @@
 doctype html
 head
-  title Payment Form
-  //- Global Styles
-style.
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-  }
+  title Payment Entry System - QuickBooks Style
+  // Bootstrap CSS
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+  style.
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    label {
+      color: #333;
+      font-weight: bold;
+    }
+    .form-control {
+      border-radius: 4px;
+      border-color: #ddd;
+    }
+    // Change the background and border color of the .btn-primary class to green
+    .btn-primary {
+      background-color: green;
+      border-color: green;
+.container-fluid
+  .row
+    .col-md-12
+      .form-container
+        h2 Payment Entry System
+        form(action='/commerce/addreciept' method='POST')
+          .form-row
+            .form-group.col-md-4
+              label(for='customerName') Customer Name:
+              input#customerName.form-control(type='text' placeholder='Enter customer name' name='customerName' list='customerNameSuggestions' required)
+              // Add a datalist element to display suggestions for the customer name field
+              datalist#customerNameSuggestions
+            .form-group.col-md-4
+              label(for='invoiceNumber') Invoice Number:
+              input#invoiceNumber.form-control(type='text' placeholder='Enter invoice number' name='invoiceNumber' required)
+            .form-group.col-md-4
+              label(for='paymentAmount') Payment Amount:
+              input#paymentAmount.form-control(type='number' placeholder='Enter payment amount' name='paymentAmount' required)
+        .row
+          .col-md-12
+            table.table.table-striped#invoiceTable
+              thead.thead-light
+                tr
+                  th Invoice Number
+                  th Due Date
+                  th Original Amount
+                  th Open Balance
+                  th Payment
+              tbody
+                // Invoices will be dynamically populated here
+        .row.mt-3
+          .col-md-12.text-center
+            button.btn.btn-primary(type='submit') Save Payment
 
-//- Form Styles
-style.
-  /* Add your custom styles here */
+// Bootstrap JS and jQuery for AJAX calls
+script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
 
-  /* Form Styles */
-  h1 {
-    color: green;
-  }
-
-  form#paymentForm {
-    width: 400px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  div {
-    margin-bottom: 10px;
-  }
-
-  label {
-    display: block;
-    font-weight: bold;
-  }
-
-  input[type='text'],
-  input[type='number'],
-  select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  button[type='submit'] {
-    background-color: green;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  button[type='submit']:hover {
-    background-color: #006400;
-  }
-
-//- Form Markup
-h1(style='color: green;') Payment Form
-
-form#paymentForm
-  div
-    label(for='customerName') Customer Name:
-    input#customerName(type='text' required='')
-  div
-    label(for='receipts') Open Receipts:
-    select#receipts(required='')
-      option(value='' disabled='' selected='') Select an open receipt
-  div
-    label(for='amount') Amount Received:
-    input#amount(type='number' required='')
-  div
-    button(type='submit') Submit Payment
-
+// JavaScript code to retrieve customer names and populate suggestions
 
 script.
-  // Fetch customer name suggestions based on input
-  document.getElementById("customerName").addEventListener("input", function(event) {
-  var customerName = event.target.value;
-  // Clear previous receipt options
-  var receiptSelect = document.getElementById("receipts");
-  while (receiptSelect.firstChild) {
-  receiptSelect.removeChild(receiptSelect.firstChild);
-  }
-  // Fetch open receipts using Fetch API
-  fetch("https://example.com/api/receipts?customerName=" + encodeURIComponent(customerName))
-  .then(function(response) {
-  if (!response.ok) {
-  throw new Error("Failed to fetch open receipts");
-  }
-  return response.json();
-  })
-  .then(function(data) {
-  // Populate receipt options in the select element
-  data.forEach(function(receipt) {
-  var option = document.createElement("option");
-  option.value = receipt.id;
-  option.textContent = "Receipt #" + receipt.id;
-  receiptSelect.appendChild(option);
-  });
-  })
-  .catch(function(error) {
-  console.error(error);
-  });
-  });
-  // Handle form submission
-  document.getElementById("paymentForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Prevent the form from submitting
-  var selectedReceipt = document.getElementById("receipts").value;
-  var amountReceived = document.getElementById("amount").value;
-  // Perform necessary actions with the selected receipt and amount received
-  // Here, you can add your custom logic to handle the payment data as per your requirements.
-  // For this example, we'll just log the data to the console.
-  console.log("Selected Receipt:", selectedReceipt);
-  console.log("Amount Received:", amountReceived);
-  // Clear form fields after submission
-  document.getElementById("customerName").value = "";
-  document.getElementById("receipts").value = "";
-  document.getElementById("amount").value = "";
+    $('#customerName').on('input', function() {
+    let input = $(this).val();
+    if (input.length >= 1) {
+      fetch('/getCustomers?input=' + input, {
+        method: 'GET'
+      })
+      .then(response => response.json())
+      .then(data => {
+        // populate suggestions with data
+
+        // Clear any existing suggestions from the datalist element
+        $('#customerNameSuggestions').empty();
+
+        // Loop through the data returned from the server and add each suggestion as an option to the datalist element
+        data.forEach(function(customer) {
+          let option = $('<option></option>').attr('value', customer.fname + ' ' + customer.lname);
+          $('#customerNameSuggestions').append(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
   });

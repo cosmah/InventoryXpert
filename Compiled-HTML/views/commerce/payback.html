@@ -1,0 +1,52 @@
+<!DOCTYPE html><head><title>Payment Entry System - QuickBooks Style</title><!-- Bootstrap CSS--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"><style>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.form-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+label {
+  color: #333;
+  font-weight: bold;
+}
+.form-control {
+  border-radius: 4px;
+  border-color: #ddd;
+}
+// Change the background and border color of the .btn-primary class to green
+.btn-primary {
+  background-color: green;
+  border-color: green;</style></head><div class="container-fluid"><div class="row"><div class="col-md-12"><div class="form-container"><h2>Payment Entry System</h2><form action="/commerce/addreciept" method="POST"><div class="form-row"><div class="form-group col-md-4"><label for="customerName">Customer Name:</label><input class="form-control" id="customerName" type="text" placeholder="Enter customer name" name="customerName" list="customerNameSuggestions" required><!-- Add a datalist element to display suggestions for the customer name field--><datalist id="customerNameSuggestions"></datalist></div><div class="form-group col-md-4"><label for="invoiceNumber">Invoice Number:</label><input class="form-control" id="invoiceNumber" type="text" placeholder="Enter invoice number" name="invoiceNumber" required></div><div class="form-group col-md-4"><label for="paymentAmount">Payment Amount:</label><input class="form-control" id="paymentAmount" type="number" placeholder="Enter payment amount" name="paymentAmount" required></div></div></form><div class="row"><div class="col-md-12"><table class="table table-striped" id="invoiceTable"><thead class="thead-light"><tr><th>Invoice Number</th><th>Due Date</th><th>Original Amount</th><th>Open Balance</th><th>Payment</th></tr></thead><tbody><!-- Invoices will be dynamically populated here--></tbody></table></div></div><div class="row mt-3"><div class="col-md-12 text-center"><button class="btn btn-primary" type="submit">Save Payment</button></div></div></div></div></div></div><!-- Bootstrap JS and jQuery for AJAX calls--><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script><!-- JavaScript code to retrieve customer names and populate suggestions--><script>  $('#customerName').on('input', function() {
+  let input = $(this).val();
+  if (input.length >= 1) {
+    fetch('/getCustomers?input=' + input, {
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+      // populate suggestions with data
+
+      // Clear any existing suggestions from the datalist element
+      $('#customerNameSuggestions').empty();
+
+      // Loop through the data returned from the server and add each suggestion as an option to the datalist element
+      data.forEach(function(customer) {
+        let option = $('<option></option>').attr('value', customer.fname + ' ' + customer.lname);
+        $('#customerNameSuggestions').append(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+});</script>
