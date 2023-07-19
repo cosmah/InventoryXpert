@@ -24,6 +24,8 @@ const peopleRoute = require("./Routes/peopleRoutes")
 const productRoute = require("./Routes/ProductRoutes")
 const commerceRoute = require("./Routes/commerceRoutes")
 const reportRoute = require("./Routes/reportRoutes")
+const inventoryRoute = require("./Routes/inventoryRoutes")
+const purchase = require("./Routes/purchase")
 
 
 
@@ -85,6 +87,8 @@ app.use('/', peopleRoute);
 app.use('/', productRoute);
 app.use('/', commerceRoute);
 app.use('/', reportRoute);
+app.use('/', inventoryRoute);
+app.use('/', purchase);
 
 //404 message
 app.get("*", (req,res)=>{

@@ -123,9 +123,9 @@ const router = express.Router();
   //---PAYMENTS REPORTS----//
 
   //inventory summary
-  router.get("/reports/inventory/inventory_summary", (req,res)=>{
-      res.render('reports/inventory/inventory_summary');
-  })
+  // router.get("/reports/inventory/inventory_summary", (req,res)=>{
+  //     res.render('reports/inventory/inventory_summary');
+  // })
  //invemtory valuation
   router.get("/reports/inventory/inventory_valuation", (req,res)=>{
       res.render('reports/inventory/inventory_valuation');

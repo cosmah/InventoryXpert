@@ -1,113 +1,233 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Products</title>
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
-      th {
-        background-color: #4caf50;
-        color: white;
-      }
-      tr:hover {
-        background-color: #f5f5f5;
-      }
-      .actions {
-        text-align: center;
-      }
-      .actions button {
-        border: none;
-        background: none;
-        color: #666;
-        cursor: pointer;
-        font-size: 16px;
-        padding: 5px;
-        transition: color 0.3s ease;
-      }
-      .actions button:hover {
-        color: #000;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Products</h1>
-
-    <table>
+<head>
+  <title>Receipt Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .logo {
+      font-size: 36px;
+      color: #5d9fc5;
+      margin-bottom: 10px;
+    }
+    
+    .logo span {
+      font-weight: bold;
+    }
+    
+    .invoice-details {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    
+    .invoice-details .detail {
+      flex: 1;
+    }
+    
+    .detail p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+    
+    .invoice-table {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    
+    .invoice-table th,
+    .invoice-table td {
+      padding: 12px;
+    }
+    
+    .invoice-table th {
+      background-color: #5d9fc5;
+      color: #fff;
+    }
+    
+    .total-row {
+      font-weight: bold;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .form-submit {
+      text-align: center;
+    }
+    
+    input[type="submit"] {
+      display: inline-block;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    
+    .notes {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="header-section">
+      <div class="logo">MD<span>B</span>ootstrap.com</div>
+      <p class="logo-tagline">Elevate Your Web Development</p>
+    </div>
+    <div class="form-group">
+      <label for="customer-name">Customer Name:</label>
+      <input type="text" id="customer-name" name="customer-name" placeholder="Enter customer name" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" placeholder="Enter customer address" required></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" name="phone" placeholder="Enter customer phone" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="tin">TIN (Taxpayer Identification Number):</label>
+      <input type="text" id="tin" name="tin" placeholder="Enter TIN" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="invoice-number">Invoice Number:</label>
+      <input type="text" id="invoice-number" name="invoice-number" placeholder="Enter invoice number" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="terms">Terms:</label>
+      <textarea id="terms" name="terms" placeholder="Enter terms" required></textarea>
+    </div>
+    <div class="invoice-details">
+      <div class="detail">
+        <p class="detail-label">To:</p>
+        <p>John Lorem</p>
+        <p>Street, City</p>
+        <p>State, Country</p>
+        <p><i class="fas fa-phone"></i> 123-456-789</p>
+      </div>
+      <div class="detail">
+        <p class="detail-label">Invoice Details:</p>
+        <p><span class="detail-bold">ID:</span> #123-456</p>
+        <p><span class="detail-bold">Creation Date:</span> Jun 23, 2021</p>
+        <p><span class="detail-bold">Status:</span> <span class="badge bg-warning text-black">Unpaid</span></p>
+      </div>
+    </div>
+    
+    <table class="invoice-table">
       <thead>
         <tr>
-          <th>Update</th>
-          <th>Product Name</th>
-          <th>Category</th>
-          <th>Quantity</th>
-          <th>Cost Price</th>
-          <th>Selling Price</th>
-          <th>Delete</th>
+          <th>#</th>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Unit Price</th>
+          <th>Amount</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Example static data for demonstration purposes -->
         <tr>
-          <td class="actions">
-            <button onclick="updateProduct()">
-              <i class="fas fa-edit"></i>
-            </button>
-          </td>
-          <td>Product 1</td>
-          <td>Category 1</td>
-          <td>10</td>
-          <td>$10.00</td>
-          <td>$15.00</td>
-          <td class="actions">
-            <button onclick="deleteProduct()">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </td>
+          <td>1</td>
+          <td>Pro Package</td>
+          <td>4</td>
+          <td>$200</td>
+          <td>$800</td>
         </tr>
         <tr>
-          <td class="actions">
-            <button onclick="updateProduct()">
-              <i class="fas fa-edit"></i>
-            </button>
-          </td>
-          <td>Product 2</td>
-          <td>Category 2</td>
-          <td>5</td>
-          <td>$20.00</td>
-          <td>$25.00</td>
-          <td class="actions">
-            <button onclick="deleteProduct()">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </td>
+          <td>2</td>
+          <td>Web hosting</td>
+          <td>1</td>
+          <td>$10</td>
+          <td>$10</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Consulting</td>
+          <td>1 year</td>
+          <td>$300</td>
+          <td>$300</td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td colspan="4">SubTotal</td>
+          <td>$1110</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="4">Tax (15%)</td>
+          <td>$111</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="4">Total Amount</td>
+          <td>$1221</td>
+        </tr>
+      </tfoot>
     </table>
-
-    <script>
-      function updateProduct() {
-        // Handle update logic here
-        console.log("Update button clicked");
-      }
-
-      function deleteProduct() {
-        // Handle delete logic here
-        console.log("Delete button clicked");
-      }
-    </script>
-  </body>
+    
+    <div class="form-group">
+      <label for="notes">Additional Notes:</label>
+      <textarea id="notes" name="notes" placeholder="Enter additional notes"></textarea>
+    </div>
+    
+    
+    
+    <div class="form-submit">
+      <input type="submit" value="Pay Now">
+    </div>
+    
+    <p class="notes">Thank you for your purchase!</p>
+  </div>
+</body>
 </html>
