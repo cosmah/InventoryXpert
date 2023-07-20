@@ -3,13 +3,13 @@ const express = require('express');
 const router = express.Router();
 const Purchase = require('../Models/purchase');
 
-router.get("/commerce/purchases",(req,res)=>{
-    res.render("commerce/purchases")
+router.get("/reports/purchases/purchases",(req,res)=>{
+    res.render("reports/purchases/purchases")
   });
 
 
 // POST route to add a new purchase
-router.post('/purchase', async (req, res) => {
+router.post('/report/purchases/purchasese', async (req, res) => {
   try {
     const { purchaseDate, product, quantity, unitPrice, totalCost } = req.body;
     const purchase = await Purchase.create({

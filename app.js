@@ -25,7 +25,7 @@ const productRoute = require("./Routes/ProductRoutes")
 const commerceRoute = require("./Routes/commerceRoutes")
 const reportRoute = require("./Routes/reportRoutes")
 const inventoryRoute = require("./Routes/inventoryRoutes")
-const purchase = require("./Routes/purchase")
+const purchase = require("./Routes/purchaseRoute")
 
 
 
