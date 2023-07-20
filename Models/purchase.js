@@ -1,15 +1,33 @@
-// models/purchase.js
-const mongoose = require('mongoose');
+//to be used to modal our data
+const mongoose = require("mongoose");
 
 const purchaseSchema = new mongoose.Schema({
-  purchaseDate: { type: Date, default: Date.now },
-  product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-  quantity: { type: Number, required: true },
-  unitPrice: { type: Number, required: true },
-  totalCost: { type: Number, required: true },
-  // Add any other relevant fields here (e.g., supplier, invoice number, etc.)
-});
+  //tell schema what kind of data to expect
+  purchaseDate: {
+      type: Date,
+      trim: true,
+      required: true
+    },
+  product: {
+      type: String,
+      trim: true,
+      required: true
+    },
+  quantity: {
+      type: Number,
+      trim: true,
+      required: true
+    },
+  unitPrice: {
+      type: Number,
+      trim: true,
+      required: true
+    },
+  totalCost: {
+      type: Number,
+      trim: true,
+      required: true
+    }
+})
 
-const Purchase = mongoose.model('Purchase', purchaseSchema);
-
-module.exports = Purchase;
+module.exports = mongoose.model("Purchase", purchaseSchema)
