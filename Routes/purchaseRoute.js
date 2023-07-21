@@ -30,16 +30,27 @@ router.post('/report/purchases/purchases', async (req, res) => {
 
 
 //expense SUMMARY page
-router.get("/reports/purchases/purchase_summary",async (req,res)=>{
+router.get("/reports/purchases/purchase_summary", async (req, res) => {
   try {
-    const items = await Purchase.find();
-    res.render('reports/purchases/purchase_summary', {purchase: items });
-  } catch (err) {
-    console.log(err);
-    res.send('Failed');
+    const purchases = await Purchase.find(); // Fetch purchases from MongoDB
+    res.render("reports/purchases/purchase_summary", { purchases});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to fetch data from the database.");
   }
-  
-})
+});
+
+
+// product details
+router.get("/reports/purchases/purchase_details", async (req, res) => {
+  try {
+    const purchases = await Purchase.find(); // Fetch purchases from MongoDB
+    res.render("reports/purchases/purchase_details", { purchases});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to fetch data from the database.");
+  }
+});
 
 
 
