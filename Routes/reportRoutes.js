@@ -74,28 +74,28 @@ const router = express.Router();
       res.render('reports/profit_and_loss');
   })
 
-  //---SALES REPORTS----//
+//   //---SALES REPORTS----//
 
-  //sales summary
-  router.get("/reports/sales/sales_by_customer_summary", (req,res)=>{
-      res.render('reports/sales/sales_by_customer_summary');
-  })
+//   //sales summary
+//   router.get("/reports/sales/sales_by_customer_summary", (req,res)=>{
+//       res.render('reports/sales/sales_by_customer_summary');
+//   })
 
-  //sales details
-  router.get("/reports/sales/sales_by_customer_details", (req,res)=>{
-      res.render('reports/sales/sales_by_customer_details');
-  })
+//   //sales details
+//   router.get("/reports/sales/sales_by_customer_details", (req,res)=>{
+//       res.render('reports/sales/sales_by_customer_details');
+//   })
 
-  //sales product
-  router.get("/reports/sales/sales_by_product", (req,res)=>{
-      res.render('reports/sales/sales_by_product');
-  })
+//   //sales product
+//   router.get("/reports/sales/sales_by_product", (req,res)=>{
+//       res.render('reports/sales/sales_by_product');
+//   })
 
-  //sales product
-  router.get("/reports/sales/sales_by_sales_rep", (req,res)=>{
-      res.render('reports/sales/sales_by_sales_rep');
-  })
-//-----END-----//
+//   //sales product
+//   router.get("/reports/sales/sales_by_sales_rep", (req,res)=>{
+//       res.render('reports/sales/sales_by_sales_rep');
+//   })
+// //-----END-----//
 
   //---BALANCE REPORTS----//
 
