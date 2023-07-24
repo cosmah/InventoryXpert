@@ -55,6 +55,42 @@ router.get("/reports/sales/sales_by_customer_details", async (req, res) => {
 });
 
 
+//SALES summary
+router.get("/reports/sales/sales_by_customer_summary", async (req, res) => {
+  try {
+    const receipts = await Receipt.find(); // Fetch purchases from MongoDB
+    res.render("reports/sales/sales_by_customer_summary", { receipts});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to fetch data from the database.");
+  }
+});
+
+
+//SALES summary
+router.get("/reports/sales/sales_by_product", async (req, res) => {
+  try {
+    const receipts = await Receipt.find(); // Fetch purchases from MongoDB
+    res.render("reports/sales/sales_by_product", { receipts});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to fetch data from the database.");
+  }
+});
+
+
+//SALES summary
+router.get("/reports/sales/sales_by_sales_rep", async (req, res) => {
+  try {
+    const receipts = await Receipt.find(); // Fetch purchases from MongoDB
+    res.render("reports/sales/sales_by_sales_rep", { receipts});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to fetch data from the database.");
+  }
+});
+
+
 // product details
 router.get("/reports/purchases/purchase_details", async (req, res) => {
   try {

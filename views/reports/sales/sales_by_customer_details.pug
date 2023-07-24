@@ -73,25 +73,23 @@ main
         th Rate
         th Amount
       tbody
-        if reciepts
-            each reciept in reciepts
-              tr(data-reciept-id=reciept._id)
-                    td #{reciept.invoiceNumber}
-                    td #{reciept.customer}
-                    td #{reciept.sr}
-                    td #{reciept.date}
-                    td #{reciept.product}
-                    td #{reciept.description}
-                    td #{reciept.quantity}
-                    td #{reciept.rate}
-                    td #{reciept.amount}
+        if receipts
+            each receipt in receipts
+              tr(data-receipt-id=receipt._id)
+                    td #{receipt.invoiceNumber}
+                    td #{receipt.customer}
+                    td #{receipt.sr}
+                    td #{receipt.date}
+                    td #{receipt.product}
+                    td #{receipt.description}
+                    td #{receipt.quantity}
+                    td #{receipt.rate}
+                    td #{receipt.amount}
 
 
         else 
               p No records
 
-div.buttons
-  a(href='/reports/purchases/purchases') Add Purchase
 div.buttons
   a(href='/reports/reports') Back to Reports 
 
