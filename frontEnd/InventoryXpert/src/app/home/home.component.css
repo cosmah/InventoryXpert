@@ -1,237 +1,84 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:800|Merriweather+Sans|Share+Tech+Mono");
-
-:root {
-  --ui-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
-  fill: rgba(0, 0, 0, 0.54);
-  --ui-shadow-border: 1px solid rgba(0, 0, 0, 0.14);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-
-  padding: 0;
-  margin: 0;
-
-  color: #2a3747;
-}
-
-h1 {
-  font-size: 40px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  -webkit-user-select: none;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
-.View {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  height: 100%;
-  width: 100%;
-
-  padding: 20px;
-
+.landing-page {
+  background: url('/assets/bg.png') no-repeat center center fixed;
   background-size: cover;
-
-  font-family: "Merriweather Sans", sans-serif;
-}
-
-.Banner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-
-  border-radius: 5px;
-
-  overflow: hidden;
-  background: white;
-  padding: 15px;
-
-  font-family: "Share Tech Mono", monospace;
-
-  border-bottom: var(--ui-shadow-border);
-  box-shadow: var(--ui-shadow);
-}
-
-.Message {
-  background: white;
-  padding: 30px;
-  border-bottom: var(--ui-shadow-border);
-  box-shadow: var(--ui-shadow);
-}
-
-.Message > .Title {
-  padding-bottom: 20px;
-}
-
-.Message > .Details {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.5em;
-}
-
-.NavButtons {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.NavButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 55px;
-  width: 150px;
-
-  background: #fa4141;
-
-  border-radius: 30px;
-
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-
-  text-transform: capitalize;
-
-  border-bottom: var(--ui-shadow-border);
-  box-shadow: var(--ui-shadow);
-}
-
-.WelcomeView {
-    background: url('/bg.png') left bottom;
-    background-size: cover;
-}
-
-/*register*/
-
-
-form {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #fff;
+  text-align: center;
   padding: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0; /* Remove border radius */
 }
 
-label {
-  display: block;
-  margin-top: 10px;
+/* Apply basic styles to the landing-page container */
+.landing-page {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Style the heading */
+.landing-page h1 {
+  text-align: center;
+  
+  font-size: 90px;
   font-weight: bold;
-  color: #555;
+  color: #333;
+  margin-bottom: 20px;
+  
+  
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="tel"],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 5px;
+.h1{
+  height: 150px;
+  background-color: blanchedalmond;
+}
+.p{
+  background-color: whitesmoke;
+  height: 50px;
+}
+/* Style the paragraph text */
+.landing-page p {
+  margin-top: 50px;
+  font-size: 26px;
+  color: #000000;
+  margin-bottom: 30px;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-input[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-input[type="submit"]:hover {
-  background-color: #45a049;
-}
-
-.checkbox-group {
-  margin-top: 5px;
-}
-
-.checkbox-group label {
+/* Style the "Get Started" button/link */
+.landing-page a {
+  margin-top: 80px;
   display: inline-block;
-  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-textarea {
-  height: 100px;
-}
-
-/* Justify alignment for form elements */
-form::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-label, input, select, textarea {
-  float: left;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-input[type="submit"] {
-  float: right;
+.landing-page a:hover {
+  background-color: #0056b3;
 }
 
 
-.your-class {
-    background-image: url('/assets/your-image.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  html, body {
-    margin: 0;
-    height: 100%;
-  }
-    
+.landing-page a {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.landing-page a:hover {
+  background: #0056b3;
+}
