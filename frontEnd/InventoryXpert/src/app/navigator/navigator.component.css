@@ -1,0 +1,37 @@
+.sidebar {
+  width: 350px;
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 30px;
+}
+
+.sidebar .menu-item {
+  padding: 10px;
+}
+
+.sidebar .menu-item.active {
+  background-color: #666;
+}
+
+.sidebar .menu-item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar .menu-item a:hover {
+  color: #ddd;
+}
+
+.sidebar .menu-item i {
+  margin-right: 10px;
+}
