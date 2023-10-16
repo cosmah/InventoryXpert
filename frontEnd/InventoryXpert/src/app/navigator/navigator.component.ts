@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigator.component.css']
 })
 export class NavigatorComponent {
+  isFolded = false;
 
+  toggleSidebar() {
+    this.isFolded = !this.isFolded;
+  }
 }

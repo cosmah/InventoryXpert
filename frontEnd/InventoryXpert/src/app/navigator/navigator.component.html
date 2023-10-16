@@ -1,3 +1,8 @@
+<div class="sidebar" [ngClass]="{'folded': isFolded}">
+  <!-- Your UI element here -->
+<button (click)="toggleSidebar()">Toggle Sidebar</button>
+
+  <!-- Your sidebar code here -->
 
   <div class="sidebar">
     <ul>
@@ -34,3 +39,6 @@
     </ul>
   </div>
   
+</div>
+
+
