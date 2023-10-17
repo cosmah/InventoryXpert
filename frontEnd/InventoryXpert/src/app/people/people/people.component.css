@@ -1,0 +1,25 @@
+.content {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .people-links {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .people-link {
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .people-link i {
+    margin-right: 5px;
+  }
+  
