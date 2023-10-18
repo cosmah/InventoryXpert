@@ -1,25 +1,47 @@
-.content {
-    width: 100%;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 2em;
-    color: #333;
-  }
-  
-  .people-links {
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+.customer-icon {
+    color: red;
+}
+
+.employee-icon {
+    color: blue;
+}
+
+.supplier-icon {
+    color: green;
+}
+
+.customer-icon {
+    font-size: 50px;
+}
+
+.employee-icon {
+    font-size: 50px;
+}
+
+.supplier-icon {
+    font-size: 50px;
+}
+
+/*componttnt div*/
+
+body {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
   }
   
-  .people-link {
-    text-decoration: none;
-    color: #333;
-    margin-bottom: 10px;
-  }
+  .content {
+    width: 25%;
+    height: 85vh;
+    margin-top:45px;
+    margin-left: 20px;
+}
+
   
-  .people-link i {
-    margin-right: 5px;
+  .views {
+    width: 75%;
+    background-color: antiquewhite;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-top:45px;
   }
-  

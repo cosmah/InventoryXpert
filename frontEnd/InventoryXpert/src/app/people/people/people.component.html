@@ -1,18 +1,28 @@
-<mat-card class="content">
-    <mat-card-title>People</mat-card-title>
-    <mat-nav-list class="people-links">
-      <a mat-list-item class="people-link" href="/people/customer_list">
-        <mat-icon matListIcon>person</mat-icon>
-        <span>Customers</span>
-      </a>
-      <a mat-list-item class="people-link" href="/people/salesman_list">
-        <mat-icon matListIcon>group</mat-icon>
-        <span>Employees</span>
-      </a>
-      <a mat-list-item class="people-link" href="/people/supplier_list">
-        <mat-icon matListIcon>local_shipping</mat-icon>
-        <span>Suppliers</span>
-      </a>
-    </mat-nav-list>
-  </mat-card>
+  <a routerLink="/dashboard"><<=Back to home</a>
+  <body>
+    <mat-card class="content">
+      <mat-card-title>People</mat-card-title>
+      <mat-nav-list class="people-links">
+        <a mat-list-item routerLink="/customer">
+          <i class="material-icons customer-icon">person</i>
+          <span>Customers</span>
+        </a>
+      
+        <a mat-list-item routerLink="/salesman">
+          <i class="material-icons employee-icon">work</i>
+          <span>Employees</span>
+        </a>
+      
+        <a mat-list-item routerLink="/suppliers">
+          <i class="material-icons supplier-icon">local_shipping</i>
+          <span>Suppliers</span>
+        </a>
+      </mat-nav-list>
+    </mat-card>
+  
+    <mat-card class="views">
+      <!-- This is where the content of the routes will be displayed -->
+      <router-outlet></router-outlet>
+    </mat-card>
+  </body>
   
