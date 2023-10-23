@@ -18,22 +18,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'add-customer', component: AddCustomerComponent},
-  { path: 'people', component: PeopleComponent, children: [
-    // Customer components
-    { path: 'customer', component: CustomerComponent },
-    { path: 'add-customer', component: AddCustomerComponent },
-    { path: 'update-customer', component: UpdateCustomerComponent },
-
-    // Salesman components
-    { path: 'salesman', component: SalesmanComponent },
-    { path: 'add-sr', component: AddSrComponent },
-    { path: 'update-sr', component: UpdateSrComponent },
-
-    // Supplier components
-    { path: 'suppliers', component: SuppliersComponent },
-    { path: 'add-supplier', component: AddSupplierComponent },
-    { path: 'update-supplier', component: UpdateSupplierComponent },
-  ]},
+  { path: 'people', component: PeopleComponent},
 
   //customer components
   { path: 'add-customer', component: AddCustomerComponent},

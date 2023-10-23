@@ -1,0 +1,58 @@
+<form name="registration" (ngSubmit)="validateForm()" method="post">
+    <h1>Product / Service Information</h1>
+    <div>
+      <label for="productType">Product Type:</label>
+      <select id="productType" name="productType" [(ngModel)]="productType">
+        <option value="inventory">Inventory</option>
+        <option value="non-inventory">Non-Inventory</option>
+        <option value="service">Service</option>
+        <option value="bundle">Bundle</option>
+      </select>
+    </div>
+    <div>
+      <label for="productName">Name:</label>
+      <input id="productName" type="text" name="productName" [(ngModel)]="productName">
+    </div>
+    <div>
+      <label for="category">Category:</label>
+      <select id="category" name="category" (change)="handleCategorySelection()" [(ngModel)]="selectedCategory">
+        <option [ngValue]="category._id" *ngFor="let category of categories">{{ category.categoryName }}</option>
+        <option value="newCategory">Add New Category</option>
+      </select>
+      <input id="newCategory" type="text" name="newCategory" style="display: none;" [(ngModel)]="newCategory">
+    </div>
+    <div class="row">
+      <label for="quantity">Quantity at Hand:</label>
+      <input id="quantity" type="number" name="quantity" [(ngModel)]="quantity">
+    </div>
+    <div class="row">
+      <label for="beginDate">Beginning Date:</label>
+      <input id="beginDate" type="date" name="beginDate" [(ngModel)]="beginDate">
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" [(ngModel)]="description"></textarea>
+    </div>
+    <div class="row">
+      <label for="costPrice">Cost Price:</label>
+      <input id="costPrice" type="number" name="costPrice" [(ngModel)]="costPrice">
+      <label for="sellingPrice">Selling Price:</label>
+      <input id="sellingPrice" type="number" name="sellingPrice" [(ngModel)]="sellingPrice">
+    </div>
+    <div>
+      <label for="memo">Memo:</label>
+      <textarea id="memo" name="memo" [(ngModel)]="memo"></textarea>
+    </div>
+    <div>
+      <label for="supplier">Supplier:</label>
+      <select id="supplier" name="supplier" (change)="handleSupplierSelection()" [(ngModel)]="selectedSupplier">
+        <option [ngValue]="supplier._id" *ngFor="let supplier of suppliers">{{ supplier.supplierName }}</option>
+        <option value="newSupplier">Add New Supplier</option>
+      </select>
+      <input id="newSupplier" type="text" name="newSupplier" style="display: none;" [(ngModel)]="newSupplier">
+    </div>
+    <div class="submit-btns">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+  

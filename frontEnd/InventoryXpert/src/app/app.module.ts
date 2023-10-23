@@ -22,6 +22,12 @@ import { AddSupplierComponent } from './people/sup/add-supplier/add-supplier.com
 import { SuppliersComponent } from './people/sup/suppliers/suppliers.component';
 import { UpdateSupplierComponent } from './people/sup/update-supplier/update-supplier.component';
 import { PeopleComponent } from './people/people/people.component';
+import { StockComponent } from './stock/stock.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { AddStockComponent } from './inventory/add-stock/add-stock.component';
+import { UpdateStockComponent } from './inventory/update-stock/update-stock.component';
+import { CreateRecieptComponent } from './transactions/create-reciept/create-reciept.component';
+import { AddpaymentComponent } from './transactions/addpayment/addpayment.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,13 @@ import { PeopleComponent } from './people/people/people.component';
     AddSupplierComponent,
     SuppliersComponent,
     UpdateSupplierComponent,
-    PeopleComponent
+    PeopleComponent,
+    StockComponent,
+    InventoryComponent,
+    AddStockComponent,
+    UpdateStockComponent,
+    CreateRecieptComponent,
+    AddpaymentComponent
   ],
   imports: [
     BrowserModule,
