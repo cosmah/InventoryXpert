@@ -12,6 +12,11 @@ import { UpdateSrComponent } from './people/sr/update-sr/update-sr.component';
 import { AddSupplierComponent } from './people/sup/add-supplier/add-supplier.component';
 import { SuppliersComponent } from './people/sup/suppliers/suppliers.component';
 import { UpdateSupplierComponent } from './people/sup/update-supplier/update-supplier.component';
+import { CreateRecieptComponent } from './transactions/create-reciept/create-reciept.component';
+import { AddpaymentComponent } from './transactions/addpayment/addpayment.component';
+import { AddStockComponent } from './inventory/add-stock/add-stock.component';
+import { StockComponent } from './inventory/stock/stock.component';
+import { UpdateStockComponent } from './inventory/update-stock/update-stock.component';
 
 
 const routes: Routes = [
@@ -34,6 +39,16 @@ const routes: Routes = [
   { path: 'add-supplier', component: AddSupplierComponent},
   { path: 'suppliers', component: SuppliersComponent},
   { path: 'update-supplier', component: UpdateSupplierComponent},
+
+  //RECIEPT
+  {path:'create-reciept', component: CreateRecieptComponent},
+  //payment
+  {path: 'addpayment', component: AddpaymentComponent},
+
+  //inventory
+  {path:'add-stock', component: AddStockComponent},
+  {path:'stock', component: StockComponent},
+  {path:'update-stock', component: UpdateStockComponent}
 
 ];
 

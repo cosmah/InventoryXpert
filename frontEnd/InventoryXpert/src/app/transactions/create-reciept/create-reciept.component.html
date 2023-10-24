@@ -1,1 +1,49 @@
-<p>create-reciept works!</p>
+<div class="receipt-form">
+    <h2>Receipt Form</h2>
+    <form (ngSubmit)="submitReceipt()">
+      <div class="form-group">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" [(ngModel)]="customerName" name="customerName" required>
+      </div>
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date" [(ngModel)]="date" name="date" required>
+      </div>
+      <div class="form-group">
+        <label for="terms">Terms (NET):</label>
+        <input type="text" id="terms" [(ngModel)]="terms" name="terms" required>
+      </div>
+      <div class="form-group">
+        <label for="salesRep">Sales Representative:</label>
+        <input type="text" id="salesRep" [(ngModel)]="salesRep" name="salesRep" required>
+      </div>
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders; let i = index" [ngClass]="{'last-row': i === orders.length - 1}">
+            <td><input type="text" [(ngModel)]="order.item" name="item{{i}}" required></td>
+            <td><input type="text" [(ngModel)]="order.description" name="description{{i}}"></td>
+            <td><input type="number" [(ngModel)]="order.quantity" name="quantity{{i}}" required></td>
+            <td><input type="number" [(ngModel)]="order.unitPrice" name="unitPrice{{i}}" required></td>
+            <td>{{order.quantity * order.unitPrice}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="button-group">
+        <button (click)="addOrderRow()">Add Row</button>
+      </div>
+      <div class="button-group">
+        <button type="submit">Send</button>
+        <button type="button" (click)="cancelReceipt()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  
