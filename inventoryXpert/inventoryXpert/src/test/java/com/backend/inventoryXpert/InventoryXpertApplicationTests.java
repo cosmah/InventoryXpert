@@ -1,10 +1,10 @@
-package com.inventoryxpert.backend;
+package com.backend.inventoryXpert;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class InventoryXpertApplicationTests {
 
 	@Test
 	void contextLoads() {

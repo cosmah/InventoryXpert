@@ -1,13 +1,13 @@
-package com.inventoryxpert.backend;
+package com.backend.inventoryXpert;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendApplication {
+public class InventoryXpertApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
+		SpringApplication.run(InventoryXpertApplication.class, args);
 	}
 
 }
