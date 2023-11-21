@@ -1,7 +1,7 @@
-package com.inventoryxpert.application.services;
+package com.inventoryxpert.application.sample.services;
 
-import com.inventoryxpert.application.data.SamplePerson;
-import com.inventoryxpert.application.data.SamplePersonRepository;
+import com.inventoryxpert.application.sample.data.SamplePerson;
+import com.inventoryxpert.application.sample.data.SamplePersonRepository;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

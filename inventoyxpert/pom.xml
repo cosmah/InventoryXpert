@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- Project from https://start.vaadin.com/project/419f3498-36bc-4b15-ba16-112831c5d347 -->
-    <groupId>com.inventoryxpert.application</groupId>
-    <artifactId>inventoryxpert</artifactId>
-    <name>inventoryxpert</name>
+    <!-- Project from https://start.vaadin.com/project/1b519e70-4926-45a3-b6cf-a470e481e408 -->
+    <groupId>com.example.application</groupId>
+    <artifactId>mysql</artifactId>
+    <name>mysql</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -59,17 +59,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
@@ -88,6 +77,40 @@
             <artifactId>vaadin-testbench-junit5</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.26</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>flow-server</artifactId>
+            <version>24.2.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -97,7 +120,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5300</jvmArguments>
+                    <jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5981</jvmArguments>
                     <wait>500</wait>
                     <maxAttempts>240</maxAttempts>
                 </configuration>

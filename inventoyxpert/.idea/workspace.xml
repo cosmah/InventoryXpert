@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/controller/InvoiceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Invoice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/repository/InvoiceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/service/InvoiceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/data/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/sample/data/AbstractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/data/SamplePerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/sample/data/SamplePerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/data/SamplePersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/sample/data/SamplePersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/data/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/sample/data/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/services/SamplePersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/sample/services/SamplePersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/services/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/sample/services/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/helloworld/HelloWorldView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/Invoicing/AddInvoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/PeopleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/PeopleView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2YTx5AuOGra02ozDB5qwvHhRc7g" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Administrator/Desktop/Software Engineering/cosmc/InventoryXpert/inventoyxpert",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="inventoryxpert" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="inventoryxpert" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="" />
+      <created>1700563185079</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700563185079</updated>
+    </task>
+    <servers />
   </component>
 </project>

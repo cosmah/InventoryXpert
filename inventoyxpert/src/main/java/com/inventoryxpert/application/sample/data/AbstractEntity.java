@@ -1,4 +1,4 @@
-package com.inventoryxpert.application.data;
+package com.inventoryxpert.application.sample.data;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

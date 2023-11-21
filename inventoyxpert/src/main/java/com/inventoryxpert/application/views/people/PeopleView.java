@@ -1,7 +1,7 @@
 package com.inventoryxpert.application.views.people;
 
-import com.inventoryxpert.application.data.SamplePerson;
-import com.inventoryxpert.application.services.SamplePersonService;
+import com.inventoryxpert.application.sample.data.SamplePerson;
+import com.inventoryxpert.application.sample.services.SamplePersonService;
 import com.inventoryxpert.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;

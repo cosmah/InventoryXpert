@@ -1,6 +1,6 @@
 package com.inventoryxpert.application;
 
-import com.inventoryxpert.application.data.SamplePersonRepository;
+import com.inventoryxpert.application.sample.data.SamplePersonRepository;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 import javax.sql.DataSource;
