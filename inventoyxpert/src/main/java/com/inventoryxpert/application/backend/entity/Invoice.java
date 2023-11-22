@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-
 @Entity
 public class Invoice {
 
@@ -24,6 +23,10 @@ public class Invoice {
 
     private String paymentTerms;
 
+    // No-arg constructor
+    public Invoice() {
+    }
+
     public Invoice(Long id, String invoiceNumber, Date invoiceDate, String customerName, String customerAddress, Double totalAmount, String paymentTerms) {
         this.id = id;
         this.invoiceNumber = invoiceNumber;
@@ -33,7 +36,6 @@ public class Invoice {
         this.totalAmount = totalAmount;
         this.paymentTerms = paymentTerms;
     }
-
 
     // getters and setters
 
@@ -92,7 +94,4 @@ public class Invoice {
     public void setPaymentTerms(String paymentTerms) {
         this.paymentTerms = paymentTerms;
     }
-
-
-
 }

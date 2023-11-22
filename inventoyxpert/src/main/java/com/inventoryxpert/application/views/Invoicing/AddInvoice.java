@@ -11,7 +11,11 @@ package com.inventoryxpert.application.views.Invoicing;
         import com.vaadin.flow.component.textfield.TextField;
         import com.vaadin.flow.router.PageTitle;
         import com.vaadin.flow.router.Route;
+        import org.apache.xmlbeans.impl.regex.ParseException;
         import org.springframework.beans.factory.annotation.Autowired;
+
+        import java.text.SimpleDateFormat;
+        import java.util.Date;
 
 @PageTitle("Add Invoice")
 @Route(value = "Invoice", layout = MainLayout.class)
@@ -35,15 +39,36 @@ public class AddInvoice extends HorizontalLayout {
         formLayout.add(invoiceNumberField, invoiceDateField, customerNameField, customerAddressField,totalAmountField,paymentTermsField, addButton);
 
         addButton.addClickListener(e -> {
-            Invoice invoice = new Invoice();
-            invoice.setInvoiceNumber(invoiceNumberField.getValue());
-            invoice.setInvoiceDate(invoiceDateField.getValue());
-            invoice.setCustomerName(customerNameField.getValue());
-            invoice.setCustomerAddress(customerAddressField.getValue());
-            invoice.setTotalAmount(totalAmountField.getValue());
-            invoice.setPaymentTerms(paymentTermsField.getValue());
+            // Convert the invoice date from String to Date
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // Use the format that matches your input
+            Date date = null;
+            try {
+                date = formatter.parse(invoiceDateField.getValue());
+            } catch (ParseException | java.text.ParseException ex) {
+                ex.printStackTrace();
+            }
 
-            invoiceService.save(invoice);
+            // Convert the total amount from String to double
+            Double totalAmount = null;
+            try {
+                totalAmount = Double.parseDouble(totalAmountField.getValue());
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+
+            // Call the save method with the appropriate parameters
+            Invoice invoice = invoiceService.save(
+                    null, invoiceNumberField.getValue(),
+                    date, customerNameField.getValue(),
+                    customerAddressField.getValue(), totalAmount,
+                    paymentTermsField.getValue());
+
+            if (invoice != null) {
+                Notification.show("Invoice added successfully!");
+            } else {
+                Notification.show("Failed to add invoice.");
+            }
+
             invoiceDateField.clear();
             invoiceNumberField.clear();
             customerAddressField.clear();
@@ -51,6 +76,8 @@ public class AddInvoice extends HorizontalLayout {
             totalAmountField.clear();
             paymentTermsField.clear();
         });
+
+        add(formLayout);
 
     }
 }

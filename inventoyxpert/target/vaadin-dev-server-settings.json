@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "E:/SWE/InventoryXpert/inventoyxpert/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "E:/SWE/InventoryXpert/inventoyxpert/./frontend/generated/jar-resources",
+  "staticOutput": "E:/SWE/InventoryXpert/inventoyxpert/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "E:\\SWE\\InventoryXpert\\inventoyxpert\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "E:\\SWE\\InventoryXpert\\inventoyxpert\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "E:/SWE/InventoryXpert/inventoyxpert/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "E:/SWE/InventoryXpert/inventoyxpert/src/main/dev-bundle/config",
+  "jarResourcesFolder": "E:/SWE/InventoryXpert/inventoyxpert/./frontend/generated/jar-resources",
+  "themeName": "inventoryxpert",
+  "clientServiceWorkerSource": "E:\\SWE\\InventoryXpert\\inventoyxpert\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
