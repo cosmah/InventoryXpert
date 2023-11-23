@@ -7,11 +7,13 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.pro.licensechecker.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
@@ -22,6 +24,9 @@ import java.util.Date;
 public class AddInvoice extends HorizontalLayout {
 
     private final InvoiceService invoiceService;
+
+//    // Define a new Grid instance
+//    private Grid<Product> productGrid = new Grid<>(Product.class);
 
     @Autowired
     public AddInvoice(InvoiceService invoiceService) {

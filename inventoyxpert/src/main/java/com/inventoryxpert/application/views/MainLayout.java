@@ -2,8 +2,10 @@ package com.inventoryxpert.application.views;
 
 import com.inventoryxpert.application.views.about.AboutView;
 import com.inventoryxpert.application.views.dashboard.DashboardView;
+import com.inventoryxpert.application.backend.entity.Product;
 import com.inventoryxpert.application.views.Invoicing.AddInvoice;
 import com.inventoryxpert.application.views.people.PeopleView;
+import com.inventoryxpert.application.views.products.ProductView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -57,6 +59,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Add invoice", AddInvoice.class, LineAwesomeIcon.GLOBE_SOLID.create()));
         nav.addItem(new SideNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem("people", PeopleView.class, LineAwesomeIcon.PEOPLE_CARRY_SOLID.create()));
+        nav.addItem(new SideNavItem("Add product", ProductView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
 
         return nav;
     }

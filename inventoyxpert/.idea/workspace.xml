@@ -5,9 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/ProductView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/Invoicing/AddInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/Invoicing/AddInvoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/controller/InvoiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/controller/InvoiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/entity/Invoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/entity/Invoice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/repository/InvoiceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/repository/InvoiceRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/service/InvoiceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/service/InvoiceService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/AbstractEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/AbstractEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePerson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePerson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePersonRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePersonRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/services/SamplePersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/services/SamplePersonService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/Invoicing/AddInvoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/Invoicing/AddInvoice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/MainLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/MainLayout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/about/AboutView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/about/AboutView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/dashboard/DashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/dashboard/DashboardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/dashboard/ServiceHealth$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/dashboard/ServiceHealth$Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/dashboard/ServiceHealth.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/dashboard/ServiceHealth.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/people/PeopleView$Filters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/people/PeopleView$Filters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/people/PeopleView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/people/PeopleView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,17 +68,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "E:/SWE/InventoryXpert/inventoyxpert",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/SWE/InventoryXpert/inventoyxpert&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="inventoryxpert" />
