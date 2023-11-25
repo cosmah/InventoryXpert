@@ -18,7 +18,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @PageTitle("Add Product")
-@Route(value = "Invoice", layout = MainLayout.class)
+@Route(value = "Product", layout = MainLayout.class)
 public class ProductView extends VerticalLayout{
 
     private final ProductService productService;
@@ -34,22 +34,24 @@ public class ProductView extends VerticalLayout{
         TextField descriptionField = new TextField("Product Description");
         TextField quantityField = new TextField("Quantity");
         TextField priceField = new TextField("Price");
+        TextField resalePriceField = new TextField("Resale price");
         TextField supplierField = new TextField("Supplier");
         DatePicker startingDateField = new DatePicker("Starting Date");
 
         Button button = new Button("Add Product");
         formLayout.add(nameField, codeField,descriptionField,
-        quantityField,priceField,priceField,supplierField,startingDateField);
+        quantityField,priceField, resalePriceField,supplierField,startingDateField, button);
 
         button.addClickListener(e -> {
             Date date = java.sql.Date.valueOf(startingDateField.getValue());
 
             Product product = productService.save(null,
-                nameField.getValue(), codeField.getValue(), descriptionField.getValue(),
-                quantityField.getValue(),
-                priceField.getValue(),
+                    nameField.getValue(), codeField.getValue(), descriptionField.getValue(),
+                    priceField.getValue(), // corrected
+                    resalePriceField.getValue(),
+                    quantityField.getValue(), // corrected
                     date
-                , supplierField.getValue());
+                    , supplierField.getValue());
 
             if (product != null) {
                 Notification.show("Product Added");
@@ -62,10 +64,12 @@ public class ProductView extends VerticalLayout{
             descriptionField.clear();
             quantityField.clear();
             priceField.clear();
+            resalePriceField.clear();
             supplierField.clear();
             startingDateField.clear();
-            
+
         });
+
 
         add(formLayout);
         

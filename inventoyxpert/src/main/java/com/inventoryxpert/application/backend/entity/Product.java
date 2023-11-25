@@ -16,20 +16,22 @@ public class Product {
     private String productName;
     private String productCode;
     private String productDescription;
-    private String price;
-    private String quantity;
+    private Double price;
+    private Integer quantity;
     private Date startingDate;
     private String supplier;
+    private Double resalePrice;
 
     public Product(){
     }
 
-    public Product(Long id, String productName, String productCode, String productDescription, String price, String quantity, Date startingDate, String supplier) {
+    public Product(Long id, String productName, String productCode, String productDescription, Double price,Double resalePrice, Integer quantity, Date startingDate, String supplier) {
         this.id = id;
         this.productName = productName;
         this.productCode = productCode;
         this.productDescription = productDescription;
         this.price = price;
+        this.resalePrice = resalePrice;
         this.quantity = quantity;
         this.startingDate = startingDate;
         this.supplier = supplier;
@@ -67,19 +69,19 @@ public class Product {
         this.productDescription = productDescription;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -97,5 +99,13 @@ public class Product {
 
     public void setSupplier(String supplier) {
         this.supplier = supplier;
+    }
+
+    public Double getResalePrice(Double aDouble) {
+        return resalePrice;
+    }
+
+    public void setResalePrice(Double resalePrice) {
+        this.resalePrice = resalePrice;
     }
 }

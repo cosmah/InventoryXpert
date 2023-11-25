@@ -22,18 +22,21 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product save(Long id, String productName, String productCode, String productDescription, String price, String quantity, Date startingDate, String supplier){
+    public Product save(Long id, String productName, String productCode,
+                        String productDescription, String price,String resalePrice, String quantity, Date startingDate, String supplier){
         Product product = new Product();
         product.setId(id);
         product.setProductCode(productCode);
         product.setProductName(productName);
         product.setProductDescription(productDescription);
-        product.setPrice(price);
+        product.setPrice(Double.valueOf(price)); // convert string to double
+        product.setResalePrice(Double.valueOf(resalePrice)); // corrected here
         product.setStartingDate(startingDate);
-        product.setQuantity(quantity);
+        product.setQuantity(Integer.valueOf(quantity)); // convert string to integer
         product.setSupplier(supplier);
-        
-        return productRepository.save(product);
 
+        return productRepository.save(product);
     }
+
+
 }
