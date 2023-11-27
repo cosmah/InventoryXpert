@@ -22,6 +22,14 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public List<Product> findAll(String stringFilter) {
+        if (stringFilter == null || stringFilter.isEmpty()) {
+            return productRepository.findAll();
+        } else {
+            return productRepository.search(stringFilter);
+        }
+    }
+
     public Product save(Long id, String productName, String productCode,
                         String productDescription, String price,String resalePrice, String quantity, Date startingDate, String supplier){
         Product product = new Product();
