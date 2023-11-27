@@ -101,7 +101,7 @@ public class Product {
         this.supplier = supplier;
     }
 
-    public Double getResalePrice(Double aDouble) {
+    public Double getResalePrice() {
         return resalePrice;
     }
 
