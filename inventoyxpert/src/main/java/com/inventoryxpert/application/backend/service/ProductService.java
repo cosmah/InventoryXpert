@@ -7,10 +7,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Random;
+import java.util.logging.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ProductService {
 
+    private static final Logger LOGGER = Logger.getLogger(ProductService.class
+            .getName());
     private final ProductRepository productRepository;
 
     @Autowired
@@ -28,6 +39,28 @@ public class ProductService {
         } else {
             return productRepository.search(stringFilter);
         }
+    }
+
+    public long count() {
+
+        return productRepository.count();
+    }
+
+    public void delete(Product product) {
+        if (product == null) {
+            LOGGER.log(Level.SEVERE, "Product to delete is null.");
+            return;
+        }
+        productRepository.delete(product);
+    }
+
+    public void save(Product product) {
+        if (product == null) {
+            LOGGER.log(Level.SEVERE,
+                    "Product is null. Are you sure you have connected your form to the application?");
+            return;
+        }
+        productRepository.save(product);
     }
 
     public Product save(Long id, String productName, String productCode,

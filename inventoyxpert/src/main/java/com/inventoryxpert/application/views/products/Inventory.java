@@ -16,14 +16,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @PageTitle("Products")
-@CssImport("./themes/inventoryxpert/styles.css")
+@CssImport("./themes/inventoryxpert/views/inventory.css")
 @Route(value = "inventory", layout = MainLayout.class)
 public class Inventory extends VerticalLayout {
 
     private Grid<Product> grid = new Grid<>(Product.class);
     private final ProductService productService;
     private TextField filterText = new TextField();
-    private ActionsForm actionsForm;
+    private ActionsForm form;
 
     @Autowired
     public Inventory(ProductService productService) {
@@ -34,18 +34,42 @@ public class Inventory extends VerticalLayout {
         configureFilter();
         configureGrid();
 
-        actionsForm = new ActionsForm();
 
-        Div content = new Div(grid, actionsForm);
+        form = new ActionsForm(productService.findAll());
+        Div content = new Div(grid, form);
         content.addClassName("content");
         content.setSizeFull();
+        add(filterText, content);
 
-        add(filterText,content);
+        form = new ActionsForm(productService.findAll());
+        form.addListener(ActionsForm.SaveEvent.class, this::saveProduct);
+        form.addListener(ActionsForm.DeleteEvent.class, this::deleteProduct);
+        form.addListener(ActionsForm.CloseEvent.class, e -> closeEditor());
 
         // Fetch data from ProductService and set it in the grid
         populateGrid();
+
+
+
         updateList();
+        closeEditor();
+
     }
+
+    private void deleteProduct(ActionsForm.DeleteEvent event) {
+        productService.delete(event.getProduct());
+        updateList();
+        closeEditor();
+
+    }
+
+    //saveContact method
+    private void saveProduct(ActionsForm.SaveEvent event) {
+        productService.save(event.getProduct());
+        updateList();
+        closeEditor();
+    }
+
 
     private void updateList() {
         List<Product> products = productService.findAll(filterText.getValue());
@@ -65,6 +89,26 @@ public class Inventory extends VerticalLayout {
 
         grid.setColumns("productCode", "productName", "quantity",
                 "price", "resalePrice", "supplier");
+
+        grid.asSingleSelect().addValueChangeListener(event ->
+                editProduct(event.getValue()));
+    }
+
+    private void editProduct(Product product) {
+        if (product == null) {
+            closeEditor();
+        } else {
+            form.setProduct(product);
+            form.setVisible(true);
+            addClassName("editing");
+
+        }
+    }
+
+    private void closeEditor() {
+        form.setProduct(null);
+        form.setVisible(false);
+        removeClassName("editing");
     }
 
     private void populateGrid() {

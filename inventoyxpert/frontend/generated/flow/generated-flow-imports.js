@@ -4,6 +4,9 @@ import { css, unsafeCSS, registerStyles } from '@vaadin/vaadin-themable-mixin';
 import $cssFromFile_0 from 'Frontend/themes/inventoryxpert/styles.css?inline';
 
 injectGlobalCss($cssFromFile_0.toString(), 'CSSImport end', document);
+import $cssFromFile_1 from 'Frontend/themes/inventoryxpert/views/inventory.css?inline';
+
+injectGlobalCss($cssFromFile_1.toString(), 'CSSImport end', document);
 import '@vaadin/polymer-legacy-adapter/style-modules.js';
 import '@vaadin/horizontal-layout/theme/lumo/vaadin-horizontal-layout.js';
 import '@vaadin/app-layout/theme/lumo/vaadin-app-layout.js';

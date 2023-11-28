@@ -263,10 +263,12 @@
   "Frontend/generated/jar-resources/vaadin-map/mapConnector.js",
   "Frontend/generated/jar-resources/vaadin-time-picker/timepickerConnector.js",
   "Frontend/generated/jar-resources/virtualListConnector.js",
-  "Frontend/themes/inventoryxpert/styles.css"
+  "Frontend/themes/inventoryxpert/styles.css",
+  "Frontend/themes/inventoryxpert/views/inventory.css"
  ],
  "frontendHashes": {
-  "themes/inventoryxpert/styles.css": "20b402385957fd04ccee25e5b3cb7155fa7c53f4879bfea369486d818e3a85a4",
+  "themes/inventoryxpert/styles.css": "54ea918c69b7d9bbca50a1624fff9ea5964f0ed2eb62fcdb3c728270c6e36e1e",
+  "themes/inventoryxpert/views/inventory.css": "f7579064cc2067a8bbfda3b60a94ec5585f15a3b8de17ec2ef41661cbf4ebc2d",
   "buttonFunctions.js": "c852123f9b2c44eb75e555119d3e05a7dbe78b91d0ab616feb9df1654474707d",
   "comboBoxConnector.js": "1d004c3dae9c76f8bcc68678abe1b8f7bdc8b456f5c9c4c7f190df8ed25d66cd",
   "contextMenuConnector.js": "8960e00884b9a8b62e24be63e03fe7045dcb9b6844a8a238eb4619d5595e2cfc",
@@ -293,7 +295,7 @@
   "inventoryxpert": "{\n  \"lumoImports\" : [ \"typography\", \"color\", \"spacing\", \"badge\", \"utility\" ]\n}"
  },
  "entryScripts": [
-  "VAADIN/build/indexhtml-34efa00b.js"
+  "VAADIN/build/indexhtml-cd3ac634.js"
  ],
  "webComponents": [],
  "cvdlModules": {
@@ -328,6 +330,6 @@
  },
  "packageJsonHash": "f26060c61864ae8158b2c04b81354ad344ba63fc462797e399bc661dfcfc2fa4",
  "indexHtmlGenerated": [
-  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-34efa00b.js\"></script>"
+  "  <script type=\"module\" crossorigin src=\"./VAADIN/build/indexhtml-cd3ac634.js\"></script>"
  ]
 }
