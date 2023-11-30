@@ -5,79 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/themes/inventoryxpert/views/inventory.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/generated/flow/generated-flow-imports.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/generated/flow/generated-flow-imports.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/themes/inventoryxpert/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/themes/inventoryxpert/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/config/stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dev-bundle/config/stats.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/generated-flow-imports-ae6a6cec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/indexhtml-34efa00b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-accordion-eed3b794-843f4b18.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-accordion-heading-c0acdd6d-c3bff44b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-accordion-panel-616e55d6-5d80d56d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-app-layout-e56de2e9-5a6f61b0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-avatar-7599297d-d9812175.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-big-decimal-field-e51def24-82666a5c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-board-828ebdea-0c18ecd1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-board-row-c70d0c55-1f641904.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-button-2511ad84-0e932411.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-chart-5192dc15-8979d85c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-4e68df64-1edb8e84.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-checkbox-group-a7c65bf2-bf8971b1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-combo-box-96451ddd-019e16ed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-confirm-dialog-4d718829-0abe1031.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-cookie-consent-46c09f8b-f33245de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-crud-8d161a22-e1f83132.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-custom-field-42c85b9e-00b64536.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-date-picker-f2001167-14e6d527.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-date-time-picker-c8c047a7-574f5fd3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-details-bf336660-e172b31b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-details-summary-351a1448-935a99d5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-dialog-53253a08-be53778b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-email-field-d7a35f04-3c8c6abf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-form-layout-47744b1d-59fea0a2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-grid-0a4791c2-be91d0f6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-grid-pro-ff415555-4c517907.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-horizontal-layout-3193943f-f3ff42d5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-icon-601f36ed-0d04b83a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-integer-field-85078932-ef980d57.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-list-box-d7a8433b-89f208eb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-login-form-638996c6-840df19f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-login-overlay-f8a5db8a-c3a4d789.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-map-d40a0116-1f1ed676.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-menu-bar-3f5ab096-3977c973.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-message-input-996ac37c-286fdd66.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-message-list-70a435ba-88a1be0d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-multi-select-combo-box-a3373557-2960f6f1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-notification-bd6eb776-1d6a16cd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-number-field-cb3ee8b2-a5bfbd27.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-password-field-d289cb18-47722083.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-progress-bar-309ecf1f-d84309c1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-radio-group-88b5afd8-118ca3a6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-rich-text-editor-8cd892f2-3dc96b79.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-scroller-35e68818-e937f983.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-select-df6e9947-ba3be48b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-ba80d91d-0db9a378.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-side-nav-item-34918f92-85c25b5d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-split-layout-80c92131-9a99fbb3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-spreadsheet-59d8c5ef-3052ac93.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-tab-aaf32809-ac8b83fb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-tabs-d9a5e24e-9dbceb3b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-tabsheet-dd99ed9a-56b9b46a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-text-area-83627ebc-d1f4d167.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-text-field-0b3db014-4a31d12d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-time-picker-715ec415-3ae4919d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-upload-d3c162ed-08b14442.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-vertical-layout-ad4174c4-629fd24f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/VAADIN/build/vaadin-virtual-list-96896203-96736c1c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/dev-bundle/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dev-bundle/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/generated/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/generated/theme-inventoryxpert.components.generated.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/generated/theme-inventoryxpert.generated.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/generated/theme-inventoryxpert.global.generated.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/generated/vite-devmode.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/ActionsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/ActionsForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/MainLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/MainLayout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$ActionsFormEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$ActionsFormEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$CloseEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$CloseEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$DeleteEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$DeleteEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$SaveEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$SaveEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/Inventory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/vaadin-dev-server-settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/vaadin-dev-server-settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

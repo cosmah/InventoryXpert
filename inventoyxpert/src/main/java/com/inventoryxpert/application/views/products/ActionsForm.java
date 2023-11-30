@@ -1,5 +1,4 @@
 package com.inventoryxpert.application.views.products;
-
 import com.inventoryxpert.application.backend.entity.Product;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
@@ -11,43 +10,62 @@ import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.ValidationException;
+import com.vaadin.flow.data.converter.LocalDateToDateConverter;
+import com.vaadin.flow.data.converter.StringToDoubleConverter;
+import com.vaadin.flow.data.converter.StringToIntegerConverter;
 import com.vaadin.flow.shared.Registration;
-
 import java.util.List;
 
+
 public class ActionsForm extends FormLayout {
-
         private Product product;
+        private TextField nameField = new TextField("Product Name");
+        private TextField codeField = new TextField("Product Code");
+        private TextField descriptionField = new TextField("Product Description");
+        private TextField quantityField = new TextField("Quantity");
+        private TextField priceField = new TextField("Price");
+        private TextField resalePriceField = new TextField("Resale price");
+        private TextField supplierField = new TextField("Supplier");
+        private DatePicker startingDateField = new DatePicker("Starting Date");
+        private Button save = new Button("Save");
+        private Button delete = new Button("Delete");
+        private Button close = new Button("Cancel");
+        private Binder<Product> binder = new Binder<>(Product.class);
+        public ActionsForm(List<Product> all) {
+                addClassName("contact-form");
 
-        TextField nameField = new TextField("Product Name");
-        TextField codeField = new TextField("Product Code");
-        TextField descriptionField = new TextField("Product Description");
-        TextField quantityField = new TextField("Quantity");
-        TextField priceField = new TextField("Price");
-        TextField resalePriceField = new TextField("Resale price");
-        TextField supplierField = new TextField("Supplier");
-        DatePicker startingDateField = new DatePicker("Starting Date");
+                //binder.bindInstanceFields(this);
 
-        Button save = new Button("Save");
-        Button delete = new Button("Delete");
-        Button close = new Button("Cancel");
+                // Add the explicit binding code here:
 
-        //DATA BINDER
-        private Binder<Product> binder = new BeanValidationBinder<>(Product.class);
-
-        public ActionsForm(List<Product> all){
-            addClassName("contact-form");
-
-            binder.bindInstanceFields(this);
-            add(nameField, codeField,descriptionField, quantityField,priceField,
-                    resalePriceField,supplierField,startingDateField,
-                    createButtonsLayout());
+                binder.forField(nameField).asRequired().bind(Product::getProductName, Product::setProductName);
+                binder.forField(codeField).asRequired().bind(Product::getProductCode, Product::setProductCode);
+                binder.forField(descriptionField).bind(Product::getProductDescription, Product::setProductDescription);
+                binder.forField(quantityField)
+                        .asRequired()
+                        .withConverter(
+                                new StringToIntegerConverter("Must enter a number"))
+                        .bind(Product::getQuantity, Product::setQuantity);
+                binder.forField(priceField)
+                        .asRequired()
+                        .withConverter(
+                                new StringToDoubleConverter("Must enter a number"))
+                        .bind(Product::getPrice, Product::setPrice);
+                binder.forField(resalePriceField)
+                        .withConverter(
+                                new StringToDoubleConverter("Must enter a number"))
+                        .bind(Product::getResalePrice, Product::setResalePrice);
+                binder.forField(supplierField).bind(Product::getSupplier, Product::setSupplier);
+                binder.forField(startingDateField)
+                        .asRequired()
+                        .withConverter(
+                                new LocalDateToDateConverter())
+                        .bind(Product::getStartingDate, Product::setStartingDate);
+                add(nameField, codeField, descriptionField, quantityField, priceField,
+                        resalePriceField, supplierField, startingDateField,
+                        createButtonsLayout());
         }
-
-        //saving, deleting, and closing the form
         private Component createButtonsLayout() {
                 save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
                 delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
@@ -55,30 +73,20 @@ public class ActionsForm extends FormLayout {
                 save.addClickShortcut(Key.ENTER);
                 close.addClickShortcut(Key.ESCAPE);
 
-                // The save button calls the validateAndSave method
                 save.addClickListener(event -> validateAndSave());
-                // The delete button fires a delete event and passes the currently-edited contact
-                delete.addClickListener(event -> fireEvent(new DeleteEvent(this, binder.getBean())));
-                // The cancel button fires a close event.
+                delete.addClickListener(event -> fireEvent(new DeleteEvent(this, product)));
                 close.addClickListener(event -> fireEvent(new CloseEvent(this)));
-                // Validates the form every time it changes. If it is invalid, it disables the save button to
-                // avoid invalid submissions
+
                 binder.addStatusChangeListener(e -> save.setEnabled(binder.isValid()));
 
                 return new HorizontalLayout(save, delete, close);
         }
-
-
         public void setProduct(Product product) {
                 this.product = product;
-                binder.readBean(product);
-        }
-
-
-        // Events
+                binder.setBean(product);
+            }
         public static abstract class ActionsFormEvent extends ComponentEvent<ActionsForm> {
                 private Product product;
-
                 protected ActionsFormEvent(ActionsForm source, Product product) {
                         super(source, false);
                         this.product = product;
@@ -102,24 +110,16 @@ public class ActionsForm extends FormLayout {
                         super(source, null);
                 }
         }
-        // The addListener method uses Vaadin’s event bus to register the custom event types
         public <T extends ComponentEvent<?>> Registration addListener(Class<T> eventType,
                                                                       ComponentEventListener<T> listener) {
                 return getEventBus().addListener(eventType, listener);
         }
-
-
-
         private void validateAndSave() {
                 try {
-                        //⑤ Write the form contents back to the original contact.
                         binder.writeBean(product);
-                        //⑥ Fire a save event so the parent component can handle the action.
                         fireEvent(new SaveEvent(this, product));
-                } catch (ValidationException e) {
+                } catch (Exception e) {
                         e.printStackTrace();
                 }
         }
-
-
 }

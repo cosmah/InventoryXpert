@@ -108,4 +108,20 @@ public class Product {
     public void setResalePrice(Double resalePrice) {
         this.resalePrice = resalePrice;
     }
+
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productCode='" + productCode + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", startingDate=" + startingDate +
+                ", supplier='" + supplier + '\'' +
+                ", resalePrice=" + resalePrice +
+                '}';
+    }
 }

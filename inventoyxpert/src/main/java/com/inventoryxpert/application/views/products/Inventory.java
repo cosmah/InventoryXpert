@@ -5,9 +5,13 @@ import com.inventoryxpert.application.backend.service.ProductService;
 import com.inventoryxpert.application.views.MainLayout;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.Binder.BindingBuilder;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -23,6 +27,7 @@ public class Inventory extends VerticalLayout {
     private Grid<Product> grid = new Grid<>(Product.class);
     private final ProductService productService;
     private TextField filterText = new TextField();
+    //private Binder<Product> binder = new Binder<>(Product.class);
     private ActionsForm form;
 
     @Autowired
@@ -31,17 +36,14 @@ public class Inventory extends VerticalLayout {
 
         addClassNames("listView");
         setSizeFull();
+
         configureFilter();
         configureGrid();
 
-
+        // Create the ActionsForm instance
         form = new ActionsForm(productService.findAll());
-        Div content = new Div(grid, form);
-        content.addClassName("content");
-        content.setSizeFull();
-        add(filterText, content);
 
-        form = new ActionsForm(productService.findAll());
+        // Add event listeners to the ActionsForm
         form.addListener(ActionsForm.SaveEvent.class, this::saveProduct);
         form.addListener(ActionsForm.DeleteEvent.class, this::deleteProduct);
         form.addListener(ActionsForm.CloseEvent.class, e -> closeEditor());
@@ -49,11 +51,14 @@ public class Inventory extends VerticalLayout {
         // Fetch data from ProductService and set it in the grid
         populateGrid();
 
-
+        // Add the form and grid to the layout
+        Div content = new Div(grid, form);
+        content.addClassName("content");
+        content.setSizeFull();
+        add(filterText, content);
 
         updateList();
         closeEditor();
-
     }
 
     private void deleteProduct(ActionsForm.DeleteEvent event) {
