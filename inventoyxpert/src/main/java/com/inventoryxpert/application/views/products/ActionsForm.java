@@ -1,4 +1,5 @@
 package com.inventoryxpert.application.views.products;
+
 import com.inventoryxpert.application.backend.entity.Product;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
@@ -17,7 +18,6 @@ import com.vaadin.flow.data.converter.StringToIntegerConverter;
 import com.vaadin.flow.shared.Registration;
 import java.util.List;
 
-
 public class ActionsForm extends FormLayout {
         private Product product;
         private TextField nameField = new TextField("Product Name");
@@ -32,40 +32,62 @@ public class ActionsForm extends FormLayout {
         private Button delete = new Button("Delete");
         private Button close = new Button("Cancel");
         private Binder<Product> binder = new Binder<>(Product.class);
+
         public ActionsForm(List<Product> all) {
                 addClassName("contact-form");
 
-                //binder.bindInstanceFields(this);
+                // binder.bindInstanceFields(this);
 
                 // Add the explicit binding code here:
 
-                binder.forField(nameField).asRequired().bind(Product::getProductName, Product::setProductName);
-                binder.forField(codeField).asRequired().bind(Product::getProductCode, Product::setProductCode);
-                binder.forField(descriptionField).bind(Product::getProductDescription, Product::setProductDescription);
-                binder.forField(quantityField)
-                        .asRequired()
-                        .withConverter(
-                                new StringToIntegerConverter("Must enter a number"))
-                        .bind(Product::getQuantity, Product::setQuantity);
+                binder.forField(nameField)
+                                .withNullRepresentation("")
+                                .asRequired()
+                                .bind(Product::getProductName, Product::setProductName);
+
+                binder.forField(codeField)
+                                .withNullRepresentation("")
+                                .asRequired()
+                                .bind(Product::getProductCode, Product::setProductCode);
+
+                binder.forField(descriptionField)
+                                .withNullRepresentation("")
+                                .bind(Product::getProductDescription, Product::setProductDescription);
+
                 binder.forField(priceField)
-                        .asRequired()
-                        .withConverter(
-                                new StringToDoubleConverter("Must enter a number"))
-                        .bind(Product::getPrice, Product::setPrice);
+                                .withNullRepresentation("")
+                                .asRequired()
+                                .withConverter(
+                                                new StringToDoubleConverter("Must enter a number"))
+                                .bind(Product::getPrice, Product::setPrice);
+
+                binder.forField(quantityField)
+                                .withNullRepresentation("")
+                                .asRequired()
+                                .withConverter(
+                                                new StringToIntegerConverter("Must enter a number"))
+                                .bind(Product::getQuantity, Product::setQuantity);
+
                 binder.forField(resalePriceField)
-                        .withConverter(
-                                new StringToDoubleConverter("Must enter a number"))
-                        .bind(Product::getResalePrice, Product::setResalePrice);
-                binder.forField(supplierField).bind(Product::getSupplier, Product::setSupplier);
+                                .withNullRepresentation("")
+                                .withConverter(
+                                                new StringToDoubleConverter("Must enter a number"))
+                                .bind(Product::getResalePrice, Product::setResalePrice);
+
+                binder.forField(supplierField)
+                                .withNullRepresentation("")
+                                .bind(Product::getSupplier, Product::setSupplier);
+
                 binder.forField(startingDateField)
-                        .asRequired()
-                        .withConverter(
-                                new LocalDateToDateConverter())
-                        .bind(Product::getStartingDate, Product::setStartingDate);
+                                .withNullRepresentation(null)
+                                .asRequired()
+                                .withConverter(new LocalDateToDateConverter())
+                                .bind(Product::getStartingDate, Product::setStartingDate);
                 add(nameField, codeField, descriptionField, quantityField, priceField,
-                        resalePriceField, supplierField, startingDateField,
-                        createButtonsLayout());
+                                resalePriceField, supplierField, startingDateField,
+                                createButtonsLayout());
         }
+
         private Component createButtonsLayout() {
                 save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
                 delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
@@ -81,39 +103,48 @@ public class ActionsForm extends FormLayout {
 
                 return new HorizontalLayout(save, delete, close);
         }
+
         public void setProduct(Product product) {
                 this.product = product;
                 binder.setBean(product);
-            }
+        }
+
         public static abstract class ActionsFormEvent extends ComponentEvent<ActionsForm> {
                 private Product product;
+
                 protected ActionsFormEvent(ActionsForm source, Product product) {
                         super(source, false);
                         this.product = product;
                 }
+
                 public Product getProduct() {
                         return product;
                 }
         }
+
         public static class SaveEvent extends ActionsFormEvent {
                 SaveEvent(ActionsForm source, Product product) {
                         super(source, product);
                 }
         }
+
         public static class DeleteEvent extends ActionsFormEvent {
                 DeleteEvent(ActionsForm source, Product product) {
                         super(source, product);
                 }
         }
+
         public static class CloseEvent extends ActionsFormEvent {
                 CloseEvent(ActionsForm source) {
                         super(source, null);
                 }
         }
+
         public <T extends ComponentEvent<?>> Registration addListener(Class<T> eventType,
-                                                                      ComponentEventListener<T> listener) {
+                        ComponentEventListener<T> listener) {
                 return getEventBus().addListener(eventType, listener);
         }
+
         private void validateAndSave() {
                 try {
                         binder.writeBean(product);
