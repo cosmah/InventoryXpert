@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/generated/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/generated/theme-inventoryxpert.components.generated.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/generated/theme-inventoryxpert.generated.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/generated/theme-inventoryxpert.global.generated.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/generated/vite-devmode.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/ActionsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/ActionsForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/products/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$ActionsFormEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$ActionsFormEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$CloseEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$CloseEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$DeleteEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$DeleteEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$SaveEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm$SaveEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ActionsForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/vaadin-dev-server-settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/vaadin-dev-server-settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
