@@ -1,5 +1,6 @@
 package com.inventoryxpert.application.backend.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.inventoryxpert.application.backend.repository.CustomerRepository;
 
 
 @Service
-public class CustomerService {
+public class CustomerService implements Serializable{
 
     private final CustomerRepository customerRepository;
 
