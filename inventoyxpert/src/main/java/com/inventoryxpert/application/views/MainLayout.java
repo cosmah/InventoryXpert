@@ -5,6 +5,7 @@ import com.inventoryxpert.application.views.dashboard.DashboardView;
 import com.inventoryxpert.application.views.Invoicing.AddInvoice;
 import com.inventoryxpert.application.views.people.PeopleView;
 import com.inventoryxpert.application.views.people.customers.AddCustomer;
+import com.inventoryxpert.application.views.people.customers.Customers;
 import com.inventoryxpert.application.views.products.Inventory;
 import com.inventoryxpert.application.views.products.ProductView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -65,7 +66,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Add product", ProductView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
         nav.addItem(new SideNavItem("Products List", Inventory.class, LineAwesomeIcon.LIST_ALT.create()));
         nav.addItem(new SideNavItem("Add Customer", AddCustomer.class, LineAwesomeIcon.USER_SOLID.create()));
-
+        nav.addItem(new SideNavItem("Customers list", Customers.class, LineAwesomeIcon.LIST_ALT.create()));
 
 
         return nav;

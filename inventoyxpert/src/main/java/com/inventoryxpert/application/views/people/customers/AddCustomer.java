@@ -1,7 +1,6 @@
 package com.inventoryxpert.application.views.people.customers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.inventoryxpert.application.backend.entity.Customer;
 import com.inventoryxpert.application.backend.service.CustomerService;
 import com.inventoryxpert.application.views.MainLayout;
