@@ -7,6 +7,7 @@ import com.inventoryxpert.application.backend.service.CustomerService;
 import com.inventoryxpert.application.views.MainLayout;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -20,6 +21,7 @@ public class Customers extends VerticalLayout{
     private Grid<Customer> grid = new Grid<>(Customer.class);
     private final CustomerService customerService;
     private TextField filterText = new TextField();
+    private ActionsForm form;
 
     public Customers(CustomerService customerService) {
         this.customerService = customerService;
@@ -30,7 +32,16 @@ public class Customers extends VerticalLayout{
         configureGrid();
         populateGrid();
 
-        add(filterText, grid);
+        form = new ActionsForm(customerService.findAll());
+
+        form.addListener(ActionsForm.SaveEvent.class, this::saveCustomer);
+        form.addListener(ActionsForm.DeleteEvent.class, this::deleteCustomer);
+        form.addListener(ActionsForm.CloseEvent.class, e -> closeEditor());
+
+        Div content = new Div(grid, form);
+        content.addClassName("content");
+
+        add(filterText, content);
         updateList();
     }
 
@@ -53,5 +64,37 @@ public class Customers extends VerticalLayout{
         grid.setColumns("customerName", 
         "customerEmail", "customerPhone", "customerAddress",
         "customerContactPerson");
+
+        grid.asSingleSelect().addValueChangeListener(evt -> editCustomer(evt.getValue()));
     }
+
+    private void deleteCustomer(ActionsForm.DeleteEvent event) {
+        customerService.delete(event.getCustomer());
+        updateList();
+        closeEditor();
+    }
+
+    private void saveCustomer(ActionsForm.SaveEvent event) {
+        customerService.save(event.getCustomer());
+        updateList();
+        closeEditor();
+    }
+
+    private void closeEditor() {
+        form.setCustomer(null);
+        form.setVisible(false);
+        removeClassName("editing");
+    }
+
+    private void editCustomer(Customer customer) {
+        if (customer == null) {
+            closeEditor();
+        } else {
+            form.setCustomer(customer);
+            form.setVisible(true);
+            addClassName("editing");
+        }
+    }
+
+
 }
