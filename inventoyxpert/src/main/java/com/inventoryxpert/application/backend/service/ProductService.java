@@ -8,14 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
-import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Random;
 import java.util.logging.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class ProductService {

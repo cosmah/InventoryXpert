@@ -3,11 +3,8 @@ package com.inventoryxpert.application.views.products;
 import com.inventoryxpert.application.backend.entity.Product;
 import com.inventoryxpert.application.backend.service.ProductService;
 import com.inventoryxpert.application.views.MainLayout;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.data.binder.Binder.BindingBuilder;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -22,8 +19,6 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
@@ -36,7 +31,6 @@ public class Inventory extends VerticalLayout {
     private Grid<Product> grid = new Grid<>(Product.class);
     private final ProductService productService;
     private TextField filterText = new TextField();
-    // private Binder<Product> binder = new Binder<>(Product.class);
     private ActionsForm form;
 
     @Autowired

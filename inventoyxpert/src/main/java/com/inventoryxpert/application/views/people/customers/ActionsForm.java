@@ -6,6 +6,7 @@ import com.inventoryxpert.application.backend.entity.Customer;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -74,6 +75,8 @@ public class ActionsForm extends FormLayout{
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
         close.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        save.addClickShortcut(Key.ENTER);
+        close.addClickShortcut(Key.ESCAPE);
 
         save.addClickListener(event -> validateAndSave());
         delete.addClickListener(event -> fireEvent(new DeleteEvent(this, customer)));
@@ -132,6 +135,15 @@ public class ActionsForm extends FormLayout{
     public <T extends ComponentEvent<?>> Registration addListener(Class<T> eventType,
             ComponentEventListener<T> listener) {
         return getEventBus().addListener(eventType, listener);
+    }
+
+    private void validateAndSave() {
+        try {
+            binder.writeBean(customer);
+            fireEvent(new SaveEvent(this, customer));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     

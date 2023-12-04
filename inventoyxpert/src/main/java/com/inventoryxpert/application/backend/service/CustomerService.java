@@ -9,9 +9,18 @@ import org.springframework.stereotype.Service;
 import com.inventoryxpert.application.backend.entity.Customer;
 import com.inventoryxpert.application.backend.repository.CustomerRepository;
 
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.*;
+
+
 
 @Service
-public class CustomerService implements Serializable{
+public class CustomerService {
+
+    private static final Logger LOGGER = Logger.getLogger(CustomerService.class
+            .getName());
 
     private final CustomerRepository customerRepository;
 
@@ -41,21 +50,31 @@ public class CustomerService implements Serializable{
 
     public void delete(Customer customer) {
         if (customer == null) {
-            throw new IllegalArgumentException("Customer to delete is null.");
+            LOGGER.log(Level.SEVERE, "Customer to delete is null.");
         }
         customerRepository.delete(customer);
     }
 
     public void save(Customer customer) {
         if (customer == null) {
-            throw new IllegalArgumentException(
-                    "Customer is null. Are you sure you have connected your form to the application?");
+            LOGGER.log(Level.SEVERE, "Customer is null. Are you sure you have connected your form to the application?");
+            return;
         }
         customerRepository.save(customer);
     }
 
     public Customer save(Long id, String customerName, String customerAddress, String customerPhone, String customerEmail, String customerContactPerson, int customerTin) {
-        Customer customer = new Customer(id, customerName, customerAddress, customerPhone, customerEmail, customerContactPerson, customerTin);
+        //Customer customer = new Customer(id, customerName, customerAddress, customerPhone, customerEmail, customerContactPerson, customerTin);
+        Customer customer = new Customer();
+        customer.setId(id);
+        customer.setCustomerName(customerName);
+        customer.setCustomerAddress(customerAddress);
+        customer.setCustomerPhone(customerPhone);
+        customer.setCustomerEmail(customerEmail);
+        customer.setCustomerContactPerson(customerContactPerson);
+        customer.setCustomerTin(customerTin);
+        
+
         return customerRepository.save(customer);
     }
     
