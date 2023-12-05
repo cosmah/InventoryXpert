@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="" />
+    <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/customers/ActionsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/customers/ActionsForm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

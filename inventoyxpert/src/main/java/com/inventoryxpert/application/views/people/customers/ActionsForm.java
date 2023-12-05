@@ -137,14 +137,7 @@ public class ActionsForm extends FormLayout{
         return getEventBus().addListener(eventType, listener);
     }
 
-    private void validateAndSave() {
-        try {
-            binder.writeBean(customer);
-            fireEvent(new SaveEvent(this, customer));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     
     
 }
+
