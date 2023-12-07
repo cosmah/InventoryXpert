@@ -2,11 +2,10 @@ package com.inventoryxpert.application.backend.controller;
 
 import java.util.List;
 
-import org.atmosphere.config.service.Get;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inventoryxpert.application.backend.entity.Employees;
+import com.inventoryxpert.application.backend.entity.Employee;
 import com.inventoryxpert.application.backend.service.EmployeeService;
 
 @RestController
@@ -18,7 +17,7 @@ public class EmployeesController {
     }
 
     @GetMapping("/employees")
-    public List<Employees> getEmployees() {
+    public List<Employee> getEmployees() {
         return employeeService.findAll();
     }
     

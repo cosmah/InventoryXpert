@@ -2,15 +2,13 @@ package com.inventoryxpert.application.backend.entity;
 
 import java.util.Date;
 
-import com.github.javaparser.ast.Generated;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Employees {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,11 +31,11 @@ public class Employees {
     private String employeeStateOfOrigin;
     private int    employeeTin;
 
-    public Employees(Long id, String employeeName, String employeeAddress, String employeePhone, String employeeEmail,
-                     String employeeNextOfKin, String employeeNextOfKinPhone, String employeeNextOfKinAddress,
-                     String employeeNextOfKinRelationship, String employeeNextOfKinOccupation, String employeeNextOfKinGender,
-                     Date employeeDateOfBirth, String employeeGender, String employeeOccupation, String employeeMaritalStatus,
-                     String employeeNationality, String employeeStateOfOrigin, int employeeTin) {
+    public Employee(Long id, String employeeName, String employeeAddress, String employeePhone, String employeeEmail,
+                    String employeeNextOfKin, String employeeNextOfKinPhone, String employeeNextOfKinAddress,
+                    String employeeNextOfKinRelationship, String employeeNextOfKinOccupation, String employeeNextOfKinGender,
+                    Date employeeDateOfBirth, String employeeGender, String employeeOccupation, String employeeMaritalStatus,
+                    String employeeNationality, String employeeStateOfOrigin, int employeeTin) {
         this.id = id;
         this.employeeName = employeeName;
         this.employeeAddress = employeeAddress;
@@ -58,7 +56,7 @@ public class Employees {
         this.employeeTin = employeeTin;
     }
 
-    public Employees() {
+    public Employee() {
     }
 
     public Long getId() {
@@ -208,7 +206,7 @@ public class Employees {
 
     @Override
     public String toString() {
-        return "Employees{" +
+        return "Employee{" +
                 "id=" + id +
                 ", employeeName='" + employeeName + '\'' +
                 ", employeeAddress='" + employeeAddress + '\'' +

@@ -6,8 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/MainLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/customers/ActionsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/customers/ActionsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@polymer/polymer/lib/elements/array-selector.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@polymer/polymer/lib/elements/array-selector.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@polymer/polymer/lib/elements/dom-repeat.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@polymer/polymer/lib/elements/dom-repeat.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@surma/rollup-plugin-off-main-thread/CONTRIBUTORS" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@surma/rollup-plugin-off-main-thread/CONTRIBUTORS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@vaadin/grid/src/vaadin-grid.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@vaadin/grid/src/vaadin-grid.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/tempy/node_modules/type-fest/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/tempy/node_modules/type-fest/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-fest/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/type-fest/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/controller/EmployeesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/controller/EmployeesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/repository/EmployeesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/repository/EmployeesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/backend/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/employees/AddEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inventoryxpert/application/views/people/employees/AddEmployees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/controller/EmployeesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/controller/EmployeesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/entity/Employees.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/repository/EmployeesRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/repository/EmployeesRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/service/EmployeeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/people/employees/AddEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/people/employees/AddEmployees.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

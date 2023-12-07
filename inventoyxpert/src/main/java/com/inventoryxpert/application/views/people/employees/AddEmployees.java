@@ -6,6 +6,7 @@ import java.util.Date;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.inventoryxpert.application.backend.entity.Employee;
 import com.inventoryxpert.application.backend.service.EmployeeService;
 import com.inventoryxpert.application.views.MainLayout;
 import com.vaadin.flow.component.Key;
@@ -24,15 +25,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
 import java.util.Date;
 
-@PageTitle("Add Employees")
-@Route(value = "Employees", layout = MainLayout.class)
-public class AddEmployees extends VerticalLayout{
+@PageTitle("Add Employee")
+@Route(value = "Employee", layout = MainLayout.class)
+public class AddEmployees extends VerticalLayout {
 
     private final EmployeeService employeeService;
 
     @Autowired
-    public AddEmployees(EmployeeService employeeService){
-        this.employeeService = employeeService; 
+    public AddEmployees(EmployeeService employeeService) {
+        this.employeeService = employeeService;
         setSpacing(false);
 
         FormLayout formLayout = new FormLayout();
@@ -55,36 +56,40 @@ public class AddEmployees extends VerticalLayout{
         TextField employeeTinField = new TextField("Employee Tin");
 
         Button button = new Button("Add Employee");
-        formLayout.add(nameField, addressField, phoneField, emailField, nextOfKinField, nextOfKinPhoneField, nextOfKinAddressField, nextOfKinRelationshipField, nextOfKinOccupationField, nextOfKinGenderField, dobField, employeeGenderField, employeeOccupationField, employeeMaritalStatusField, employeeNationalityField, employeeStateOfOriginField, employeeTinField);
-       // Date dob = Date.from(dobField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        
-       button.addClickListener(e -> {
-        Date dob = java.sql.Date.valueOf(dobField.getValue());
-    
-        int employeeTin;
-        try {
-            employeeTin = Integer.parseInt(employeeTinField.getValue());
-        } catch (NumberFormatException ex) {
-            Notification.show("Invalid TIN. Please enter a valid number.");
-            return;
-        }
-    
-        Employees employees = employeeService.save(
-            null, nameField.getValue(),
-            addressField.getValue(), phoneField.getValue(),
-            emailField.getValue(), nextOfKinField.getValue(),
-            nextOfKinPhoneField.getValue(), nextOfKinAddressField.getValue(),
-            nextOfKinRelationshipField.getValue(), nextOfKinOccupationField.getValue(),
-            nextOfKinGenderField.getValue(), dob, employeeGenderField.getValue(),
-            employeeOccupationField.getValue(), employeeMaritalStatusField.getValue(),
-            employeeNationalityField.getValue(), employeeStateOfOriginField.getValue(),
-            employeeTin);
-    
-        if (employees != null) {
-            Notification.show("Employee Added");
-        } else {
-            Notification.show("Failed to add employee");
-        }
+        formLayout.add(nameField, addressField, phoneField, emailField, nextOfKinField, nextOfKinPhoneField,
+                nextOfKinAddressField, nextOfKinRelationshipField, nextOfKinOccupationField, nextOfKinGenderField,
+                dobField, employeeGenderField, employeeOccupationField, employeeMaritalStatusField,
+                employeeNationalityField, employeeStateOfOriginField, employeeTinField, button);
+        // Date dob =
+        // Date.from(dobField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        button.addClickListener(e -> {
+            Date dob = java.sql.Date.valueOf(dobField.getValue());
+
+            int employeeTin;
+            try {
+                employeeTin = Integer.parseInt(employeeTinField.getValue());
+            } catch (NumberFormatException ex) {
+                Notification.show("Invalid TIN. Please enter a valid number.");
+                return;
+            }
+
+            Employee employee = employeeService.save(
+                    null, nameField.getValue(),
+                    addressField.getValue(), phoneField.getValue(),
+                    emailField.getValue(), nextOfKinField.getValue(),
+                    nextOfKinPhoneField.getValue(), nextOfKinAddressField.getValue(),
+                    nextOfKinRelationshipField.getValue(), nextOfKinOccupationField.getValue(),
+                    nextOfKinGenderField.getValue(), dob, employeeGenderField.getValue(),
+                    employeeOccupationField.getValue(), employeeMaritalStatusField.getValue(),
+                    employeeNationalityField.getValue(), employeeStateOfOriginField.getValue(),
+                    employeeTin);
+
+            if (employee != null) {
+                Notification.show("Employee Added");
+            } else {
+                Notification.show("Failed to add employee");
+            }
 
             nameField.clear();
             addressField.clear();
@@ -105,11 +110,7 @@ public class AddEmployees extends VerticalLayout{
             employeeTinField.clear();
         });
 
-
-
-
         add(formLayout);
     }
 
-    
 }
