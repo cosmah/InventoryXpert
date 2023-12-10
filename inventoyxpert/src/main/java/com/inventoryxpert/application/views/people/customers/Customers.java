@@ -1,4 +1,5 @@
 package com.inventoryxpert.application.views.people.customers;
+import com.inventoryxpert.application.backend.service.EmployeeService;
 
 import java.util.List;
 
@@ -26,9 +27,13 @@ public class Customers extends VerticalLayout {
     private TextField filterText = new TextField();
     private ActionsForm form;
 
+    private final EmployeeService employeeService;
+
     @Autowired
-    public Customers(CustomerService customerService) {
+    public Customers(CustomerService customerService, EmployeeService employeeService) {
         this.customerService = customerService;
+        this.employeeService = employeeService;
+
 
         addClassNames("listView");
         setSizeFull();
@@ -36,7 +41,7 @@ public class Customers extends VerticalLayout {
         configureGrid();
         configureFilter();
 
-        form = new ActionsForm(customerService.findAll());
+        form = new ActionsForm(customerService.findAll(), employeeService);
 
         form.addListener(ActionsForm.SaveEvent.class, this::saveCustomer);
         form.addListener(ActionsForm.DeleteEvent.class, this::deleteCustomer);

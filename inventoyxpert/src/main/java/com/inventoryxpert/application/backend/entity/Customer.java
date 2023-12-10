@@ -2,8 +2,6 @@ package com.inventoryxpert.application.backend.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 
 @Entity
 public class Customer {
@@ -14,13 +12,16 @@ public class Customer {
     private String customerAddress;
     private String customerPhone;
     private String customerEmail;
-    private String customerContactPerson;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee customerContactPerson;
     private int customerTin;
 
     public Customer() {
     }
 
-    public Customer(Long id, String customerName, String customerAddress, String customerPhone, String customerEmail, String customerContactPerson, int customerTin) {
+    public Customer(Long id, String customerName, String customerAddress, String customerPhone, String customerEmail, Employee customerContactPerson, int customerTin) {
         this.id = id;
         this.customerName = customerName;
         this.customerAddress = customerAddress;
@@ -50,7 +51,7 @@ public class Customer {
         return customerEmail;
     }
 
-    public String getCustomerContactPerson() {
+    public Employee getCustomerContactPerson() {
         return customerContactPerson;
     }
 
@@ -78,7 +79,7 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
-    public void setCustomerContactPerson(String customerContactPerson) {
+    public void setCustomerContactPerson(Employee customerContactPerson) {
         this.customerContactPerson = customerContactPerson;
     }
 
@@ -87,16 +88,16 @@ public class Customer {
     }
 
     @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", customerName='" + customerName +
-                ", customerAddress='" + customerAddress +
-                ", customerPhone='" + customerPhone +
-                ", customerEmail='" + customerEmail +
-                ", customerContactPerson='" + customerContactPerson +
-                ", customerTin='" + customerTin +
-                '}';
-    }
+public String toString() {
+    return "Customer{" +
+            "id=" + id +
+            ", customerName='" + customerName +
+            ", customerAddress='" + customerAddress +
+            ", customerPhone='" + customerPhone +
+            ", customerEmail='" + customerEmail +
+            ", customerContactPerson='" + (customerContactPerson != null ? customerContactPerson.getEmployeeName() : null) +
+            ", customerTin='" + customerTin +
+            '}';
+}
 
 }

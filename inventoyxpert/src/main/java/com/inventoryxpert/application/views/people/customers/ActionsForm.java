@@ -1,7 +1,9 @@
 package com.inventoryxpert.application.views.people.customers;
 
 import java.util.List;
-
+import com.vaadin.flow.component.combobox.ComboBox;
+import com.inventoryxpert.application.backend.entity.Employee;
+import com.inventoryxpert.application.backend.service.EmployeeService;
 import com.inventoryxpert.application.backend.entity.Customer;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
@@ -15,60 +17,63 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.shared.Registration;
 
-public class ActionsForm extends FormLayout{
+public class ActionsForm extends FormLayout {
     private Customer customer;
+    private EmployeeService employeeService;
+    private Employee employee;
 
     private TextField nameField = new TextField("Customer Name");
     private TextField emailField = new TextField("Customer Email");
     private TextField phoneField = new TextField("Customer Phone");
     private TextField addressField = new TextField("Customer Address");
-    private TextField contactPersonField = new TextField("Customer Contact Person");
-    
+    private ComboBox<Employee> contactPersonField = new ComboBox<>("Customer Contact Person");
+
     private Button save = new Button("Save");
     private Button delete = new Button("Delete");
     private Button close = new Button("Cancel");
 
     private Binder<Customer> binder = new Binder<>(Customer.class);
 
-    public ActionsForm(List<Customer> all) {
+    public ActionsForm(List<Customer> all, EmployeeService employeeService) {
         addClassName("contact-form");
-
-        // binder.bindInstanceFields(this);
+        /// Fetch the list of employees from the database and set it as the items of the
+        /// ComboBox
+        List<Employee> employees = employeeService.findAll();
+        contactPersonField.setItems(employees);
+        contactPersonField.setItemLabelGenerator(Employee::getEmployeeName);
 
         // Add the explicit binding code here:
 
         binder.forField(nameField)
-                        .withNullRepresentation("")
-                        .asRequired()
-                        .bind(Customer::getCustomerName, Customer::setCustomerName);
+                .withNullRepresentation("")
+                .asRequired()
+                .bind(Customer::getCustomerName, Customer::setCustomerName);
 
         binder.forField(emailField)
-                        .withNullRepresentation("")
-                        .asRequired()
-                        .bind(Customer::getCustomerEmail, Customer::setCustomerEmail);
+                .withNullRepresentation("")
+                .asRequired()
+                .bind(Customer::getCustomerEmail, Customer::setCustomerEmail);
 
         binder.forField(phoneField)
-                        .withNullRepresentation("")
-                        .bind(Customer::getCustomerPhone, Customer::setCustomerPhone);
+                .withNullRepresentation("")
+                .bind(Customer::getCustomerPhone, Customer::setCustomerPhone);
 
         binder.forField(addressField)
-                        .withNullRepresentation("")
-                        .bind(Customer::getCustomerAddress, Customer::setCustomerAddress);
+                .withNullRepresentation("")
+                .bind(Customer::getCustomerAddress, Customer::setCustomerAddress);
 
         binder.forField(contactPersonField)
-                        .withNullRepresentation("")
-                        .bind(Customer::getCustomerContactPerson, Customer::setCustomerContactPerson);
+                .bind(Customer::getCustomerContactPerson, Customer::setCustomerContactPerson);
 
         binder.bindInstanceFields(this);
 
         add(
-            nameField,
-            emailField,
-            phoneField,
-            addressField,
-            contactPersonField,
-            createButtonsLayout()
-        );
+                nameField,
+                emailField,
+                phoneField,
+                addressField,
+                contactPersonField,
+                createButtonsLayout());
     }
 
     private Component createButtonsLayout() {
@@ -130,14 +135,11 @@ public class ActionsForm extends FormLayout{
         CloseEvent(ActionsForm source) {
             super(source, null);
         }
-    }   
+    }
 
     public <T extends ComponentEvent<?>> Registration addListener(Class<T> eventType,
             ComponentEventListener<T> listener) {
         return getEventBus().addListener(eventType, listener);
     }
 
-    
-    
 }
-

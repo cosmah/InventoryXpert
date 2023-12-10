@@ -1,5 +1,6 @@
 package com.inventoryxpert.application.backend.service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -62,7 +63,7 @@ public class EmployeeService {
     public Employee save(Long id, String employeeName, String employeeAddress, String employeePhone, String employeeEmail,
                          String employeeNextOfKin, String employeeNextOfKinPhone, String employeeNextOfKinAddress,
                          String employeeNextOfKinRelationship, String employeeNextOfKinOccupation, String employeeNextOfKinGender,
-                         Date employeeDateOfBirth, String employeeGender, String employeeOccupation, String employeeMaritalStatus,
+                        LocalDate employeeDateOfBirth, String employeeGender, String employeeOccupation, String employeeMaritalStatus,
                          String employeeNationality, String employeeStateOfOrigin, int employeeTin) {
 
         

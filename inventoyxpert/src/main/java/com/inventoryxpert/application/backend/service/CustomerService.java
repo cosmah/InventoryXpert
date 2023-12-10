@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inventoryxpert.application.backend.entity.Customer;
+import com.inventoryxpert.application.backend.entity.Employee;
 import com.inventoryxpert.application.backend.repository.CustomerRepository;
 
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.*;
-
-
 
 @Service
 public class CustomerService {
@@ -25,11 +23,11 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository){
+    public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> findAll(){
+    public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
@@ -40,9 +38,8 @@ public class CustomerService {
             return customerRepository.search(stringFilter);
         }
 
-
     }
-    
+
     public long count() {
 
         return customerRepository.count();
@@ -63,8 +60,8 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
-    public Customer save(Long id, String customerName, String customerAddress, String customerPhone, String customerEmail, String customerContactPerson, int customerTin) {
-        //Customer customer = new Customer(id, customerName, customerAddress, customerPhone, customerEmail, customerContactPerson, customerTin);
+    public Customer save(Long id, String customerName, String customerAddress, String customerPhone,
+            String customerEmail, Employee customerContactPerson, int customerTin) {
         Customer customer = new Customer();
         customer.setId(id);
         customer.setCustomerName(customerName);
@@ -73,9 +70,8 @@ public class CustomerService {
         customer.setCustomerEmail(customerEmail);
         customer.setCustomerContactPerson(customerContactPerson);
         customer.setCustomerTin(customerTin);
-        
 
         return customerRepository.save(customer);
     }
-    
+
 }
