@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.*;
 
 @Service
@@ -54,6 +53,15 @@ public class ProductService {
             return;
         }
         productRepository.save(product);
+    }
+
+    public int getTotalQuantity() {
+        List<Product> products = findAll();
+        int totalQuantity = 0;
+        for (Product product : products) {
+            totalQuantity += product.getQuantity();
+        }
+        return totalQuantity;
     }
 
     public Product save(Long id, String productName, String productCode,
