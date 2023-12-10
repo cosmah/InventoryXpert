@@ -39,7 +39,7 @@ public class AddInvoice extends HorizontalLayout {
         TextField customerNameField = new TextField("Customer Name");
         TextField customerAddressField = new TextField("Customer Address");
         TextField totalAmountField = new TextField("Total Amount");
-        TextField paymentTermsField = new TextField("Terms");
+        TextField paymentTermsField = new TextField("Term");
         Button addButton = new Button("Add Invoice");
         formLayout.add(invoiceNumberField, invoiceDatePicker, customerNameField, customerAddressField,totalAmountField,paymentTermsField, addButton);
 

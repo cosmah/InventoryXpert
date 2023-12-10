@@ -2,6 +2,7 @@ package com.inventoryxpert.application.backend.controller;
 
 import java.util.List;
 
+import com.inventoryxpert.application.backend.entity.Term;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class TermsController {
     }
 
     @GetMapping("/terms")
-    public List<Terms> getTerms() {
+    public List<Term> getTerms() {
         return service.findAll();
     }
 

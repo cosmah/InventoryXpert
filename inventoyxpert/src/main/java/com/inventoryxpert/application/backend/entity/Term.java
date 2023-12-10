@@ -4,7 +4,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-public class Terms {
+public class Term {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -12,10 +12,10 @@ public class Terms {
     private int termsDays;
 
 
-    public Terms() {
+    public Term() {
     }
 
-    public Terms(Long id, String termsName, int termsDays) {
+    public Term(Long id, String termsName, int termsDays) {
         this.id = id;
         this.termsName = termsName;
         this.termsDays = termsDays;
@@ -48,7 +48,7 @@ public class Terms {
 
     @Override
     public String toString() {
-        return "Terms{" +
+        return "Term{" +
                 "id=" + id +
                 ", termsName='" + termsName + '\'' +
                 ", termsDays=" + termsDays +

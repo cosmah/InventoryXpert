@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.inventoryxpert.application.backend.entity.Terms;
+import com.inventoryxpert.application.backend.entity.Term;
 
 @Repository
-public interface TermsRepository extends JpaRepository<Terms, Long>{
-    @Query ("SELECT t FROM Terms t WHERE LOWER(t.termsName) LIKE LOWER(CONCAT('%', :stringFilter, '%'))")
-    List<Terms> search(@Param("stringFilter") String stringFilter);
+public interface TermsRepository extends JpaRepository<Term, Long>{
+    @Query ("SELECT t FROM Term t WHERE LOWER(t.termsName) LIKE LOWER(CONCAT('%', :stringFilter, '%'))")
+    List<Term> search(@Param("stringFilter") String stringFilter);
 }
