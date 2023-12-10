@@ -25,13 +25,15 @@ public class EmployeeService {
         return employeesRepository.findAll();
     }
 
-    // public List<Employee> findAll(String stringFilter) {
-    //     if (stringFilter == null || stringFilter.isEmpty()) {
-    //         return employeesRepository.findAll();
-    //     } else {
-    //         return employeesRepository.search(stringFilter);
-    //     }
-    // }
+    
+
+    public List<Employee> findAll(String stringFilter) {
+        if (stringFilter == null || stringFilter.isEmpty()) {
+            return employeesRepository.findAll();
+        } else {
+            return employeesRepository.search(stringFilter);
+        }
+    }
 
     public long count() {
 
