@@ -7,6 +7,7 @@ import com.inventoryxpert.application.backend.service.EmployeeService;
 import com.inventoryxpert.application.views.MainLayout;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
@@ -32,16 +33,39 @@ public class Employees extends VerticalLayout{
         configureGrid();
         configureFilter();
 
-        //form = new ActionsForm(employeeService.findAll());
+        form = new ActionsForm(employeeService.findAll());
+        form.addListener(ActionsForm.SaveEvent.class, this::saveEmployee);
+        form.addListener(ActionsForm.DeleteEvent.class, this::deleteEmployee);
+        form.addListener(ActionsForm.CloseEvent.class, e -> closeEditor());
 
+ 
         
         populateGrid();
 
-        add(filterText, grid);
+        Div content = new Div(grid, form);
+        content.addClassName("content");
+        content.setSizeFull();
+
+        add(filterText, content);
 
         updateList();
         closeEditor();
     }
+
+
+    private void deleteEmployee(ActionsForm.DeleteEvent event) {
+        employeeService.delete(event.getEmployee());
+        updateList();
+        closeEditor();
+    }	
+
+    private void saveEmployee(ActionsForm.SaveEvent evt) {
+        employeeService.save(evt.getEmployee());
+        updateList();
+        closeEditor();
+    }
+
+
 
     private void populateGrid() {
         List<Employee> employees = employeeService.findAll();
@@ -50,6 +74,9 @@ public class Employees extends VerticalLayout{
     }
 
     private void closeEditor() {
+        form.setEmployee(null);
+        form.setVisible(false);
+        removeClassName("editing");
     }
 
     private void configureFilter() {
@@ -72,8 +99,14 @@ public class Employees extends VerticalLayout{
         grid.asSingleSelect().addValueChangeListener(evt -> editEmployee(evt.getValue()));
     }
 
-    private Object editEmployee(Employee value) {
-        return null;
+    private void editEmployee(Employee employee) {
+        if (employee == null) {
+            closeEditor();
+        } else {
+            form.setEmployee(employee);
+            form.setVisible(true);
+            addClassName("editing");
+        }
     }
     
 }

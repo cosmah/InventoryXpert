@@ -1,5 +1,6 @@
 package com.inventoryxpert.application.backend.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -23,18 +24,18 @@ public class Employee {
     private String employeeNextOfKinRelationship;
     private String employeeNextOfKinOccupation;
     private String employeeNextOfKinGender;
-    private Date   employeeDateOfBirth;
+    private LocalDate   employeeDateOfBirth;
     private String employeeGender;
     private String employeeOccupation;
     private String employeeMaritalStatus;
     private String employeeNationality;
     private String employeeStateOfOrigin;
-    private int    employeeTin;
+    private int employeeTin;
 
     public Employee(Long id, String employeeName, String employeeAddress, String employeePhone, String employeeEmail,
                     String employeeNextOfKin, String employeeNextOfKinPhone, String employeeNextOfKinAddress,
                     String employeeNextOfKinRelationship, String employeeNextOfKinOccupation, String employeeNextOfKinGender,
-                    Date employeeDateOfBirth, String employeeGender, String employeeOccupation, String employeeMaritalStatus,
+                    LocalDate employeeDateOfBirth, String employeeGender, String employeeOccupation, String employeeMaritalStatus,
                     String employeeNationality, String employeeStateOfOrigin, int employeeTin) {
         this.id = id;
         this.employeeName = employeeName;
@@ -147,11 +148,11 @@ public class Employee {
         this.employeeNextOfKinGender = employeeNextOfKinGender;
     }
 
-    public Date getEmployeeDateOfBirth() {
-        return employeeDateOfBirth;
+    public LocalDate getEmployeeDateOfBirth() {
+        return this.employeeDateOfBirth;
     }
 
-    public void setEmployeeDateOfBirth(Date employeeDateOfBirth) {
+    public void setEmployeeDateOfBirth(LocalDate employeeDateOfBirth) {
         this.employeeDateOfBirth = employeeDateOfBirth;
     }
 
@@ -199,8 +200,8 @@ public class Employee {
         return employeeTin;
     }
 
-    public void setEmployeeTin(int employeeTin) {
-        this.employeeTin = employeeTin;
+    public void setEmployeeTin(Integer employeeTin) {
+        this.employeeTin = employeeTin == null ? 0 : employeeTin;
     }
 
 
