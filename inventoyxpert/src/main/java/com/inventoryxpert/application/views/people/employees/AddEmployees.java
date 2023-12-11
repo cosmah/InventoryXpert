@@ -71,7 +71,7 @@ public class AddEmployees extends VerticalLayout {
         // Date.from(dobField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         button.addClickListener(e -> {
-            Date dob = java.sql.Date.valueOf(dobField.getValue());
+            LocalDate dob = java.sql.Date.valueOf(dobField.getValue()).toLocalDate();
 
             int employeeTin;
             try {

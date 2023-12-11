@@ -19,6 +19,6 @@ public class InvoiceController {
 
     @GetMapping("/invoices")
     public List<Invoice> getInvoices() {
-        return service.findAll();
+        return service.getAllInvoices();
     }
 }

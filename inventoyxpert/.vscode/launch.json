@@ -16,6 +16,16 @@
       "name": "Attach to Application started using Maven",
       "hostName": "localhost",
       "port": 5300
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<mysql>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.inventoryxpert.application.Application",
+      "projectName": "mysql",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }
