@@ -8,8 +8,8 @@ import $cssFromFile_1 from 'Frontend/themes/inventoryxpert/views/inventory.css?i
 
 injectGlobalCss($cssFromFile_1.toString(), 'CSSImport end', document);
 import '@vaadin/polymer-legacy-adapter/style-modules.js';
-import '@vaadin/app-layout/theme/lumo/vaadin-app-layout.js';
 import '@vaadin/vertical-layout/theme/lumo/vaadin-vertical-layout.js';
+import '@vaadin/app-layout/theme/lumo/vaadin-app-layout.js';
 import '@vaadin/form-layout/theme/lumo/vaadin-form-layout.js';
 import '@vaadin/field-highlighter/theme/lumo/vaadin-field-highlighter.js';
 import '@vaadin/common-frontend/ConnectionIndicator.js';

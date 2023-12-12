@@ -1,8 +1,8 @@
 package com.inventoryxpert.application.views;
 
+import com.inventoryxpert.application.views.Invoicing.AddInvoice;
 import com.inventoryxpert.application.views.about.AboutView;
 import com.inventoryxpert.application.views.dashboard.DashboardView;
-import com.inventoryxpert.application.views.Invoicing.AddInvoice;
 import com.inventoryxpert.application.views.people.PeopleView;
 import com.inventoryxpert.application.views.people.customers.AddCustomer;
 import com.inventoryxpert.application.views.people.customers.Customers;

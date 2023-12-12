@@ -1,8 +1,7 @@
 package com.inventoryxpert.application.backend.entity;
 
-
-
 import jakarta.persistence.*;
+
 @Entity
 public class InvoiceLine {
 
@@ -17,7 +16,9 @@ public class InvoiceLine {
     private Double unitPrice;
     private Double totalPrice;
 
-    // No-arg constructor, getters and setters...
+    // Default constructor
+    public InvoiceLine() {
+    }
 
     public InvoiceLine(Long id, String productName, String productCode, String productDescription, Integer quantity, Double unitPrice, Double totalPrice) {
         this.id = id;
@@ -29,62 +30,7 @@ public class InvoiceLine {
         this.totalPrice = totalPrice;
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(Double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
+    // Getters and setters...
 
     @Override
     public String toString() {

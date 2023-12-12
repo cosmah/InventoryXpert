@@ -33,4 +33,6 @@ public class InvoiceService {
     public void deleteInvoice(Long id) {
         invoiceRepository.deleteById(id);
     }
+
+    
 }
