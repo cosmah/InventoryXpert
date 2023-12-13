@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="WORKIN ON THE RECIEPT">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application.class" afterDir="false" />
@@ -66,6 +65,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ProductView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/products/ProductView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/taxes/Taxes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/taxes/Taxes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/terms/Terms.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/terms/Terms.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/vaadin-dev-server-settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/vaadin-dev-server-settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,13 +110,25 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.Application.executor": "Run",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/sck/InventoryXpert/inventoyxpert",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
+    "last_opened_file_path": "C:/Users/Administrator/Desktop/Software Engineering/cosmc/InventoryXpert/inventoyxpert",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -133,11 +145,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="mysql" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.inventoryxpert.application.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-20.0.2-azul-20.0.2-8336523bb0d9-ce1e98ff" />
+        <option value="jdk-20.0.2-azul-20.0.2-3183f394aec4-4edb7f01" />
       </set>
     </attachedChunks>
   </component>
@@ -149,6 +169,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1700563185079</updated>
+      <workItem from="1702457167206" duration="1478000" />
     </task>
     <task id="LOCAL-00001" summary="WORKIN ON THE RECIEPT">
       <option name="closed" value="true" />
@@ -160,6 +181,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

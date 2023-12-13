@@ -13,6 +13,7 @@ import com.inventoryxpert.application.backend.repository.CustomerRepository;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.*;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -20,11 +21,18 @@ public class CustomerService {
     private static final Logger LOGGER = Logger.getLogger(CustomerService.class
             .getName());
 
+    @Autowired
     private final CustomerRepository customerRepository;
 
     @Autowired
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
+    }
+
+    public List<String> getAllCustomerNames() {
+        return customerRepository.findAll().stream()
+                .map(Customer::getCustomerName)
+                .collect(Collectors.toList());
     }
 
     public List<Customer> findAll() {
