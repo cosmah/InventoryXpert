@@ -110,7 +110,15 @@ public class AddInvoice extends VerticalLayout {
       Collection<Term> terms = termofPaymentService.getAllTerms();
       termsOfPaymentField.setItems(terms);
       termsOfPaymentField.setItemLabelGenerator(Term::getTermsName);
-      
+
+      // dates
+      DatePicker dateOfMakeField = new DatePicker("Date of Make");
+      dateOfMakeField.setValue(LocalDate.now());
+      DatePicker expiryDateField = new DatePicker("Expiry Date");
+      expiryDateField.setValue(LocalDate.now().plusDays(30));
+
+      // Add the fields to the form layout
+
       formLayout.add(
             customerNameField,
             customerAddressField,
@@ -118,7 +126,7 @@ public class AddInvoice extends VerticalLayout {
             tinField,
             invoiceNumberField, // Use the auto-generated invoice number field
             termsOfPaymentField,
-            new DatePicker("Date of Make"),
+            dateOfMakeField,
             new DatePicker("Expiry Date"),
             contactPersonField,
             new TextField("Taxes"));
