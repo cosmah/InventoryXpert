@@ -114,8 +114,17 @@ public class AddInvoice extends VerticalLayout {
       // dates
       DatePicker dateOfMakeField = new DatePicker("Date of Make");
       dateOfMakeField.setValue(LocalDate.now());
+      
       DatePicker expiryDateField = new DatePicker("Expiry Date");
-      expiryDateField.setValue(LocalDate.now().plusDays(30));
+      termsOfPaymentField.addValueChangeListener(event -> {
+         Term selectedTerm = event.getValue();
+         if (selectedTerm != null) {
+             LocalDate expiryDate = LocalDate.now().plusDays(selectedTerm.getTermsDays());
+             expiryDateField.setValue(expiryDate);
+         } else {
+             expiryDateField.clear();
+         }
+     });
 
       // Add the fields to the form layout
 
@@ -127,7 +136,7 @@ public class AddInvoice extends VerticalLayout {
             invoiceNumberField, // Use the auto-generated invoice number field
             termsOfPaymentField,
             dateOfMakeField,
-            new DatePicker("Expiry Date"),
+            expiryDateField,
             contactPersonField,
             new TextField("Taxes"));
 
