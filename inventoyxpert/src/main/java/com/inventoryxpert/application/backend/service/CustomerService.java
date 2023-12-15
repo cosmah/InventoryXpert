@@ -29,6 +29,10 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    public Customer getCustomerByCustomerName(String customerName) {
+        return customerRepository.findByCustomerName(customerName);
+    }
+    
     public List<String> getAllCustomerNames() {
         return customerRepository.findAll().stream()
                 .map(Customer::getCustomerName)

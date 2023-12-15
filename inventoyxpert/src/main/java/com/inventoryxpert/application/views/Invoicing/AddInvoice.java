@@ -1,5 +1,6 @@
 package com.inventoryxpert.application.views.Invoicing;
 
+import com.inventoryxpert.application.backend.entity.Customer;
 import com.inventoryxpert.application.backend.entity.InvoiceLine;
 import com.inventoryxpert.application.backend.service.CustomerService;
 import com.vaadin.flow.component.UI;
@@ -21,59 +22,71 @@ public class AddInvoice extends VerticalLayout {
 
    private CustomerService customerService;
 
-   @Autowired
-   public AddInvoice(CustomerService customerService) {
-      this.customerService = customerService;
-      FormLayout formLayout = new FormLayout();
+@Autowired
+public AddInvoice(CustomerService customerService) {
+    this.customerService = customerService;
+    FormLayout formLayout = new FormLayout();
 
-      List<String> customerNames = customerService.getAllCustomerNames();
+    List<String> customerNames = customerService.getAllCustomerNames();
 
-      ComboBox<String> customerNameField = new ComboBox<>("Customer Name");
-      customerNameField.setItems(customerNames);
-      customerNameField.setItems(customerNames);
-      customerNameField.setAllowCustomValue(true);
-      customerNameField.addCustomValueSetListener(event -> {
-         String enteredName = event.getDetail();
-         if (!customerNames.contains(enteredName)) {
+    ComboBox<String> customerNameField = new ComboBox<>("Customer Name");
+    customerNameField.setItems(customerNames);
+    customerNameField.setAllowCustomValue(true);
+
+    TextField customerAddressField = new TextField("Customer Address");
+    TextField emailAddressField = new TextField("Email Address");
+    TextField tinField = new TextField("TIN");
+    TextField contactPersonField = new TextField("Contact Person");
+
+    customerNameField.addCustomValueSetListener(event -> {
+        String enteredName = event.getDetail();
+        if (!customerNames.contains(enteredName)) {
             customerNameField.clear();
             customerNameField.setItems("Add Customer");
-         }
-      });
-      customerNameField.addValueChangeListener(event -> {
-         if ("Add Customer".equals(event.getValue())) {
+        }
+    });
+
+    customerNameField.addValueChangeListener(event -> {
+        String selectedCustomerName = event.getValue();
+        if ("Add Customer".equals(selectedCustomerName)) {
             UI.getCurrent().navigate("Customer");
-         }
-      });
+        } else if (selectedCustomerName != null) {
+            Customer selectedCustomer = customerService.getCustomerByCustomerName(selectedCustomerName);
+            if (selectedCustomer != null) {
+                customerAddressField.setValue(selectedCustomer.getCustomerAddress());
+                emailAddressField.setValue(selectedCustomer.getCustomerEmail());
+                tinField.setValue(String.valueOf(selectedCustomer.getCustomerTin()));
+                contactPersonField.setValue(selectedCustomer.getCustomerContactPerson().getEmployeeName());
+            }
+        }
+    });
 
-      formLayout.add(
-            customerNameField,
-            new TextField("Customer Address"),
-            new TextField("Email Address"),
-            new TextField("TIN"),
-            new TextField("Invoice Number"),
-            new TextField("Terms of Payments"),
-            new DatePicker("Date of Make"),
-            new DatePicker("Expiry Date"),
-            new TextField("Taxes"));
+    formLayout.add(
+        customerNameField,
+        customerAddressField,
+        emailAddressField,
+        tinField,
+        new TextField("Invoice Number"),
+        new TextField("Terms of Payments"),
+        new DatePicker("Date of Make"),
+        new DatePicker("Expiry Date"),
+        contactPersonField,
+        new TextField("Taxes")
+    );
 
-      add(formLayout);
+    add(formLayout);
 
-      Grid<InvoiceLine> grid = new Grid<>(InvoiceLine.class);
-      grid.setColumns("productName", "productCode", "productDescription", "quantity", "unitPrice", "totalPrice");
-      add(grid);
+    Grid<InvoiceLine> grid = new Grid<>(InvoiceLine.class);
+    grid.setColumns("productName", "productCode", "productDescription", "quantity", "unitPrice", "totalPrice");
+    add(grid);
 
-      TextField totalAmount = new TextField("Total Amount");
-      totalAmount.setReadOnly(true);
-      add(totalAmount);
+    TextField totalAmount = new TextField("Total Amount");
+    totalAmount.setReadOnly(true);
+    add(totalAmount);
 
-      Button saveButton = new Button("Save Invoice", event -> {
-         // Save the invoice here
-      });
-      add(saveButton);
-   }
-
-   private void addNewCustomer(String customerName) {
-      // Navigate to the AddCustomer view
-      UI.getCurrent().navigate("Customer");
-   }
+    Button saveButton = new Button("Save Invoice", event -> {
+        // Save the invoice here
+    });
+    add(saveButton);
+}
 }
