@@ -17,6 +17,8 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.AfterNavigationEvent;
 import com.vaadin.flow.router.AfterNavigationObserver;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,35 @@ public class AddInvoice extends VerticalLayout {
 
    private TextField invoiceNumberField; // Declare the TextField here
 
+   // // Method to generate a unique invoice number
+   // private String generateInvoiceNumber() {
+   // // This is a very basic example. You might want to implement a more complex
+   // // logic
+   // // to generate a unique invoice number based on your requirements.
+   // return "INV-" + System.currentTimeMillis();
+   // }
+
+   // Class to store the last used sequence number
+   public class SequenceNumber {
+      private static int lastNumber = 0;
+
+      public static synchronized int getNextNumber() {
+         lastNumber++;
+         return lastNumber;
+      }
+   }
+
    // Method to generate a unique invoice number
    private String generateInvoiceNumber() {
-      // This is a very basic example. You might want to implement a more complex
-      // logic
-      // to generate a unique invoice number based on your requirements.
-      return "INV-" + System.currentTimeMillis();
+      // Get the current date
+      LocalDate currentDate = LocalDate.now();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
+
+      // Get the next sequence number
+      int sequenceNum = SequenceNumber.getNextNumber();
+
+      // Construct the invoice number
+      return currentDate.format(formatter) + String.format("%04d", sequenceNum);
    }
 
    @Autowired
@@ -51,10 +76,7 @@ public class AddInvoice extends VerticalLayout {
       TextField emailAddressField = new TextField("Email Address");
       TextField tinField = new TextField("TIN");
 
-      // Create the TextField and set its value to the generated invoice number
-      // TextField invoiceNumberField = new TextField("Invoice Number");
-      // invoiceNumberField.setValue(generateInvoiceNumber());
-
+      
       TextField contactPersonField = new TextField("Contact Person");
 
       customerNameField.addCustomValueSetListener(event -> {
