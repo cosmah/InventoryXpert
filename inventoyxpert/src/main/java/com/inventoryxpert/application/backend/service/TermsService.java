@@ -1,5 +1,6 @@
 package com.inventoryxpert.application.backend.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -63,6 +64,10 @@ public class TermsService {
         term.setTermsDays(termsDays);
 
         return termsRepository.save(term);
+    }
+
+    public Collection<Term> getAllTerms() {
+        return findAll();
     }
 
     

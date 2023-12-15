@@ -2,7 +2,9 @@ package com.inventoryxpert.application.views.Invoicing;
 
 import com.inventoryxpert.application.backend.entity.Customer;
 import com.inventoryxpert.application.backend.entity.InvoiceLine;
+import com.inventoryxpert.application.backend.entity.Term;
 import com.inventoryxpert.application.backend.service.CustomerService;
+import com.inventoryxpert.application.backend.service.TermsService;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -12,31 +14,27 @@ import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
-import com.vaadin.flow.router.AfterNavigationEvent;
-import com.vaadin.flow.router.AfterNavigationObserver;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.List;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@PageTitle("Add Invoice")
 @Route("invoice")
 public class AddInvoice extends VerticalLayout {
 
    private CustomerService customerService;
+   private TermsService termofPaymentService;
+   private DatePicker dateOfMakeField;
+   private DatePicker expiryDateField;
 
    private TextField invoiceNumberField; // Declare the TextField here
-
-   // // Method to generate a unique invoice number
-   // private String generateInvoiceNumber() {
-   // // This is a very basic example. You might want to implement a more complex
-   // // logic
-   // // to generate a unique invoice number based on your requirements.
-   // return "INV-" + System.currentTimeMillis();
-   // }
 
    // Class to store the last used sequence number
    public class SequenceNumber {
@@ -62,8 +60,11 @@ public class AddInvoice extends VerticalLayout {
    }
 
    @Autowired
-   public AddInvoice(CustomerService customerService) {
+   public AddInvoice(CustomerService customerService, TermsService termofPaymentService) {
       this.customerService = customerService;
+      this.termofPaymentService = termofPaymentService;
+
+      setSizeFull();
       FormLayout formLayout = new FormLayout();
 
       List<String> customerNames = customerService.getAllCustomerNames();
@@ -76,7 +77,6 @@ public class AddInvoice extends VerticalLayout {
       TextField emailAddressField = new TextField("Email Address");
       TextField tinField = new TextField("TIN");
 
-      
       TextField contactPersonField = new TextField("Contact Person");
 
       customerNameField.addCustomValueSetListener(event -> {
@@ -105,13 +105,19 @@ public class AddInvoice extends VerticalLayout {
       invoiceNumberField = new TextField("Invoice Number");
       invoiceNumberField.setValue(generateInvoiceNumber());
 
+      // Fetch terms and set them as the items of the ComboBox
+      ComboBox<Term> termsOfPaymentField = new ComboBox<>("Terms of Payment");
+      Collection<Term> terms = termofPaymentService.getAllTerms();
+      termsOfPaymentField.setItems(terms);
+      termsOfPaymentField.setItemLabelGenerator(Term::getTermsName);
+      
       formLayout.add(
             customerNameField,
             customerAddressField,
             emailAddressField,
             tinField,
             invoiceNumberField, // Use the auto-generated invoice number field
-            new TextField("Terms of Payments"),
+            termsOfPaymentField,
             new DatePicker("Date of Make"),
             new DatePicker("Expiry Date"),
             contactPersonField,
@@ -130,6 +136,7 @@ public class AddInvoice extends VerticalLayout {
       Button saveButton = new Button("Save Invoice", event -> {
          // Save the invoice here
       });
+
       add(saveButton);
 
    }
