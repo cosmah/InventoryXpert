@@ -63,7 +63,7 @@ public class MainLayout extends AppLayout {
         SideNav nav = new SideNav();
 
         nav.addItem(new SideNavItem("Dashboard", DashboardView.class, LineAwesomeIcon.CHART_AREA_SOLID.create()));
-        nav.addItem(new SideNavItem("Add invoice", AddInvoice.class, LineAwesomeIcon.GLOBE_SOLID.create()));
+        nav.addItem(new SideNavItem("Add invoice", AddInvoice.class, LineAwesomeIcon.RECEIPT_SOLID.create()));
         nav.addItem(new SideNavItem("About", AboutView.class, LineAwesomeIcon.FILE.create()));
         nav.addItem(new SideNavItem("people", PeopleView.class, LineAwesomeIcon.PEOPLE_CARRY_SOLID.create()));
         nav.addItem(new SideNavItem("Add product", ProductView.class, LineAwesomeIcon.PRODUCT_HUNT.create()));
