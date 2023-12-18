@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="WORKIN ON THE RECIEPT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/VAADIN/config/flow-build-info.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/backend/controller/CustomerController.class" afterDir="false" />
@@ -36,6 +37,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePerson.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePerson.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePersonRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/data/SamplePersonRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/services/SamplePersonService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/sample/services/SamplePersonService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/Invoicing/AddInvoice$SequenceNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/Invoicing/AddInvoice$SequenceNumber.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/Invoicing/AddInvoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/Invoicing/AddInvoice.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/MainLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/MainLayout.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/about/AboutView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/inventoryxpert/application/views/about/AboutView.class" afterDir="false" />
@@ -106,31 +108,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Application.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Administrator/Desktop/Software Engineering/cosmc/InventoryXpert/inventoyxpert",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/Software Engineering/cosmc/InventoryXpert/inventoyxpert&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="inventoryxpert" />
@@ -157,7 +160,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-20.0.2-azul-20.0.2-3183f394aec4-4edb7f01" />
+        <option value="jdk-20.0.2-azul-20.0.2-8336523bb0d9-ce1e98ff" />
       </set>
     </attachedChunks>
   </component>

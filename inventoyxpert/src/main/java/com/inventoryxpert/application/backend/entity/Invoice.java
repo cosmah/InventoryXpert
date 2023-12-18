@@ -26,6 +26,11 @@ public class Invoice {
 
     private String contactPerson;
 
+    // One invoice can have many invoice lines
+    // The cascade attribute ensures that all operations made on an Invoice
+    // are cascaded to the InvoiceLines
+
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<InvoiceLine> invoiceLines;
 

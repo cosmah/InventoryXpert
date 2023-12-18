@@ -1,6 +1,9 @@
 package com.inventoryxpert.application.views.Invoicing;
 
+import com.inventoryxpert.application.backend.service.InvoiceLineService;
+import com.inventoryxpert.application.backend.service.InvoiceService;
 import com.inventoryxpert.application.backend.entity.Customer;
+import com.inventoryxpert.application.backend.entity.Invoice;
 import com.inventoryxpert.application.backend.entity.InvoiceLine;
 import com.inventoryxpert.application.backend.entity.Term;
 import com.inventoryxpert.application.backend.service.CustomerService;
@@ -33,8 +36,11 @@ public class AddInvoice extends VerticalLayout {
    private TermsService termofPaymentService;
    private DatePicker dateOfMakeField;
    private DatePicker expiryDateField;
+   
+   private InvoiceService invoiceService;
 
    private TextField invoiceNumberField; // Declare the TextField here
+   private InvoiceLineService invoiceLineService;
 
    // Class to store the last used sequence number
    public class SequenceNumber {
@@ -59,10 +65,14 @@ public class AddInvoice extends VerticalLayout {
       return currentDate.format(formatter) + String.format("%04d", sequenceNum);
    }
 
-   @Autowired
-   public AddInvoice(CustomerService customerService, TermsService termofPaymentService) {
-      this.customerService = customerService;
-      this.termofPaymentService = termofPaymentService;
+
+@Autowired
+public AddInvoice(CustomerService customerService, TermsService termofPaymentService,
+     InvoiceLineService invoiceLineService, InvoiceService invoiceService) {
+  this.customerService = customerService;
+  this.termofPaymentService = termofPaymentService;
+  this.invoiceLineService = invoiceLineService;
+  this.invoiceService = invoiceService;
 
       setSizeFull();
       FormLayout formLayout = new FormLayout();
@@ -114,17 +124,17 @@ public class AddInvoice extends VerticalLayout {
       // dates
       DatePicker dateOfMakeField = new DatePicker("Date of Make");
       dateOfMakeField.setValue(LocalDate.now());
-      
+
       DatePicker expiryDateField = new DatePicker("Expiry Date");
       termsOfPaymentField.addValueChangeListener(event -> {
          Term selectedTerm = event.getValue();
          if (selectedTerm != null) {
-             LocalDate expiryDate = LocalDate.now().plusDays(selectedTerm.getTermsDays());
-             expiryDateField.setValue(expiryDate);
+            LocalDate expiryDate = LocalDate.now().plusDays(selectedTerm.getTermsDays());
+            expiryDateField.setValue(expiryDate);
          } else {
-             expiryDateField.clear();
+            expiryDateField.clear();
          }
-     });
+      });
 
       // Add the fields to the form layout
 
@@ -143,21 +153,51 @@ public class AddInvoice extends VerticalLayout {
       add(formLayout);
 
       Grid<InvoiceLine> grid = new Grid<>(InvoiceLine.class);
-      grid.setColumns("productName", "productCode", "productDescription", "quantity", "unitPrice", "totalPrice");
-      add(grid);
+      // Define the fields for the new invoice line
+TextField productNameField = new TextField("Product Name");
+TextField productCodeField = new TextField("Product Code");
+TextField productDescriptionField = new TextField("Product Description");
+TextField quantityField = new TextField("Quantity");
+TextField unitPriceField = new TextField("Unit Price");
 
-      TextField totalAmount = new TextField("Total Amount");
-      totalAmount.setReadOnly(true);
-      add(totalAmount);
+// Add a button to add a new invoice line
+Button addInvoiceLineButton = new Button("Add Invoice Line", event -> {
+    InvoiceLine invoiceLine = new InvoiceLine();
+    // Set the properties of the invoice line here
+    invoiceLine.setProductName(productNameField.getValue());
+    invoiceLine.setProductCode(productCodeField.getValue());
+    invoiceLine.setProductDescription(productDescriptionField.getValue());
+    invoiceLine.setQuantity(Integer.parseInt(quantityField.getValue()));
+    invoiceLine.setUnitPrice(Double.parseDouble(unitPriceField.getValue()));
+    invoiceLineService.saveInvoiceLine(invoiceLine);
+    grid.setItems(invoiceLineService.getAllInvoiceLines());
 
-      Button saveButton = new Button("Save Invoice", event -> {
-         // Save the invoice here
-      });
+    // Clear the fields after adding the line
+    productNameField.clear();
+    productCodeField.clear();
+    productDescriptionField.clear();
+    quantityField.clear();
+    unitPriceField.clear();
+});
 
-      add(saveButton);
+// Add the fields and the button to the form layout
+formLayout.add(productNameField, productCodeField, productDescriptionField, quantityField, unitPriceField, addInvoiceLineButton);
 
-   }
+// Define the save button
+Button saveButton = new Button("Save Invoice");
 
+// Update the save button click listener to save the invoice
+saveButton.addClickListener(event -> {
+    // Create a new invoice here
+    Invoice invoice = new Invoice();
+    // Set the properties of the invoice here
+    invoiceService.saveInvoice(invoice);
+    UI.getCurrent().navigate("InvoiceList");
+});
+
+// Add the save button to the form layout
+formLayout.add(saveButton);
+     }
    @Override
    protected void onAttach(AttachEvent attachEvent) {
       super.onAttach(attachEvent);

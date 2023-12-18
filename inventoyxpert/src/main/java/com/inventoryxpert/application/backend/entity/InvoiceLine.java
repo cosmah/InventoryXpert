@@ -15,6 +15,9 @@ public class InvoiceLine {
     private Double unitPrice;
     private Double totalPrice;
 
+    public InvoiceLine() {
+    }
+
     public InvoiceLine(Long id, String productName, String productCode, String productDescription, Integer quantity, Double unitPrice, Double totalPrice) {
         this.id = id;
         this.productName = productName;
