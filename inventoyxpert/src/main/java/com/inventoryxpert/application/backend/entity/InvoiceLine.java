@@ -92,7 +92,7 @@ public class InvoiceLine {
         return invoice;
     }
 
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
+    public void setInvoice(Invoice string) {
+        this.invoice = string;
     }   
 }

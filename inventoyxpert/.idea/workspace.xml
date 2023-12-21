@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67564a1a-4a37-4206-9d68-3ef728529c23" name="Changes" comment="WORKIN ON THE RECIEPT">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/generated/flow/generated-flow-imports.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/generated/flow/generated-flow-imports.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/generated/theme.d.ts" beforeDir="false" />

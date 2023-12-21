@@ -6,11 +6,15 @@ import com.inventoryxpert.application.backend.repository.InvoiceLineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.List;
 
 @Service
 public class InvoiceLineService {
+
+    private static final Logger LOGGER = Logger.getLogger(InvoiceLineService.class
+            .getName());
 
     private final InvoiceLineRepository invoiceLineRepository;
 
@@ -51,5 +55,52 @@ public class InvoiceLineService {
         }
         return optionalInvoiceLine;
     }
+
+
+    public long countInvoiceLines() {
+        return invoiceLineRepository.count();
+    }
+
+  
+
+    public void delete(InvoiceLine invoiceLine) {
+        if (invoiceLine == null) {
+            LOGGER.log(Level.SEVERE,
+                    "InvoiceLine is null. Are you sure you have connected your form to the application?");
+            return;
+        }
+        invoiceLineRepository.delete(invoiceLine);
+                    
+    }
+
+    public void save(InvoiceLine invoiceLine) {
+        if (invoiceLine == null) {
+            LOGGER.log(Level.SEVERE,
+                    "InvoiceLine is null. Are you sure you have connected your form to the application?");
+            return;
+        }
+        invoiceLineRepository.save(invoiceLine);
+    }
+
+    public InvoiceLine save(Long id, String productName, String productCode, String productDescription, Integer quantity, Double unitPrice, Double totalPrice, Invoice invoice) {
+        InvoiceLine invoiceLine  =new InvoiceLine();
+        invoiceLine.setId(id);
+        invoiceLine.setProductName(productName);
+        invoiceLine.setProductCode(productCode);
+        invoiceLine.setProductDescription(productDescription);
+        invoiceLine.setQuantity(quantity);
+        invoiceLine.setUnitPrice(unitPrice);
+        invoiceLine.setTotalPrice(totalPrice);
+        invoiceLine.setInvoice(invoice);
+        
+        return invoiceLineRepository.save(invoiceLine);
+    }
+
+    public List<InvoiceLine> findAll() {
+        return null;
+    }
+
+  
+
 
 }

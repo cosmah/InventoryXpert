@@ -1,6 +1,7 @@
 package com.inventoryxpert.application.views;
 
 import com.inventoryxpert.application.views.Invoicing.AddInvoice;
+import com.inventoryxpert.application.views.Invoicing.Purchase;
 import com.inventoryxpert.application.views.about.AboutView;
 import com.inventoryxpert.application.views.dashboard.DashboardView;
 import com.inventoryxpert.application.views.people.PeopleView;
@@ -73,6 +74,7 @@ public class MainLayout extends AppLayout {
         nav.addItem(new SideNavItem("Add Employee", AddEmployees.class, LineAwesomeIcon.USERS_SOLID.create()));
         nav.addItem(new SideNavItem("Employees list", Employees.class, LineAwesomeIcon.LIST_ALT.create()));
         nav.addItem(new SideNavItem("Add terms of payment", Terms.class, LineAwesomeIcon.TIMES_CIRCLE.create()));
+        nav.addItem(new SideNavItem("Purchase", Purchase.class, LineAwesomeIcon.FILE.create()));
 
         return nav;
     }
