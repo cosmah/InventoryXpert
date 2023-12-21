@@ -15,8 +15,10 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -25,7 +27,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @PageTitle("Add Invoice")
@@ -36,11 +37,13 @@ public class AddInvoice extends VerticalLayout {
    private TermsService termofPaymentService;
    private DatePicker dateOfMakeField;
    private DatePicker expiryDateField;
-   
+
    private InvoiceService invoiceService;
 
    private TextField invoiceNumberField; // Declare the TextField here
    private InvoiceLineService invoiceLineService;
+
+   // ====INVOICE NUMBER====
 
    // Class to store the last used sequence number
    public class SequenceNumber {
@@ -64,15 +67,15 @@ public class AddInvoice extends VerticalLayout {
       // Construct the invoice number
       return currentDate.format(formatter) + String.format("%04d", sequenceNum);
    }
+   // ==============================================================
 
-
-@Autowired
-public AddInvoice(CustomerService customerService, TermsService termofPaymentService,
-     InvoiceLineService invoiceLineService, InvoiceService invoiceService) {
-  this.customerService = customerService;
-  this.termofPaymentService = termofPaymentService;
-  this.invoiceLineService = invoiceLineService;
-  this.invoiceService = invoiceService;
+   @Autowired
+   public AddInvoice(CustomerService customerService, TermsService termofPaymentService,
+         InvoiceLineService invoiceLineService, InvoiceService invoiceService) {
+      this.customerService = customerService;
+      this.termofPaymentService = termofPaymentService;
+      this.invoiceLineService = invoiceLineService;
+      this.invoiceService = invoiceService;
 
       setSizeFull();
       FormLayout formLayout = new FormLayout();
@@ -136,6 +139,43 @@ public AddInvoice(CustomerService customerService, TermsService termofPaymentSer
          }
       });
 
+      Button button = new Button("Add Invoice");
+      button.addClickListener(e -> {
+         String selectedCustomerName = customerNameField.getValue();
+         Customer selectedCustomer = customerService.getCustomerByCustomerName(selectedCustomerName);
+         Term selectedTerm = termsOfPaymentField.getValue();
+         LocalDate invoiceDate = dateOfMakeField.getValue();
+         LocalDate expiryDate = expiryDateField.getValue();
+
+         Invoice invoice = invoiceService.save(
+               null,
+               selectedCustomer.getCustomerName(),
+               selectedCustomer.getCustomerAddress(),
+               selectedTerm.getTermsName(),
+               invoiceNumberField.getValue(),
+               invoiceDate,
+               expiryDate,
+               contactPersonField.getValue(),
+               null,
+               null);
+
+         if (invoice != null) {
+            Notification.show("Invoice Added");
+         } else {
+            Notification.show("Failed to add invoice");
+         }
+
+         customerNameField.clear();
+         customerAddressField.clear();
+         emailAddressField.clear();
+         tinField.clear();
+         invoiceNumberField.clear();
+         termsOfPaymentField.clear();
+         dateOfMakeField.clear();
+         expiryDateField.clear();
+         contactPersonField.clear();
+      });
+
       // Add the fields to the form layout
 
       formLayout.add(
@@ -148,56 +188,12 @@ public AddInvoice(CustomerService customerService, TermsService termofPaymentSer
             dateOfMakeField,
             expiryDateField,
             contactPersonField,
-            new TextField("Taxes"));
+            new TextField("Taxes"),
+            button);
 
       add(formLayout);
+   }
 
-      Grid<InvoiceLine> grid = new Grid<>(InvoiceLine.class);
-      // Define the fields for the new invoice line
-TextField productNameField = new TextField("Product Name");
-TextField productCodeField = new TextField("Product Code");
-TextField productDescriptionField = new TextField("Product Description");
-TextField quantityField = new TextField("Quantity");
-TextField unitPriceField = new TextField("Unit Price");
-
-// Add a button to add a new invoice line
-Button addInvoiceLineButton = new Button("Add Invoice Line", event -> {
-    InvoiceLine invoiceLine = new InvoiceLine();
-    // Set the properties of the invoice line here
-    invoiceLine.setProductName(productNameField.getValue());
-    invoiceLine.setProductCode(productCodeField.getValue());
-    invoiceLine.setProductDescription(productDescriptionField.getValue());
-    invoiceLine.setQuantity(Integer.parseInt(quantityField.getValue()));
-    invoiceLine.setUnitPrice(Double.parseDouble(unitPriceField.getValue()));
-    invoiceLineService.saveInvoiceLine(invoiceLine);
-    grid.setItems(invoiceLineService.getAllInvoiceLines());
-
-    // Clear the fields after adding the line
-    productNameField.clear();
-    productCodeField.clear();
-    productDescriptionField.clear();
-    quantityField.clear();
-    unitPriceField.clear();
-});
-
-// Add the fields and the button to the form layout
-formLayout.add(productNameField, productCodeField, productDescriptionField, quantityField, unitPriceField, addInvoiceLineButton);
-
-// Define the save button
-Button saveButton = new Button("Save Invoice");
-
-// Update the save button click listener to save the invoice
-saveButton.addClickListener(event -> {
-    // Create a new invoice here
-    Invoice invoice = new Invoice();
-    // Set the properties of the invoice here
-    invoiceService.saveInvoice(invoice);
-    UI.getCurrent().navigate("InvoiceList");
-});
-
-// Add the save button to the form layout
-formLayout.add(saveButton);
-     }
    @Override
    protected void onAttach(AttachEvent attachEvent) {
       super.onAttach(attachEvent);

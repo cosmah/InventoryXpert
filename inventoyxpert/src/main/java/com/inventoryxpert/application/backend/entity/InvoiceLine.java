@@ -4,30 +4,34 @@ import jakarta.persistence.*;
 
 @Entity
 public class InvoiceLine {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private Long id;
 
-    private String productName;
-    private String productCode;
-    private String productDescription;
-    private Integer quantity;
-    private Double unitPrice;
-    private Double totalPrice;
+   private String productName;
+   private String productCode;
+   private String productDescription;
+   private Integer quantity;
+   private Double unitPrice;
+   private Double totalPrice;
 
-    public InvoiceLine() {
-    }
+   @ManyToOne
+   @JoinColumn(name = "invoice_id")
+   private Invoice invoice;
 
-    public InvoiceLine(Long id, String productName, String productCode, String productDescription, Integer quantity, Double unitPrice, Double totalPrice) {
-        this.id = id;
-        this.productName = productName;
-        this.productCode = productCode;
-        this.productDescription = productDescription;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.totalPrice = totalPrice;
-    }
+   public InvoiceLine() {
+   }
 
+   public InvoiceLine(Long id, String productName, String productCode, String productDescription, Integer quantity, Double unitPrice, Double totalPrice, Invoice invoice) {
+       this.id = id;
+       this.productName = productName;
+       this.productCode = productCode;
+       this.productDescription = productDescription;
+       this.quantity = quantity;
+       this.unitPrice = unitPrice;
+       this.totalPrice = totalPrice;
+       this.invoice = invoice;
+   }
     public Long getId() {
         return id;
     }
@@ -83,4 +87,12 @@ public class InvoiceLine {
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }   
 }

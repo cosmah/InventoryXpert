@@ -1,15 +1,25 @@
 package com.inventoryxpert.application.backend.service;
 
+import com.github.javaparser.utils.Log;
 import com.inventoryxpert.application.backend.entity.Invoice;
+import com.inventoryxpert.application.backend.entity.InvoiceLine;
 import com.inventoryxpert.application.backend.repository.InvoiceRepository;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class InvoiceService {
+
+    private static final Logger LOGGER = Logger.getLogger(InvoiceService.class.getName());
 
     @Autowired
     private InvoiceRepository invoiceRepository;
@@ -34,65 +44,54 @@ public class InvoiceService {
         invoiceRepository.deleteById(id);
     }
 
-    // public List<Invoice> findByCustomerId(Long customerId) {
-    //     return invoiceRepository.findByCustomerId(customerId);
-    // }
-
-    // public List<Invoice> findByCustomerIdAndStatus(Long customerId, String status) {
-    //     return invoiceRepository.findByCustomerIdAndStatus(customerId, status);
-    // }   
-    
-    // public List<Invoice> findByStatus(String status) {
-    //     return invoiceRepository.findByStatus(status);
-    // }   
-
-    // public List<Invoice> findByStatusAndCustomerId(String status, Long customerId) {
-    //     return invoiceRepository.findByStatusAndCustomerId(status, customerId);
-    // }
-
-    // public List<Invoice> findByStatusAndCustomerIdAndDate(String status, Long customerId, String date) {
-    //     return invoiceRepository.findByStatusAndCustomerIdAndDate(status, customerId, date);
-    // }
-
-    // public List<Invoice> findByStatusAndDate(String status, String date) {
-    //     return invoiceRepository.findByStatusAndDate(status, date);
-    // }
-
-    // public List<Invoice> findByDate(String date) {
-    //     return invoiceRepository.findByDate(date);
-    // }
-
-    // public List<Invoice> findByCustomerIdAndDate(Long customerId, String date) {
-    //     return invoiceRepository.findByCustomerIdAndDate(customerId, date);
-    // }
-
-    // public List<Invoice> findByCustomerIdAndDateBetween(Long customerId, String startDate, String endDate) {
-    //     return invoiceRepository.findByCustomerIdAndDateBetween(customerId, startDate, endDate);
-    // }
-
-    // public List<Invoice> findByDateBetween(String startDate, String endDate) {
-    //     return invoiceRepository.findByDateBetween(startDate, endDate);
-    // }
-
-    // public List<Invoice> findByDateBetweenAndStatus(String startDate, String endDate, String status) {
-    //     return invoiceRepository.findByDateBetweenAndStatus(startDate, endDate, status);
-    // }
-
-    // public List<Invoice> findByDateBetweenAndCustomerId(String startDate, String endDate, Long customerId) {
-    //     return invoiceRepository.findByDateBetweenAndCustomerId(startDate, endDate, customerId);
-    // }
-
-    // public List<Invoice> findByDateBetweenAndCustomerIdAndStatus(String startDate, String endDate, Long customerId, String status) {
-    //     return invoiceRepository.findByDateBetweenAndCustomerIdAndStatus(startDate, endDate, customerId, status);
-    // }
-
-    // public List<Invoice> findByDateBetweenAndStatusAndCustomerId(String startDate, String endDate, String status, Long customerId) {
-    //     return invoiceRepository.findByDateBetweenAndStatusAndCustomerId(startDate, endDate, status, customerId);
-    // }
-
     public Invoice saveInvoice(Invoice invoice) {
         return invoiceRepository.save(invoice);
     }
 
+    public Invoice findInvoice(Long id) {
+        return invoiceRepository.findById(id).get();
+    }
+
     
+
+    public long countInvoices() {
+        return invoiceRepository.count();
+    }
+
+    public void deleteInvoice(Invoice invoice) {
+        if (invoice == null) {
+            LOGGER.log(Level.SEVERE,
+                    "Invoice is null. Are you sure you have connected your form to the application?");
+
+            return;
+        }
+        invoiceRepository.delete(invoice);
+    }
+
+    public void save(Invoice invoice) {
+        if (invoice == null) {
+            LOGGER.log(Level.SEVERE,
+                    "Invoice is null. Are you sure you have connected your form to the application?");
+            return;
+        }
+        invoiceRepository.save(invoice);
+    }
+
+    public Invoice save(Long id, String customerName, String customerAddress, String paymentTerms, String invoiceNumber,
+            LocalDate invoiceDate, LocalDate expiryDate, String contactPerson, List<InvoiceLine> invoiceLines,
+            Double totalSales) {
+        Invoice invoice = new Invoice();
+        invoice.setId(id);
+        invoice.setCustomerName(customerName);
+        invoice.setCustomerAddress(customerAddress);
+        invoice.setPaymentTerms(paymentTerms);
+        invoice.setInvoiceNumber(invoiceNumber);
+        invoice.setInvoiceDate(invoiceDate);
+        invoice.setExpiryDate(expiryDate);
+        invoice.setContactPerson(contactPerson);
+        invoice.setInvoiceLines(invoiceLines);
+        invoice.setTotalSales(totalSales);
+        return invoiceRepository.save(invoice);
+    }
+
 }

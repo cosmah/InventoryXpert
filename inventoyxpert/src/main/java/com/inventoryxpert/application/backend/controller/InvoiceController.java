@@ -10,15 +10,21 @@ import java.util.List;
 @RestController
 public class InvoiceController {
 
-    private final InvoiceService service;
+    private final InvoiceService invoiceService;
 
     @Autowired
     public InvoiceController(InvoiceService service) {
-        this.service = service;
+        this.invoiceService = service;
     }
 
     @GetMapping("/invoices")
     public List<Invoice> getInvoices() {
-        return service.getAllInvoices();
+        return invoiceService.getAllInvoices();
     }
+
+    // @PostMapping("/invoices")
+    // public ResponseEntity<Invoice> createInvoice(@RequestBody Invoice invoice) {
+    //     Invoice createdInvoice = invoiceService.createInvoice(invoice);
+    //     return new ResponseEntity<>(createdInvoice, HttpStatus.CREATED);
+    // }
 }

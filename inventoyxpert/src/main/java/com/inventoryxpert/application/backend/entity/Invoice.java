@@ -2,6 +2,7 @@ package com.inventoryxpert.application.backend.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,10 +20,10 @@ public class Invoice {
     private String invoiceNumber;
 
     @Temporal(TemporalType.DATE)
-    private Date invoiceDate;
+    private LocalDate invoiceDate;
 
     @Temporal(TemporalType.DATE)
-    private Date expiryDate;
+    private LocalDate expiryDate;
 
     private String contactPerson;
 
@@ -41,7 +42,7 @@ public class Invoice {
     }
 
     public Invoice(Long id, String customerName, String customerAddress, String paymentTerms, String invoiceNumber,
-            Date invoiceDate, Date expiryDate, String contactPerson, List<InvoiceLine> invoiceLines,
+            LocalDate invoiceDate, LocalDate expiryDate, String contactPerson, List<InvoiceLine> invoiceLines,
             Double totalSales) {
         this.id = id;
         this.customerName = customerName;
@@ -95,19 +96,19 @@ public class Invoice {
         this.invoiceNumber = invoiceNumber;
     }
 
-    public Date getInvoiceDate() {
+    public LocalDate getInvoiceDate() {
         return invoiceDate;
     }
 
-    public void setInvoiceDate(Date invoiceDate) {
+    public void setInvoiceDate(LocalDate invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
 
-    public Date getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
     }
 
